@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<div ng-controller="CompanyController as model" ng-init="model.List()">
+       <form method="post" action="~/Company/Edit">
+            <br />
+            <label for="CompanyName">Company Name:</label>
+            <input type="text" class="form-control" name="Company.CompanyName" value="@Model.CompanyName" required/>
+            <input type="hidden" name="Company.CompanyId" value="@Model.CompanyId"  />
+            <br />
+            <input type="Submit" value="Save" class="btn btn-primary" /> 
+            <a href="/Company/Index" class="btn btn-danger"style="margin-left:10px;" float="left"><i class="glyphicon glyphicon-close "></i>Close</a>
+        </form>
+     
+    </div>
+
+
+
+

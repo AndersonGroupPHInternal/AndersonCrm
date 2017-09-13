@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+
+<div ng-controller="CompanyController as model" ng-init="model.List()">
+    @*<div class="form-group">*@
+  
+        <br />
+
+        <label for="CompanyName">Company Name:</label>
+        <input type="text" class="form-control" id="CompanyName" ng-model="model.Company.CompanyName" placeholder="Company Name" required />
+        <a href="/Company/Index" class="btn btn-info" role="button" ng-click="model.Create() "><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+        <a href="/Company/Index" class="btn btn-danger" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-remove"></i> Close</a>
+
+        @*</div>*@
+
+
+</div>
+

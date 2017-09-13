@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>COMPANY</h1>
+<br/>
+<div ng-controller="CompanyController as model" ng-init="model.List()">
+    @*<a href="/Company/Create" type="button" class="btn btn-success"><i class="glyphicon glyphtyicon-plus-sign"></i> Add</a><br /><br />*@
+    <a href="/Company/Add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
+            @*<button type="submit" class="searchButton"> <i class="glyphicon glyphicon-search"></i> </button>*@
+        </div>
+    </div>
+    
+    @*<input ng-model="searchText" type="text" class="form-control" placeholder="Search here...">*@ 
+    <div class="row">
+     @*<button type="button" class="btn btn-success " data-toggle="modal" data-target="#CompanyModal" ng-click="model.CreateModal(Company)" style="margin-right: 35px; float: right"><i class="glyphicon glyphicon-plus-sign"></i> Add</button>*@
+    </div><br />
+
+
+    <table class="table table-hover table-sm table-bordered " id="tableid">
+        <thead>
+            <tr class="active" id="info">
+                <th>Company Id</th>
+                <th>Company Name</th>
+         
+                <th style="width: 100px">Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="Company in model.Companies" ng-click="model.Details(Company)"  style="cursor:pointer" filter="">
+    
+                <td><span ng-bind="Company.CompanyId"></span></td>
+                <td><span ng-bind="Company.CompanyName"></span></td>
+
+                <td>
+                    @*<a ng-href="/Company/Edit/{{Company.CompanyId}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
+                    @*<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="model.UpdateModal(Company)" data-target="#CompanyModal">
+                    Edit
+                </button>*@
+                    @*<button type="button" class="btn btn-info " data-toggle="modal" ng-click="model.Update(Company)" ><i class="glyphicon glyphicon-edit"></i> Edit</button>*@
+                    <a href="/Company/Index" ng-click="model.Delete(Company)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+                </td>
+                </tr>
+          
+        </tbody>
+    </table>
+
+
+    
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    @*<div class="modal fade" id="CompanyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Company</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="CompanyName">Company Name:</label>
+                        <input type="text" class="form-control" id="CompanyName" ng-model="model.Company.CompanyName" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="model.Update()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+     @*Modal*@ 
+    @*<div class="modal fade" id="CompanyModal" role="dialog">
+        <div class="modal-dialog">
+
+             Modal content
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="CompanyName">Company Name:</label>
+                        <input type="text" class="form-control" id="CompanyName" ng-model="model.Company.CompanyName" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="model.Update()" ng-show="model.Company.CompanyId > 0">Save changes</button>
+                    <button type="button" class="btn btn-primary" ng-click="model.Create()" ng-show="model.Company.CompanyId == 0">Add</button>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+</div>
+
+
+<script>
+    function myFunction() {
+        var input, filter, found, table, tr, td, i, j;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableid");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+                found = false;
+            } else {
+                if (tr[i].id != 'info') { tr[i].style.display = "none"; }
+            }
+        }
+    }
+</script>
