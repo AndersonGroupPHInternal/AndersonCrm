@@ -8,77 +8,97 @@ namespace AndersonCRMContext
         public DBInitializer()
         {
 
-
         }
         protected override void Seed(Context context)
         {
             context.Companies.Add(
                 new ECompany
                 {
-                   
+
                     CompanyName = "No Specific Company"
                 });
             context.SaveChanges();
             var company = context.Companies.Add(
                 new ECompany
                 {
-                   
+
                     CompanyName = "AndersonGroup"
                 });
             context.SaveChanges();
 
             if (company != null)
             {
-                var employee = context.Employees.Add(
-                    new EEmployee
-                    {
-                        CompanyId = company.CompanyId,
-                        PositionId = 1,
-                        EmployeeColor = "000000",
-                        EmployeeNumber = "A0090",
-                        FirstName = "Adrianne Claude",
-                        LastName = "Tubig",
-                        MiddleName = "Ramos"
-                    });
+                var department = context.Departments.Add(
+                new EDepartment
+                {
+                   Description = "Software Development"
+                });
                 context.SaveChanges();
 
-                if (employee != null)
+                if (department != null)
                 {
-                    var peripheral = context.Peripherals.Add(
-                    new EPeripheral
+
+                    var employee = context.Employees.Add(
+                    new EEmployee
                     {
-                        EmployeeId = employee.EmployeeId,
-                        PeripheralColor ="fafafa",
-                        PeripheralName = "Computer",
-                        Description = "computer",
-                        SerialNumber = "AGPDSK00134"
-                    });
-                    context.Peripherals.Add(
-                    new EPeripheral
-                    {
-                        EmployeeId = employee.EmployeeId,
-                        PeripheralColor = "fafafa",
-                        PeripheralName = "Webcam",
-                        Description = "webcam",
-                        SerialNumber = "AGPCAM00004"
+                        CompanyId = 1,
+                        PositionId = 1,
+                        DepartmentId = 1,
+
+                        ManagerEmployeeId = 1,
+                        FirstName = "Adrianne Claude",
+                        LastName = "Tubig",
+                        MiddleName = "Ramos",
+                        Email = "andersongroup@yahoo.com",
+                        JobTitle = "Junior Software Developer",
+                        HiringDate = "September 09, 2017",
+                        StartingDate = "Septemeber 09, 2017"
+                    
                     });
                     context.SaveChanges();
+                
 
-                    if (peripheral != null)
+                    if (employee != null)
                     {
-                        var position = context.Positions.Add(
+                        var peripheral = context.Peripherals.Add(
+                        new EPeripheral
+                        {
+                            EmployeeId = employee.EmployeeId,
+                            Date = "September 09, 2017",
+                            PeripheralColor = "fafafa",
+                            PeripheralName = "Computer",
+                            Description = "computer",
+                            SerialNumber = "AGPDSK00134"
+                        });
+                        context.Peripherals.Add(
+                        new EPeripheral
+                        {
+                            EmployeeId = employee.EmployeeId,
+                            Date = "September 09, 2017",
+                            PeripheralColor = "fafafa",
+                            PeripheralName = "Webcam",
+                            Description = "webcam",
+                            SerialNumber = "AGPCAM00004"
+
+                        });
+                        context.SaveChanges();
+
+                        if (peripheral != null)
+                        {
+                            var position = context.Positions.Add(
                             new EPosition
                             {
                                 PositionName = "Manager",
                                 PositionColor = "bababa"
                             });
-                        context.SaveChanges();
+                            context.SaveChanges();
+                        }
                     }
 
                 }
             }
             base.Seed(context);
 
-            }
         }
     }
+}   

@@ -36,8 +36,13 @@ namespace AndersonCRMFunction
             List<ECompany> eCompanies = _iDCompany.List<ECompany>(a => true);
             return Companies(eCompanies);
         }
+        public Company Read(string companyName)
+        {
+            ECompany eCompany = _iDCompany.Read<ECompany>(a => a.CompanyName == companyName);
+            return Company(eCompany);
+        }
 
-     
+
         #endregion
 
         #region UPDATE

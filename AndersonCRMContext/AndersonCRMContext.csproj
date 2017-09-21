@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Internal-Github\DLL\Debug\AndersonCRM\</OutputPath>
+    <OutputPath>..\..\DLL\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Internal-Github\DLL\Release\AndersonCRM\</OutputPath>
+    <OutputPath>..\..\DLL\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -53,6 +53,14 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="DBInitializer.cs" />
+    <Compile Include="Migrations\201709200710083_initial.cs" />
+    <Compile Include="Migrations\201709200710083_initial.Designer.cs">
+      <DependentUpon>201709200710083_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Migrations.cs" />
+    <Compile Include="Migrations\Migrations.Designer.cs">
+      <DependentUpon>Migrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +75,14 @@
       <Project>{f88f9dad-fa80-4f31-9e47-47e22bd1ba53}</Project>
       <Name>AndersonCRMEntity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709200710083_initial.resx">
+      <DependentUpon>201709200710083_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Migrations.resx">
+      <DependentUpon>Migrations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

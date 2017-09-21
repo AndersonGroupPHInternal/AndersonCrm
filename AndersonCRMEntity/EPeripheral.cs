@@ -1,4 +1,5 @@
 ﻿using BaseEntity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -33,9 +34,12 @@ namespace AndersonCRMEntity
         [StringLength(50)]
         public string AssetTag{ get; set; }
 
-
-
+        [StringLength(50)]
+        public string Date { get; set; }
 
         public virtual EEmployee Employee { get; set; }
+
+        public virtual ICollection<EPeripheralHistory> PeripheralHistories { get; set; }
+
     }
 }

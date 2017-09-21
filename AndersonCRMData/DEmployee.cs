@@ -20,6 +20,7 @@ namespace AndersonCRMData
                 return context.Employees
                     .Include(a => a.Company)
                     .Include(a => a.Position)
+                    .Include(a => a.Department)
                     .ToList();
             }
         }

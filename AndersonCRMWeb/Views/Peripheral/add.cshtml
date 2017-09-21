@@ -1,37 +1,58 @@
 ﻿
 @{
-    ViewBag.Title = "add";
+    ViewBag.Title = "Add";
 }
 
 <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="~/Scripts/Angular/Controller/autoDate.js"></script>
     </head>
 <h2>Add Asset</h2>
 <div ng-controller="PeripheralController as model" ng-init="model.List()">
     <div class="form-group">
         <br />
-        <label for="EmployeeId">Employee Id:</label>
-        <input list="EmployeeId" name="EmployeeId" ng-model="model.Peripheral.EmployeeId" type="text" class="form-control" placeholder="Employee ID">
-        <datalist id="EmployeeId">
-            <option value="1">
-            <option value="11">
-            <option value="13">
-            <option value="15">
-        </datalist>
-        <label for="AssetTag">Asset Tag:</label>
-        <input type="text" class="form-control" name="Peripheral.AssetTag" ng-model="model.Peripheral.AssetTag"  placeholder="Asset Tag" />
-        <label for="PeripheralName">Asset Name:</label>
-        <input type="text" class="form-control" id="PeripheralName" ng-model="model.Peripheral.PeripheralName" placeholder="Asset name" />
-        <label for="Description">Make :</label>
-        <input type="text" class="form-control" id="Description" ng-model="model.Peripheral.Description" placeholder="Description" />
-        <label for="SerialNumber">Serial Number:</label>
-        <input type="text" class="form-control" id="SerialNumber" ng-model="model.Peripheral.SerialNumber"  placeholder="Serial Number" />
+        <form action="~/Peripheral/Add" method="get">
+            @*<label for="Date">Date: </label>*@
+            <input type="hidden" class="form-control" id="Date" ng-model="model.Peripheral.Date" ng-init="model.InitialiseDate('@Model.Date')" disabled />
+            <label for="EmployeeId">Employee Id:</label>
+            <input list="EmployeeId" name="EmployeeId" ng-model="model.Peripheral.EmployeeId" type="text" class="form-control" placeholder="Employee Id" required />
+            <datalist id="EmployeeId">
+                <option value="1">
+                <option value="11">
+                <option value="13">
+                <option value="15">
+            </datalist>
+
+            @*<label for="LastName">Last Name:</label>
+            <input type="text" class="form-control" id="PeripheralLastName" name="Peripheral.LastName" ng-model="model.Peripheral.LastName  " placeholder="Last Name" required />*@
+            <label for="AssetTag">Asset Tag:</label>
+            <input type="text" class="form-control" name="Peripheral.AssetTag" ng-model="model.Peripheral.AssetTag  " placeholder="Asset Tag" required />
+            <label for="PeripheralName">Asset Name:</label>
+            <input type="text" class="form-control" id="PeripheralName" ng-model="model.Peripheral.PeripheralName" placeholder="Asset name" required />
+            <label for="Description">Make :</label>
+            <input type="text" class="form-control" id="Description" ng-model="model.Peripheral.Description" placeholder="Description" required />
+            <label for="SerialNumber">Serial Number:</label>
+            <input type="text" class="form-control" id="SerialNumber" ng-model="model.Peripheral.SerialNumber" placeholder="Serial Number" required />
+
+            <br />
+
+        </form>
     </div>
 
-     <a href="/Peripheral/Index" class="btn btn-info" role="button" ng-click="model.Create() "><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
-    <a href="/Peripheral/Index" class="btn btn-danger" style="margin-left:10px" float="left" ><i class="glyphicon glyphicon-remove"></i> Close</a>
 
-</div>
+    <a href="/Peripheral/Index" class="btn btn-info"  id="myButton" role="button"  ng-click="model.Create() " style="margin-left: 10px;float: left"><i class="glyphicon glyphicon-plus-sign"></i> Add </a>
+    <a href="/Peripheral/Index" class="btn btn-danger" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-remove"></i> Close</a>
 
+</div> 
 
+@*<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "/History/Index";
+    };
+</script>*@
 
+@*<script type="text/javascript">
+        document.getElementById("PeripheralDate").onclick = function autoDate() {
+            location.href = "/History/Index";
+        };
+    </script>*@

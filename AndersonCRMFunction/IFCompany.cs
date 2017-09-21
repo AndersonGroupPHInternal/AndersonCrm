@@ -10,6 +10,7 @@ namespace AndersonCRMFunction
         #endregion
         #region RETRIEVE
         Company Read(int companyId);
+        Company Read(string companyName);
         List<Company> List();
         #endregion
         #region UPDATE
