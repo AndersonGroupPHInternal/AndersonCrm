@@ -30,19 +30,24 @@ namespace AndersonCRMFunction
             ECompany eCompany = _iDCompany.Read<ECompany>(a => a.CompanyId == companyId);
             return Company(eCompany);
         }
-      
-        public List<Company> List()
-        {
-            List<ECompany> eCompanies = _iDCompany.List<ECompany>(a => true);
-            return Companies(eCompanies);
-        }
+
         public Company Read(string companyName)
         {
             ECompany eCompany = _iDCompany.Read<ECompany>(a => a.CompanyName == companyName);
             return Company(eCompany);
         }
 
+        public Company ReadDefault()
+        {
+            ECompany eCompany = _iDCompany.Read<ECompany>(a => a.CompanyName == "AndersonGroup");
+            return Company(eCompany);
+        }
 
+        public List<Company> List()
+        {
+            List<ECompany> eCompanies = _iDCompany.List<ECompany>(a => true);
+            return Companies(eCompanies);
+        }
         #endregion
 
         #region UPDATE

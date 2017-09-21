@@ -18,7 +18,6 @@ namespace AndersonCRMFunction
         #region CREATE
         public Department Create(Department department)
         {
-  
             EDepartment eDepartment = EDepartment(department);
             eDepartment = _iDDepartment.Create(eDepartment);
             return (Department(eDepartment));

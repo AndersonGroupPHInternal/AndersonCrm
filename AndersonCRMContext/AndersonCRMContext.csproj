@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\DLL\</OutputPath>
+    <OutputPath>..\..\DLL\Debug\AndersonCRM\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\DLL\</OutputPath>
+    <OutputPath>..\..\DLL\Release\AndersonCRM\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -53,10 +53,6 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="DBInitializer.cs" />
-    <Compile Include="Migrations\201709200710083_initial.cs" />
-    <Compile Include="Migrations\201709200710083_initial.Designer.cs">
-      <DependentUpon>201709200710083_initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Migrations.cs" />
     <Compile Include="Migrations\Migrations.Designer.cs">
       <DependentUpon>Migrations.cs</DependentUpon>
@@ -77,9 +73,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709200710083_initial.resx">
-      <DependentUpon>201709200710083_initial.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Migrations.resx">
       <DependentUpon>Migrations.cs</DependentUpon>
     </EmbeddedResource>
