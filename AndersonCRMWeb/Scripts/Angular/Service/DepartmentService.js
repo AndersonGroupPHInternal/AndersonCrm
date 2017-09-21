@@ -47,7 +47,8 @@
                 method: 'POST',
                 url: '../Department/Delete',
                 data: {
-                    department: department                },
+                    department: department
+                },
             })
         }
     }

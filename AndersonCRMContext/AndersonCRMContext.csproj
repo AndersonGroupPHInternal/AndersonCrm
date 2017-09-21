@@ -53,6 +53,10 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="DBInitializer.cs" />
+    <Compile Include="Migrations\201709210334340_initial.cs" />
+    <Compile Include="Migrations\201709210334340_initial.Designer.cs">
+      <DependentUpon>201709210334340_initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Migrations.cs" />
     <Compile Include="Migrations\Migrations.Designer.cs">
       <DependentUpon>Migrations.cs</DependentUpon>
@@ -73,6 +77,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709210334340_initial.resx">
+      <DependentUpon>201709210334340_initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Migrations.resx">
       <DependentUpon>Migrations.cs</DependentUpon>
     </EmbeddedResource>
