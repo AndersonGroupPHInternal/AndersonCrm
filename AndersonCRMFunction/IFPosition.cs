@@ -10,6 +10,7 @@ namespace AndersonCRMFunction
         #endregion
         #region READ
         Position Read(int positionId);
+        Position Read(string positionName);
         List<Position> List();
         #endregion
         #region UPDATE

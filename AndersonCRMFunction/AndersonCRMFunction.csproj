@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Internal-Github\DLL\Debug\AndersonCRM\</OutputPath>
+    <OutputPath>..\..\DLL\Debug\AndersonCRM\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Internal-Github\DLL\Release\AndersonCRM\</OutputPath>
+    <OutputPath>..\..\DLL\Release\AndersonCRM\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FDepartment.cs" />
+    <Compile Include="IFDepartment.cs" />
+    <Compile Include="IFPeripheralHistory.cs" />
+    <Compile Include="FPeripheralHistory.cs" />
     <Compile Include="IFPosition.cs" />
     <Compile Include="IFPeripheral.cs" />
     <Compile Include="IFEmployee.cs" />

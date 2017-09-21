@@ -2,6 +2,7 @@
 using AndersonCRMModel;
 using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 
 namespace AndersonCRMWeb.Controllers
@@ -10,10 +11,12 @@ namespace AndersonCRMWeb.Controllers
     public class PeripheralController : Controller
     {
         private IFPeripheral _iFPeripheral;
+      
 
         public PeripheralController()
         {
             _iFPeripheral = new FPeripheral();
+            
         }
 
         [Route("")]
@@ -40,9 +43,11 @@ namespace AndersonCRMWeb.Controllers
             return View(new Peripheral());
         }
         [HttpGet]
-        public ActionResult add()
+        public ActionResult Add()
         {
-            return View();
+            Peripheral peripheral = new Peripheral();
+            peripheral.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            return View(peripheral);
         }
 
         [HttpPost]
@@ -57,6 +62,7 @@ namespace AndersonCRMWeb.Controllers
             {
                 return Json(ex);
             }
+
         }
         [HttpPost]
         public ActionResult Edit(Peripheral peripheral)
@@ -120,6 +126,7 @@ namespace AndersonCRMWeb.Controllers
             try
             {
                 peripheral = _iFPeripheral.Update(peripheral);
+
                 return Json("");
             }
             catch (Exception ex)
@@ -141,6 +148,7 @@ namespace AndersonCRMWeb.Controllers
                 return Json(ex);
             }
         }
+
 
     }
 }

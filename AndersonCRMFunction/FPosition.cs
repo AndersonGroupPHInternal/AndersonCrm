@@ -25,6 +25,7 @@ namespace AndersonCRMFunction
             ePosition = _iDPosition.Create(ePosition);
             return (Position(ePosition));
         }
+
         #endregion
         #region READ
         public Position Read(int positionId)
@@ -39,6 +40,11 @@ namespace AndersonCRMFunction
             return Positions(ePositions);
         }
 
+        public Position Read(string positionName)
+        {
+            EPosition ePosition = _iDPosition.Read<EPosition>(a => a.PositionName == positionName);
+            return Position(ePosition);
+        }
         #endregion
         #region UPDATE
         public Position Update(Position position)

@@ -6,18 +6,13 @@
 <h1>POSITION</h1>
 <br/>
 <div ng-controller="PositionController as model" ng-init="model.List()">
-    <a href="/Position/Add" type="button" ng-click="model.Create()" class="btn btn-success" style="float: right; margin-right: 10px"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+    <a href="/Position/Add" type="button" ng-click="model.Create()" class="btn btn-success" style="float: right; margin-right: 10px"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>  
     <div class="wrap">
         <div class="search">
             <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
-            @*<button type="submit" class="searchButton"> <i class="glyphicon glyphicon-search"></i> </button>*@
         </div>
     </div>
-    
-    
-    
     <div class="row">
-        @*<button type="button" class="btn btn-success" data-toggle="modal" data-target="#PositionModal" ng-click="model.CreateModal(Position)" style="float: right; margin-right: 35px"><i class="glyphicon glyphicon-plus-sign"></i> Add</button>*@
     </div><br />
     <table class="table table-hover table-sm table-bordered "id="tableid">
         <thead>
@@ -73,29 +68,6 @@
     </div>*@
 
     </div>
-<script>
-    function myFunction() {
-        var input, filter, found, table, tr, td, i, j;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tableid");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td");
-            for (j = 0; j < td.length; j++) {
-                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    found = true;
-                }
-            }
-            if (found) {
-                tr[i].style.display = "";
-                found = false;
-            } else {
-                if (tr[i].id != 'info') { tr[i].style.display = "none"; }
-            }
-        }
-    }
-</script>
 
 
 

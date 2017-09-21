@@ -2,6 +2,7 @@
 using AndersonCRMModel;
 using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace AndersonCRMWeb.Controllers
 {
@@ -22,13 +23,13 @@ namespace AndersonCRMWeb.Controllers
             return View();
         }
 
+
         [HttpGet]
         public ActionResult Details(int id)
         {
             var employee = _iFEmployee.Read(id);
             return View(employee);
         }
-
 
         [HttpPost]
         public ActionResult Details(Employee employee)
@@ -45,7 +46,7 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult add()
+        public ActionResult Add()
         {
             return View();
         }
@@ -92,7 +93,7 @@ namespace AndersonCRMWeb.Controllers
                 return Json(ex);
             }
         }
-       
+
 
         [Route("List")]
         [HttpPost]

@@ -6,21 +6,20 @@
 <h1>ASSET</h1>
 <br/>
 <div ng-controller="PeripheralController as model" ng-init="model.List()">
-    <a href="/Peripheral/add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-right: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <a href="/Peripheral/Add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-right: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+    <a href="/PeripheralHistory/Index" class="btn btn-primary" role="button" style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-list"></i>Asset History</a>
     <div class="wrap">
         <div class="search">
             <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
-            @*<button type="submit" class="searchButton"> <i class="glyphicon glyphicon-search"></i> </button>*@
         </div>
-        </div>
-
-        <div class="row">
-            @*<button type="button" class="btn btn-success " data-toggle="modal" data-target="#PeripheralModal" ng-click="model.CreateModal(Peripheral)" style="float: right; margin-right: 35px"><i class="glyphicon glyphicon-plus-sign"></i> Add</button>*@
+    </div>
+    <div class="row">
         </div><br />
         <table class="table table-hover table-sm table-bordered "  id="tableid">
             <thead>
                 <tr class="active" id="info">
-                    <th>Asset Id</th>
+                    @*<th>Asset Id</th>*@
+                    @*<th>Date</th>*@
                     <th>Employee Id</th>
                     <th>Asset Tag</th>
                     <th>Asset Name</th>
@@ -31,8 +30,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="Peripheral in model.Peripherals" ng-click="model.Details(Peripheral)" style="cursor:pointer">
-                    <td><span ng-bind="Peripheral.PeripheralId"></span></td>
+                <tr ng-repeat="Peripheral in model.Peripherals" ng-click="model.Details(Peripheral)" style="cursor:pointer" filter="">
+                    @*<td><span ng-bind="Peripheral.PeripheralId"></span></td>*@
+                    @*<td><span>{{Peripheral.Date | date: "MMMM dd, yyyy"}}</span></td>*@
                     <td><span ng-bind="Peripheral.EmployeeId"></span></td>
                     <td><span ng-bind="Peripheral.AssetTag"></span></td>
                     <td><span ng-bind="Peripheral.PeripheralName"></span></td>
@@ -62,10 +62,10 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="EmployeeId">Employee Id:</label>
-                    <input list="EmployeeId" name="EmployeeId" ng-model="model.Peripheral.EmployeeId" type="text" class="form-control">
-                    <datalist id="EmployeeId">*@
-        @*<option ng-value="Employee.EmployeeId">*@
+                    <label for="EmployeeNumber">Employee Number:</label>
+                    <input list="EmployeeNumber" name="EmployeeNumber" ng-model="model.Peripheral.EmployeeNumber" type="text" class="form-control">
+                    <datalist id="EmployeeNumber">*@
+        @*<option ng-value="Employee.EmployeeNumber">*@
         @*<option value="1">
             <option value="11">
             <option value="13">
@@ -74,7 +74,7 @@
 
 
 
-        @*<input type="text" class="form-control" id="EmployeeId" ng-model="model.Peripheral.EmployeeId" />*@
+        @*<input type="text" class="form-control" id="EmployeeNumber" ng-model="model.Peripheral.EmployeeNumber" />*@
         @*<label for="PeripheralName">Peripheral Name:</label>
             <input type="text" class="form-control" id="PeripheralName" ng-model="model.Peripheral.PeripheralName" />
             <label for="Description">Description :</label>
@@ -94,29 +94,6 @@
 
 
     </div>
-<script>
-    function myFunction() {
-        var input, filter, found, table, tr, td, i, j;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tableid");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td");
-            for (j = 0; j < td.length; j++) {
-                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    found = true;
-                }
-            }
-            if (found) {
-                tr[i].style.display = "";
-                found = false;
-            } else {
-                if (tr[i].id != 'info') { tr[i].style.display = "none"; }
-            }
-        }
-    }
-</script>
 
 
 
@@ -128,38 +105,3 @@
 
 
 
-
-
-
-
-    @*<button class="btn btn-primary btn-sm" style="float: right; width: 100px; margin-right: 10px;">ADD</button>
-    <br /><br />
-    <div ng-controller="PeripheralController as model" ng-init="model.List()">
-        <table class="table table-hover table-sm table-bordered ">
-            <thead>
-                <tr class="active">
-                    <th>Peripheral Id</th>
-                    <th>Employee ID</th>
-                    <th>Color</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Serial Number</th>
-                    <th style="width: 100px">Update</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="Peripheral in model.Peripherals">
-                    <td><span ng-bind="Peripheral.PeripheralID"></span></td>
-                    <td><span ng-bind="Peripheral.EmployeeId"></span></td>
-                    <td style="{{'background-color:#' + Company.Color}}"><span ng-bind="Peripheral.Color"></span></td>
-                    <td><span ng-bind="Peripheral.Name"></span></td>
-                    <td><span ng-bind="Peripheral.Description"></span></td>
-                    <td><span ng-bind="Peripheral.SerialNumber"></span></td>
-                    <td>
-                        <button class="btn btn-group-justified btn-success" style="width: 100px">EDIT</button>
-                        <button class="btn btn-danger btn-group-justified" style="width: 100px">DELETE</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>*@

@@ -15,18 +15,16 @@ namespace AndersonCRMEntity
         [ForeignKey("Company")]
         public int CompanyId { get; set; }
 
+        [ForeignKey("Department")]
+        public int? DepartmentId { get; set; }
+
         [ForeignKey("Position")]
         public int PositionId { get; set; }
-        
-        [StringLength(6)]
-        public string EmployeeColor { get; set; }
+     
+        public int ManagerEmployeeId { get; set; }
 
 
 
-        [StringLength(50)]
-        public string EmployeeNumber { get; set; }
-
-        [Required]
         [StringLength(250)]
         public string FirstName { get; set; }
         
@@ -38,15 +36,26 @@ namespace AndersonCRMEntity
         [StringLength(250)]
         public string MiddleName { get; set; }
 
-        [StringLength(250)]
+        [StringLength(50)]
         public string Email { get; set; }
 
-        [StringLength(250)]
-        public string Department { get; set; }
+        [StringLength(50)]
+        public string JobTitle { get; set; }
+
+        [StringLength(50)]
+        public string HiringDate { get; set; }
+
+        [StringLength(50)]
+        public string StartingDate { get; set; }
+
+        [StringLength(50)]
+        public string Team { get; set; }
 
         public virtual ECompany Company { get; set; }
         public virtual EPosition Position { get; set; }
+        public virtual EDepartment Department { get; set;  }
 
+        public virtual ICollection<EPeripheralHistory> PeripheralHistories { get; set; }
         public virtual ICollection<EPeripheral> Peripherals { get; set; }
     }
 }
