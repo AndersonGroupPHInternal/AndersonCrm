@@ -11,7 +11,11 @@
         <input type="hidden"  name="Employee.EmployeeId" value="@Model.EmployeeId" required />
 
         <label for="CompanyId">Company Name:</label>
-        <input list="CompanyId" type="text" class="form-control" name="Employee.CompanyId" value="@Model.CompanyId" required />
+        <div ng-controller="CompanyController as magat" ng-init="magat.List()">
+        <select class="form-control" name="Employee.CompanyId" value="@Model.CompanyId">
+             <option ng-repeat="Company in magat.Companies" ng-bind="Company.CompanyName" value="{{Company.CompanyId}}">{{Company.CompanyName}}</option>
+         </select>
+        </div>
 
         <label for="PositionId">Position Id:</label>
         <input type="text" class="form-control" name="Employee.PositionId" value="@Model.PositionId" required />
