@@ -8,7 +8,7 @@ namespace AndersonCRMModel
 
         public string Description { get; set; }
 
-
+        public string DepartmentColor { get; set; }
 
         public List<Employee> Employees { get; set; }
     }

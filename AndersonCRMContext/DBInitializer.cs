@@ -17,14 +17,15 @@ namespace AndersonCRMContext
                     CompanyName = "AndersonGroup"
                 });
             context.SaveChanges();
-            
+
             var department = context.Departments.Add(
             new EDepartment
             {
-                Description = "Software Development"
+                Description = "Software Development",
+                DepartmentColor = "fffff"
             });
             context.SaveChanges();
-                
+
             var position = context.Positions.Add(
             new EPosition
             {
@@ -50,10 +51,10 @@ namespace AndersonCRMContext
                     JobTitle = "Junior Software Developer",
                     HiringDate = "September 09, 2017",
                     StartingDate = "Septemeber 09, 2017"
-                    
+
                 });
                 context.SaveChanges();
-                
+
 
                 if (employee != null)
                 {
@@ -82,9 +83,9 @@ namespace AndersonCRMContext
                 }
 
             }
-            
+
             base.Seed(context);
 
         }
     }
-}   
+}

@@ -38,6 +38,7 @@ namespace AndersonCRMWeb.Controllers
             var department = _iFDepartment.Read(id);
             return View(department);
         }
+
         [HttpGet]
         public ActionResult Details(int id)
         {

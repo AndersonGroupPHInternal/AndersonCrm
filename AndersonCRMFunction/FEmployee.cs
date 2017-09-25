@@ -66,7 +66,6 @@ namespace AndersonCRMFunction
         {
             var returnEmployees = eEmployees.Select(a => new Employee
             {
-     
                 EmployeeId = a.EmployeeId,
                 CompanyId = a.CompanyId,
                 PositionId = a.PositionId,
@@ -102,7 +101,6 @@ namespace AndersonCRMFunction
         {
             EEmployee returnEEmployee = new EEmployee
             {
-
                 EmployeeId = employee.EmployeeId,
                 CompanyId = employee.CompanyId,
                 PositionId = employee.PositionId,
@@ -126,7 +124,6 @@ namespace AndersonCRMFunction
         {
             Employee returnEmployee = new Employee
             {
-
                 EmployeeId = eEmployee.EmployeeId,
                 CompanyId = eEmployee.CompanyId,
                 PositionId = eEmployee.PositionId,

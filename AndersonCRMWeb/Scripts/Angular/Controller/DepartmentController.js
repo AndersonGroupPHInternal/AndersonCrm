@@ -30,7 +30,7 @@
 
                     new PNotify({
                         title: 'Success',
-                        text: 'Position Created',
+                        text: 'Department Created',
                         type: 'success',
                         hide: true,
                         addclass: "stack-bottomright"
@@ -49,11 +49,11 @@
                 });
         }
 
-        function CreateModal(position) {
+        function CreateModal(department) {
             vm.Department = {
                 DepartmentId: 0,
                 Description: '',
-               
+                DepartmentColor: 'ffffff'
             };
         }
 
@@ -92,7 +92,7 @@
                 });
         }
 
-        function UpdateModal(position) {
+        function UpdateModal(department) {
             vm.Department = angular.copy(department);
         }
 
