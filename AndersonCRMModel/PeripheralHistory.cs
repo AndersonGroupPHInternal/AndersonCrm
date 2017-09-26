@@ -17,6 +17,7 @@ namespace AndersonCRMModel
 
         public string Date { get; set; }
 
+        public string PeripheralHistoryColor { get; set; }
 
 
 

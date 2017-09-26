@@ -70,7 +70,7 @@ namespace AndersonCRMFunction
             var returnCompanies = eCompanies.Select(a => new Company
             {
                 CompanyId = a.CompanyId,
-             
+
                 CompanyName = a.CompanyName,
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
@@ -84,7 +84,7 @@ namespace AndersonCRMFunction
             ECompany returnECompany = new ECompany
             {
                 CompanyId = company.CompanyId,
-          
+
                 CompanyName = company.CompanyName,
                 CreatedBy = company.CreatedBy,
                 UpdatedBy = company.UpdatedBy
@@ -97,7 +97,7 @@ namespace AndersonCRMFunction
             Company returnCompany = new Company
             {
                 CompanyId = eCompany.CompanyId,
-              
+
                 CompanyName = eCompany.CompanyName,
                 CreatedBy = eCompany.CreatedBy,
                 UpdatedBy = eCompany.UpdatedBy

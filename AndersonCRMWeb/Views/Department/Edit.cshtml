@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div ng-controller="DepartmentController as model" ng-init="model.List()">
+
+
+    <form method="post" action="~/Department/Edit">
+        <br />
+        <label for="Description">Department Name:</label>
+        <input type="text" class="form-control" name="Department.Description" value="@Model.Description" required />
+        <input type="hidden" name="Department.DepartmentId" value="@Model.DepartmentId" />
+        <br />
+        <input type="Submit" value="Save" class="btn btn-primary" /> &nbsp;&nbsp;
+        <a href="/Department/Index" class="btn btn-danger" style="margin-left:10px;" float="left"><i class="glyphicon glyphicon-close "></i>Close</a>
+
+    </form>
+
+</div>
+

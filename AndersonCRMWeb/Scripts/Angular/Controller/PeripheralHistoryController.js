@@ -56,6 +56,7 @@
                 PeripheralId: '',
                 EmployeeId: '',
                 Date: '',
+                PeripheralHistoryColor: 'ffffff'
             };
         }
 
@@ -66,6 +67,7 @@
                 PeripheralId: '',
                 EmployeeId: '',
                 Date: date,
+                PeripheralHistoryColor: 'ffffff'
             };
         }
 

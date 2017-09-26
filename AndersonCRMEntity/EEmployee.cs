@@ -24,7 +24,6 @@ namespace AndersonCRMEntity
         public int ManagerEmployeeId { get; set; }
 
 
-
         [StringLength(250)]
         public string FirstName { get; set; }
         
