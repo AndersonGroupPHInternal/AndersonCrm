@@ -3,7 +3,7 @@
 }
 <h1>Asset History</h1>
 <br />
-<div ng-controller="PeripheralHistory as model" ng-init="model.List()">
+<div ng-controller="PeripheralHistoryController as model" ng-init="model.List()">
     <div class="wrap">
         <div class="search">
             <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
@@ -15,7 +15,7 @@
     <table class="table table-hover table-sm table-bordered " id="tableid">
         <thead>
             <tr class="active" id="info">
-                <th>Asset History Id</th>
+                @*<th>Asset History Id</th>*@
                 <th>Date</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -26,7 +26,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="PeripheralHistory in model.PeripheralHistories" ng-click="model.Details(PeripheralHistory)" style="cursor:pointer">
-                <td><span ng-bind="PeripheralHistory.PeripheralHistoryId"></span></td>
+                @*<td><span ng-bind="PeripheralHistory.PeripheralHistoryId"></span></td>*@
                 <td><span>{{PeripheralHistory.Date | date: "MMMM dd, yyyy"}}</span></td>
                 <td><span ng-bind="PeripheralHistory.Employee.FirstName"></span></td>
                 <td><span ng-bind="PeripheralHistory.Employee.LastName"></span></td>

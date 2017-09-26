@@ -1,22 +1,22 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Add";
 }
-
 
 <h2>Add Department</h2>
 
 
 <div ng-controller="DepartmentController as model" ng-init="model.List()">
+    @*<div class="form-group">*@
 
     <br />
+        <label for="Description">Department Name:</label>
+        <input type="text" class="form-control" id="Description" ng-model="model.Department.Description" placeholder="Description" required />
+        <br />
+        </form>
+        <a href="/Department/Index" ng-click="model.Create()" class="btn btn-info" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+        <a href="/Department/Index" class="btn btn-danger" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-remove"></i> Close</a>
 
-    <label for="Description">Department Name:</label>
-    <input type="text" class="form-control" id="Description" ng-model="model.Department.Description" placeholder="Department Name" required />
-    <br />
-    <a href="/Department/Index" ng-click="model.Create()" class="btn btn-info" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
-    <a href="/Department/Index" class="btn btn-danger" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-remove"></i> Close</a>
-
-
-
-
+ @*</div>*@
 </div>
+

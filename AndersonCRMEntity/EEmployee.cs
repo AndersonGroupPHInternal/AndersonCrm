@@ -31,8 +31,6 @@ namespace AndersonCRMEntity
         [StringLength(250)]
         public string LastName { get; set; }
 
-
-        
         [StringLength(250)]
         public string MiddleName { get; set; }
 

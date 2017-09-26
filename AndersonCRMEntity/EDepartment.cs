@@ -12,6 +12,7 @@ namespace AndersonCRMEntity
         [Key]
         public int DepartmentId { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Description { get; set; }
 
