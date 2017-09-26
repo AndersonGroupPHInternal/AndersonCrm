@@ -18,12 +18,14 @@ namespace AndersonCRMFunction
         #region CREATE
         public Department Create(Department department)
         {
+  
             EDepartment eDepartment = EDepartment(department);
             eDepartment = _iDDepartment.Create(eDepartment);
             return (Department(eDepartment));
         }
 
         #endregion
+
         #region READ
         public Department Read(int departmentId)
         {
@@ -36,12 +38,14 @@ namespace AndersonCRMFunction
             List<EDepartment> eDepartments = _iDDepartment.List<EDepartment>(a => true);
             return Departments(eDepartments);
         }
+
         public Department Read(string description)
         {
             EDepartment eDepartment = _iDDepartment.Read<EDepartment>(a => a.Description == description);
             return Department(eDepartment);
         }
         #endregion
+
         #region UPDATE
         public Department Update(Department department)
         {
@@ -49,6 +53,7 @@ namespace AndersonCRMFunction
             return (Department(eDepartment));
         }
         #endregion
+
         #region DELETE
         public void Delete(Department department)
         {
@@ -63,6 +68,7 @@ namespace AndersonCRMFunction
                 DepartmentId = a.DepartmentId,
 
                 Description = a.Description,
+                DepartmentColor = a.DepartmentColor,
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
@@ -76,6 +82,7 @@ namespace AndersonCRMFunction
                 DepartmentId = department.DepartmentId,
 
                 Description = department.Description,
+                DepartmentColor = department.DepartmentColor,
                 CreatedBy = department.CreatedBy,
                 UpdatedBy = department.UpdatedBy
             };
@@ -89,6 +96,7 @@ namespace AndersonCRMFunction
                 DepartmentId = eDepartment.DepartmentId,
 
                 Description = eDepartment.Description,
+                DepartmentColor = eDepartment.DepartmentColor,
                 CreatedBy = eDepartment.CreatedBy,
                 UpdatedBy = eDepartment.UpdatedBy
             };

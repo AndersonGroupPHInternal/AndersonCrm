@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\DLL\Debug\AndersonCRM\</OutputPath>
+    <OutputPath>..\..\DLL\Debug\AndersonCRM\s\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>s</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />

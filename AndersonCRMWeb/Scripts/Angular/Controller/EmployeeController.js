@@ -55,7 +55,7 @@
                 CompanyId: '',
                 PositionId: '',
                 ManagerEmployeeId: '',
-                DepartmentId: '',
+                Department: '',
                 EmployeeColor: 'ffffff',
                 EmployeeNumber: '',
                 FirstName: '',

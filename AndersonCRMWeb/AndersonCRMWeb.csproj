@@ -111,18 +111,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bower_components\angular-ui-select\dist\select.css" />
-    <Content Include="bower_components\angular-ui-select\dist\select.js" />
-    <Content Include="bower_components\angular-ui-select\dist\select.min.css" />
-    <Content Include="bower_components\angular-ui-select\dist\select.min.js" />
-    <Content Include="bower_components\angular-ui-select\docs\assets\app.js" />
-    <Content Include="bower_components\angular-ui-select\docs\assets\demo.js" />
-    <Content Include="bower_components\angular-ui-select\docs\assets\docs.css" />
-    <Content Include="bower_components\angular-ui-select\docs\assets\plunkr.js" />
-    <Content Include="bower_components\angular-ui-select\docs\index.html" />
-    <Content Include="bower_components\angular-ui-select\docs\partials\_footer.html" />
-    <Content Include="bower_components\angular-ui-select\docs\partials\_header.html" />
-    <Content Include="bower_components\angular-ui-select\index.js" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
     <Content Include="bower_components\angular\angular.min.js" />
@@ -587,18 +575,6 @@
     <Content Include="Content\tether\src\css\tether-theme-arrows.sass" />
     <Content Include="Content\tether\src\css\tether-theme-basic.sass" />
     <Content Include="Content\tether\src\css\tether.sass" />
-    <Content Include="bower_components\angular-ui-select\.bower.json" />
-    <Content Include="bower_components\angular-ui-select\bower.json" />
-    <Content Include="bower_components\angular-ui-select\CHANGELOG.md" />
-    <Content Include="bower_components\angular-ui-select\composer.json" />
-    <Content Include="bower_components\angular-ui-select\CONTRIBUTING.md" />
-    <Content Include="bower_components\angular-ui-select\deploy-docs.sh" />
-    <Content Include="bower_components\angular-ui-select\dist\select.min.css.map" />
-    <Content Include="bower_components\angular-ui-select\dist\select.min.js.map" />
-    <Content Include="bower_components\angular-ui-select\LICENSE" />
-    <Content Include="bower_components\angular-ui-select\npm-debug.log" />
-    <Content Include="bower_components\angular-ui-select\package.json" />
-    <Content Include="bower_components\angular-ui-select\README.md" />
     <None Include="bundleconfig.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -677,6 +653,8 @@
     <Content Include="Views\PeripheralHistory\Add.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Department\Add.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

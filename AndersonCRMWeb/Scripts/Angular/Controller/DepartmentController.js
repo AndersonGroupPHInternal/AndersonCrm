@@ -53,7 +53,7 @@
             vm.Department = {
                 DepartmentId: 0,
                 Description: '',
-               
+                DepartmentColor: 'ffffff'
             };
         }
 

@@ -20,7 +20,7 @@ namespace AndersonCRMContext
                 Database.SetInitializer(new DBInitializer());
             }
         }
-        
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -28,6 +28,7 @@ namespace AndersonCRMContext
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
+
 
         public DbSet<ECompany> Companies { get; set; }
         public DbSet<EDepartment> Departments { get; set; }

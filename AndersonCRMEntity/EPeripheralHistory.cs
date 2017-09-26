@@ -20,6 +20,8 @@ namespace AndersonCRMEntity
         [StringLength(50)]
         public string Date { get; set; }
 
+        [StringLength(6)]
+        public string PeripheralHistoryColor { get; set; }
 
         public virtual EEmployee Employee { get; set; }
         public virtual EPeripheral Peripheral { get; set; }

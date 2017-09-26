@@ -11,29 +11,50 @@
 
     <div class="form-group">
         <br />
-        <form action="~/Employee/add" method="get" ng-app="App">
-   
-           
-            <label for="CompanyId">Company Id:</label><br />
-            <input list="CompanyId" name="CompanyId" ng-model="model.Employee.CompanyId" type="search" class="form-control" placeholder="Company ID" >
-            <label for="PositionId">Position Id:</label>
-            <input type="text" class="form-control" id="PositionId" ng-model="model.Employee.PositionId" placeholder="Position ID" required/>
+        <form action="~/Employee/add" method="get" >
+
+            <label for="CompanyId">Company Name:</label><br />
+            <div ng-controller="CompanyController as magat" ng-init="magat.List()">
+                <select class="form-control" ng-model="model.Employee.CompanyId" id="CompanyId">
+                    <option ng-repeat="Company in magat.Companies" ng-bind="Company.CompanyName" value="{{Company.CompanyId}}">{{Company.CompanyName}}</option>
+                </select>
+            </div>
+
+            <label for="PositionId">Position Name:</label>
+            <div ng-controller="PositionController as dabandan" ng-init="dabandan.List()">
+                <select class="form-control" ng-model="model.Employee.PositionId" id="PositionId">
+                    <option ng-repeat="Position in dabandan.Positions" ng-bind="Position.PositionName" value="{{Position.PositionId}}">{{Position.PositionName}}</option>
+                </select>
+            </div>
+
             <label for="ManagerEmployeeId">Manager Employee Id:</label>
             <input type="text" class="form-control" id="ManagerEmployeeId" ng-model="model.Employee.ManagerEmployeeId" placeholder="Manager Employee Id" />
-            <label for="DepartmentId">Department ID:</label>
-            <input type="text" class="form-control" id="DepartmentId" ng-model="model.Employee.DepartmentId" placeholder="Department ID" required />
-            <label for="FirstName">Firstname:</label>
+
+            <label for="DepartmentId">Department Name:</label>
+            <div ng-controller="DepartmentController as andersoncrm" ng-init="andersoncrm.List()">
+                <select class="form-control" ng-model="model.Employee.DepartmentId" id="DepartmentId">
+                    <option ng-repeat="Department in andersoncrm.Departments" ng-bind="Department.Description" value="{{Department.DepartmentId}}">{{Department.Description}}</option>
+                </select>
+            </div>
+            
+            <label for="FirstName"> First Name: </label>
             <input type="text" class="form-control" id="FirstName" ng-model="model.Employee.FirstName" placeholder="First Name" required/>
+            
             <label for="LastName">Lastname:</label>
             <input type="text" class="form-control" id="LastName" ng-model="model.Employee.LastName" placeholder="Last Name" required/>
+            
             <label for="MiddleName">Middle Name:</label>
             <input type="text" class="form-control" id="MiddleName" ng-model="model.Employee.MiddleName " placeholder="Middle Name" required/>
+            
             <label for="Email">Email:</label>
             <input type="email" class="form-control" id="Email" ng-model="model.Employee.Email" placeholder="Email" required/>
+            
             <label for="Job Title">Job Title:</label>
             <input type="text" class="form-control" id="JobTitle" ng-model="model.Employee.JobTitle" placeholder="Job Title" required />
+            
             <label for="HiringDate">Hiring Date:</label>
             <input type="date" class="form-control" id="HiringDate" ng-model="model.Employee.HiringDate" placeholder="" required />
+            
             <label for="StartingDate">Starting Date:</label>
             <input type="date" class="form-control" id="StartingDate" ng-model="model.Employee.StartingDate" placeholder="" required />
         <br />

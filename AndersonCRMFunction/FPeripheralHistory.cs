@@ -70,6 +70,7 @@ namespace AndersonCRMFunction
                 EmployeeId = a.EmployeeId,
                 PeripheralHistoryId = a.PeripheralHistoryId,
                 Date = a.Date,
+                PeripheralHistoryColor= a.PeripheralHistoryColor,
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy,
                 Peripheral = new Peripheral
