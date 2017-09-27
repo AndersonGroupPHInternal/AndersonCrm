@@ -68,7 +68,7 @@ namespace AndersonCRMFunction
                 DepartmentId = a.DepartmentId,
 
                 Description = a.Description,
-                DepartmentColor = a.DepartmentColor,
+                //DepartmentColor = a.DepartmentColor,
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy
             });
@@ -82,7 +82,7 @@ namespace AndersonCRMFunction
                 DepartmentId = department.DepartmentId,
 
                 Description = department.Description,
-                DepartmentColor = department.DepartmentColor,
+                //DepartmentColor = department.DepartmentColor,
                 CreatedBy = department.CreatedBy,
                 UpdatedBy = department.UpdatedBy
             };
@@ -96,7 +96,7 @@ namespace AndersonCRMFunction
                 DepartmentId = eDepartment.DepartmentId,
 
                 Description = eDepartment.Description,
-                DepartmentColor = eDepartment.DepartmentColor,
+                //DepartmentColor = eDepartment.DepartmentColor,
                 CreatedBy = eDepartment.CreatedBy,
                 UpdatedBy = eDepartment.UpdatedBy
             };

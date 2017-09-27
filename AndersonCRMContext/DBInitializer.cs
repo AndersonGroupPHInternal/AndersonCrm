@@ -22,7 +22,7 @@ namespace AndersonCRMContext
             new EDepartment
             {
                 Description = "Software Development",
-                DepartmentColor = "fffff"
+                //DepartmentColor = "fffff"
             });
             context.SaveChanges();
 
@@ -61,6 +61,7 @@ namespace AndersonCRMContext
                     var peripheral = context.Peripherals.Add(
                     new EPeripheral
                     {
+                        AssetTag = "AGPDSK00134",
                         EmployeeId = employee.EmployeeId,
                         Date = "September 09, 2017",
                         PeripheralColor = "fafafa",
@@ -71,6 +72,7 @@ namespace AndersonCRMContext
                     context.Peripherals.Add(
                     new EPeripheral
                     {
+                        AssetTag = "AGPCAM00004",
                         EmployeeId = employee.EmployeeId,
                         Date = "September 09, 2017",
                         PeripheralColor = "fafafa",

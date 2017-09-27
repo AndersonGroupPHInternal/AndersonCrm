@@ -9,7 +9,7 @@ namespace AndersonCRMContext.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(AndersonCRMContext.Context context)
