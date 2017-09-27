@@ -13,7 +13,7 @@ namespace AndersonCRMContext.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201709210334340_initial"; }
+            get { return "201709260452450_initial"; }
         }
         
         string IMigrationMetadata.Source

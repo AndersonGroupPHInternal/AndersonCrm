@@ -56,7 +56,7 @@ namespace AndersonCRMContext.Migrations
                 c => new
                     {
                         DepartmentId = c.Int(nullable: false, identity: true),
-                        Description = c.String(maxLength: 50),
+                        Description = c.String(nullable: false, maxLength: 50),
                         CreatedDate = c.DateTime(precision: 7, storeType: "datetime2"),
                         CreatedBy = c.Int(nullable: false),
                         UpdatedDate = c.DateTime(precision: 7, storeType: "datetime2"),

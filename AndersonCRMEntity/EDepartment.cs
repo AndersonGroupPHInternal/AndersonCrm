@@ -12,9 +12,6 @@ namespace AndersonCRMEntity
         [Key]
         public int DepartmentId { get; set; }
 
-        [StringLength(6)]
-        public string DepartmentColor { get; set; }
-
         [Required]
         [StringLength(50)]
         public string Description { get; set; }
