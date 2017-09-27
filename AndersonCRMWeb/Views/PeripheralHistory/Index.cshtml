@@ -9,28 +9,21 @@
             <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
         </div>
     </div>
-    @*<a href="/PeripheralHistory/Add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>*@
     <div class="row">
     </div><br />
     <table class="table table-hover table-sm table-bordered " id="tableid">
         <thead>
             <tr class="active" id="info">
-                @*<th>Asset History Id</th>*@
                 <th>Date</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Middle Name</th>
+                <th>Employee Name</th>
                 <th>Asset Name</th>
                 <th style="width: 100px">Update</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="PeripheralHistory in model.PeripheralHistories" ng-click="model.Details(PeripheralHistory)" style="cursor:pointer">
-                @*<td><span ng-bind="PeripheralHistory.PeripheralHistoryId"></span></td>*@
+            <tr ng-repeat="PeripheralHistory in model.PeripheralHistories" style="cursor:pointer">
                 <td><span>{{PeripheralHistory.Date | date: "MMMM dd, yyyy"}}</span></td>
-                <td><span ng-bind="PeripheralHistory.Employee.FirstName"></span></td>
-                <td><span ng-bind="PeripheralHistory.Employee.LastName"></span></td>
-                <td><span ng-bind="PeripheralHistory.Employee.MiddleName"></span></td>
+                <td><span ng-bind="PeripheralHistory.Employee.FirstName+' '+PeripheralHistory.Employee.MiddleName+' '+PeripheralHistory.Employee.LastName"></span></td>
                 <td><span ng-bind="PeripheralHistory.Peripheral.PeripheralName"></span></td>
                 <td>
                     <a href="/PeripheralHistory/Index" ng-click="model.Delete(PeripheralHistory)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
