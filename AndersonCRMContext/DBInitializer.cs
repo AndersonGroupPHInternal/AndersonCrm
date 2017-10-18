@@ -21,8 +21,7 @@ namespace AndersonCRMContext
             var department = context.Departments.Add(
             new EDepartment
             {
-                Description = "Software Development",
-                //DepartmentColor = "fffff"
+                Description = "Software Development"
             });
             context.SaveChanges();
 

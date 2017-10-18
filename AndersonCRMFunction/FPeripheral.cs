@@ -108,7 +108,6 @@ namespace AndersonCRMFunction
                    MiddleName = a.Employee.MiddleName,
                    LastName = a.Employee.LastName
                 }
-
             });
 
             return returnPeripherals.ToList();
