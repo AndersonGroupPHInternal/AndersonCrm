@@ -6,49 +6,49 @@
 <h2>Edit</h2>
 <div ng-controller="EmployeeController as model" ng-init="model.List()">
  <form method="post" action="~/Employee/Edit">
-        <br />
-         
-     
-     
-     
-          <label for="CompanyId" hidden>Company Id:</label><br />
-<input list="CompanyId"  type="hidden" class="form-control" name="Employee.CompanyId" value="@Model.CompanyId" >
-        <input type="hidden" name="Employee.EmployeeId" value="@Model.EmployeeId" required />
-        <datalist id="CompanyId" hidden>
-            <option value="1" hidden>
-            <option value="2" hidden>
-        </datalist>
-     @*<form>
-         <ui-select ng-model="select.Employee.CompanyId" ng-change="selectedCompanyId()" reset-search-input="false">
-             <ui-select-match placeholder="Select a Company Id...">
-                 {{$select.selected.CompanyId}}
-             </ui-select-match>
-             <ui-select-choices repeat="item in (Employee.CompanyId| filter: $select.search)" position="down" | orderBy="EmployeeName">
-                 {{item.FirstName}}
+        <br />  
+          
+        <input type="hidden"  name="Employee.EmployeeId" value="@Model.EmployeeId" required />
 
+        <label for="CompanyId">Company Name:</label>
+        <div ng-controller="CompanyController as magat" ng-init="magat.List()">
+        <select class="form-control" name="Employee.CompanyId" value="@Model.CompanyId">
+             <option ng-repeat="Company in magat.Companies" ng-bind="Company.CompanyName" value="{{Company.CompanyId}}">{{Company.CompanyName}}</option>
+         </select>
+        </div>
 
-             </ui-select-choices>
-         </ui-select>
-     </form>*@
+        <label for="PositionId">Position Id:</label>
+        <input type="text" class="form-control" name="Employee.PositionId" value="@Model.PositionId" required />
 
-        <label for="PositionId" hidden>Position Id:</label>
-        <input type="hidden" class="form-control" name="Employee.PositionId" value="@Model.PositionId" required />
-       <label for="Department" >Department:</label>
+        <label for="Department" >Department:</label>
         <input type="text" class="form-control" name="Employee.Department" value="@Model.Department" required />
 
-        <label for="EmployeeNumber">Employee Number:</label>
-        <input type="text" class="form-control" name="Employee.EmployeeNumber" value="@Model.EmployeeNumber" required />
+        <label for="ManagerEmployeeId">Manager Employee Id:</label>
+        <input type="text" class="form-control" name="Employee.ManagerEmployeeId" value="@Model.ManagerEmployeeId" required />
+
         <label for="FirstName">Firstname:</label>
         <input type="text" class="form-control" name="Employee.FirstName" value="@Model.FirstName" required/>
+
         <label for="LastName">Lastname:</label>
         <input type="text" class="form-control" name="Employee.Lastname" value="@Model.LastName" required/>
+
         <label for="MiddleName">Middle Name:</label>
         <input type="text" class="form-control" name="Employee.MiddleName" value="@Model.MiddleName" required/>
+
         <label for="Email">Email:</label>
         <input type="email" class="form-control" name="Employee.Email" value="@Model.Email" required />
 
+        <label for="JobTitle">Job Title:</label>
+        <input type="text" class="form-control" name="Employee.JobTitle" value="@Model.JobTitle" required/>
+
+        <label for="HiringDate">Hiring Date:</label>
+        <input type="date" class="form-control" name="Employee.HiringDate" value="@Model.HiringDate" required/>
+
+        <label for="StartingDate">Starting Date:</label>
+        <input type="date" class="form-control" name="Employee.StartingDate" value="@Model.StartingDate" required />
+
         <br />
-        <input type="Submit" value="Save" class="btn btn-primary" /> &nbsp;&nbsp;
+        <input type="Submit" value="Save"  class="btn btn-primary" /> &nbsp;&nbsp;
 
         <a href="/Employee/Index" class="btn btn-danger" style="margin-left:10px;" float="left"><i class="glyphicon glyphicon-close "></i>Close</a>
 

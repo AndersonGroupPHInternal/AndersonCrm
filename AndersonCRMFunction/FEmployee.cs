@@ -4,6 +4,7 @@ using AndersonCRMEntity;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace AndersonCRMFunction
 {
     public class FEmployee : IFEmployee
@@ -43,6 +44,7 @@ namespace AndersonCRMFunction
             return Employees(eEmployees);
 
         }
+
         #endregion
 
         #region UPDATE
@@ -59,6 +61,7 @@ namespace AndersonCRMFunction
             _iDEmployee.Delete(EEmployee(employee));
         }
         #endregion
+
         private List<Employee> Employees(List<EEmployee> eEmployees)
         {
             var returnEmployees = eEmployees.Select(a => new Employee
@@ -66,13 +69,15 @@ namespace AndersonCRMFunction
                 EmployeeId = a.EmployeeId,
                 CompanyId = a.CompanyId,
                 PositionId = a.PositionId,
-
-                EmployeeNumber = a.EmployeeNumber,
-                Department = a.Department,
-                Email = a.Email,
+                DepartmentId = a.DepartmentId,
+                ManagerEmployeeId = a.ManagerEmployeeId,
                 FirstName = a.FirstName,
                 LastName = a.LastName,
                 MiddleName = a.MiddleName,
+                JobTitle= a.JobTitle,
+                Email = a.Email,
+                StartingDate = a.StartingDate,
+                HiringDate = a.HiringDate,
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy,
                 Position = new Position
@@ -82,6 +87,10 @@ namespace AndersonCRMFunction
                 Company = new Company
                 {
                     CompanyName = a.Company.CompanyName
+                },
+                Department = new Department
+                {
+                    Description = a.Department.Description
                 }
             });
 
@@ -95,15 +104,18 @@ namespace AndersonCRMFunction
                 EmployeeId = employee.EmployeeId,
                 CompanyId = employee.CompanyId,
                 PositionId = employee.PositionId,
-                
-                EmployeeNumber = employee.EmployeeNumber,
-                Department=employee.Department,
-                Email = employee.Email,
+                DepartmentId = employee.DepartmentId,
+                ManagerEmployeeId = employee.ManagerEmployeeId,        
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
                 MiddleName = employee.MiddleName,
+                Email = employee.Email,
+                JobTitle = employee.JobTitle,
+                StartingDate = employee.StartingDate,
+                HiringDate = employee.HiringDate,
                 CreatedBy = employee.CreatedBy,
                 UpdatedBy = employee.UpdatedBy
+
             };
             return returnEEmployee;
         }
@@ -115,13 +127,15 @@ namespace AndersonCRMFunction
                 EmployeeId = eEmployee.EmployeeId,
                 CompanyId = eEmployee.CompanyId,
                 PositionId = eEmployee.PositionId,
-          
-                EmployeeNumber = eEmployee.EmployeeNumber,
-                Email = eEmployee.Email,
-                Department=eEmployee.Department,
+                DepartmentId = eEmployee.DepartmentId,
+                ManagerEmployeeId = eEmployee.ManagerEmployeeId,               
                 FirstName = eEmployee.FirstName,
                 LastName = eEmployee.LastName,
                 MiddleName = eEmployee.MiddleName,
+                Email = eEmployee.Email,
+                JobTitle = eEmployee.JobTitle,
+                HiringDate = eEmployee.HiringDate,
+                StartingDate = eEmployee.StartingDate,
 
                 CreatedBy = eEmployee.CreatedBy,
                 UpdatedBy = eEmployee.UpdatedBy

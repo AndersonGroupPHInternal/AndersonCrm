@@ -11,6 +11,7 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
 
+
     <style>
         .navbar {
             border-bottom-color: #061D7A;
@@ -31,35 +32,18 @@
         }
     </style>
 </head>
-<body>
-    @*<div class="navbar navbar-default navbar-fixed-top navDiv">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>*@
-                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            @*</div>
-            <div class="navbar-collapse collapse navbar-fixed-top">
-                <ul class="nav navbar-nav">
-                    <li><a class="navbar-brand" href="\Home"><img src="~/Content/Images/intranet.png" height="50" /></a></li>
-                </ul>
-            </div>
+    <body>
+
+        <div class="container body-content">
+            @RenderBody()
+
+            <hr /></br></br>
+            <footer>
+                <p> &nbsp; &nbsp; &nbsp; &nbsp; Private and Confidential. Anderson Group BPO Inc. &copy; 2017</p>
+            </footer>
         </div>
-    </div>*@
 
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p> &nbsp; &nbsp; &nbsp; &nbsp; Private and Confidential. Anderson Group BPO Inc. &copy; 2017</p>
-        </footer>
-    </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-</body>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </body>
 </html>

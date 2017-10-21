@@ -18,6 +18,8 @@ namespace AndersonCRMEntity
         [Required]
         [StringLength(250)]
         public string PositionName { get; set; }
-        
+
+        public virtual ICollection<EEmployee> Employees { get; set; }
+
     }
 }

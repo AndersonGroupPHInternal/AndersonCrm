@@ -22,7 +22,7 @@ namespace AndersonCRMWeb.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult add()
+        public ActionResult Add()
         {
             return View();
         }

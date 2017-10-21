@@ -54,6 +54,8 @@
                 EmployeeId: 0,
                 CompanyId: '',
                 PositionId: '',
+                ManagerEmployeeId: '',
+                Department: '',
                 EmployeeColor: 'ffffff',
                 EmployeeNumber: '',
                 FirstName: '',
@@ -112,7 +114,6 @@
         function Details(employee) {
             $window.location = '/Employee/Details/' + employee.EmployeeId
         }
-
 
     }
 })();

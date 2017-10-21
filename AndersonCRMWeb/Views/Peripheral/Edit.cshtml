@@ -1,4 +1,5 @@
 ﻿
+
 @{
     ViewBag.Title = "Edit";
 }
@@ -10,31 +11,29 @@
 
     <form method="post" action="~/Peripheral/Edit">
         <br />
-        <label for="EmployeeId">Company Id:</label><br />
+        @*<label for="Date">Date:</label>*@
+        <input type="hidden" class="form-control" id="PeripheralDate" name="Peripheral.Date" value="@Model.Date" required/>
+        <label for="EmployeeId">Employee Number: </label><br />
+       
         <input list="EmployeeId" class="form-control" name="Peripheral.EmployeeId" value="@Model.EmployeeId">
         <input type="hidden" name="Peripheral.PeripheralId" value="@Model.PeripheralId" required/>
-        <datalist id="EmployeeId" >
-            <option value="1">
-            <option value="2">
-        </datalist>
+        
         <label for="AssetTag">Asset Tag:</label>
         <input type="text" class="form-control" name="Peripheral.AssetTag" value="@Model.AssetTag" required/>
+        
         <label for="PeripheralName">Asset name:</label>
         <input type="text" class="form-control" name="Peripheral.PeripheralName" value="@Model.PeripheralName" required />
+        
         <label for="Description">Make:</label>
         <input type="text" class="form-control" name="Peripheral.Description" value="@Model.Description" required />
+        
         <label for="SerialNumber">Serial Number:</label>
         <input type="text" class="form-control" name="Peripheral.SerialNumber" value="@Model.SerialNumber" required/>
         <br />
-        <input type="Submit" value="Save" class="btn btn-primary"  /> &nbsp;&nbsp;
+        <input type="Submit" value="Save"  class="btn btn-primary"  /> &nbsp;&nbsp;
 
         <a href="/Peripheral/Index" class="btn btn-danger" style="margin-left:10px;" float="left"><i class="glyphicon glyphicon-close "></i>Close</a>
 
     </form>
-
-    @*<a href="/Company/Index" ng-click="model.Update(Company)" class="btn btn-primary" placeholder="{{Company.Companyname}}"> <i class="glyphicon glyphicon-edit"></i> Save Changes</a>*@
-
-    @*<a href="/Position/Index" class="btn btn-info" type="button" ng-click="model.Update()" value="{{ Position.PositionName }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
-
 
 </div>

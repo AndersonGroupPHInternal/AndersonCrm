@@ -1,4 +1,6 @@
-﻿namespace AndersonCRMModel
+﻿using System.Collections.Generic;
+
+namespace AndersonCRMModel
 {
     public class Peripheral : Base.Base
     {
@@ -16,5 +18,12 @@
 
         public string AssetTag { get; set; }
 
+        public string Date { get; set; }
+
+
+
+        public List<PeripheralHistory> PeripheralHistories { get; set; }
+        public Employee Employee { get; set; }
     }
+
 }

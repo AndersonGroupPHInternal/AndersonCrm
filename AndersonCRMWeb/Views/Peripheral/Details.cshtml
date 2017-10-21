@@ -8,21 +8,28 @@
 <div >
 
 
-    <form method="post" action="~/Peripheral/Edit">
+    <form method="post" action="~/Peripheral/Details">
         <br />
-        <label for="EmployeeId">Company Id:</label><br />
-        <input list="EmployeeId" class="form-control" name="Peripheral.EmployeeId" value="@Model.EmployeeId" disabled >
+        @*<label for="Date">Date:</label>*@
+        <input type="hidden" class="form-control" id="PeripheralDate" name="Peripheral.Date" value="@Model.Date" disabled />
+        <label for="EmployeeId">Employee Id:</label><br />
+        <input list="EmployeeNumber" class="form-control" name="Peripheral.EmployeeId" value="@Model.EmployeeId" disabled >
+        
         <input type="hidden" name="Peripheral.PeripheralId" value="@Model.PeripheralId" hidden/>
         <label for="AssetTag">Asset Tag:</label>
+        
         <input type="text" class="form-control" name="Peripheral.AssetTag" value="@Model.AssetTag" disabled />
         <label for="PeripheralName">Asset name:</label>
+       
         <input type="text" class="form-control" name="Peripheral.PeripheralName" value="@Model.PeripheralName" disabled />
         <label for="Description">Make:</label>
+        
         <input type="text" class="form-control" name="Peripheral.Description" value="@Model.Description" disabled />
         <label for="SerialNumber">Serial Number:</label>
+        
         <input type="text" class="form-control" name="Peripheral.SerialNumber" value="@Model.SerialNumber" disabled />
         <br />
-       <a href="/Peripheral/Edit/@Model.PeripheralId" class="btn btn-primary" style="margin-right:10px;" float="left"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+       <a href="/Peripheral/Edit/@Model.PeripheralId" ng-click="model.Create(PeripheralHistory)" class="btn btn-primary" style="margin-right:10px;" float="left"><i class="glyphicon glyphicon-edit"></i> Edit</a>
        <a href="/Peripheral/Index" class="btn btn-danger"><i class="glyphicon glyphicon-close "></i>Close</a>
 
     </form>

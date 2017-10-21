@@ -3,6 +3,7 @@ using AndersonCRMData;
 using AndersonCRMEntity;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace AndersonCRMFunction
 {
@@ -23,8 +24,18 @@ namespace AndersonCRMFunction
             //return (Peripheral(ePeripheral));
             EPeripheral ePeripheral = EPeripheral(peripheral);
             ePeripheral = _iDPeripheral.Create(ePeripheral);
-            return (Peripheral(ePeripheral));
-        }
+
+            EPeripheralHistory ePeripheralHistory = new EPeripheralHistory
+            {
+                CreatedDate = DateTime.Now,
+                Date = ePeripheral.Date,
+                EmployeeId = ePeripheral.EmployeeId,
+                PeripheralId = ePeripheral.PeripheralId
+            };
+
+            _iDPeripheral.Create(ePeripheralHistory);
+            return (Peripheral(ePeripheral));  
+        }   
         #endregion
 
         #region READ
@@ -51,7 +62,21 @@ namespace AndersonCRMFunction
         #region UPDATE
         public Peripheral Update(Peripheral peripheral)
         {
+            EPeripheral currentPeripheral = _iDPeripheral.Read<EPeripheral>(a => a.PeripheralId == peripheral.PeripheralId);
             var ePeripheral = _iDPeripheral.Update(EPeripheral(peripheral));
+            if (peripheral.EmployeeId != currentPeripheral.EmployeeId)
+            {
+                EPeripheralHistory ePeripheralHistory = new EPeripheralHistory
+                {
+                    CreatedDate = DateTime.Now,
+                    Date = ePeripheral.Date,
+                    EmployeeId = ePeripheral.EmployeeId,
+                    PeripheralId = ePeripheral.PeripheralId,
+                    
+                };
+
+                _iDPeripheral.Create(ePeripheralHistory);
+            }
             return (Peripheral(ePeripheral));
         }
         #endregion
@@ -75,9 +100,14 @@ namespace AndersonCRMFunction
                 SerialNumber = a.SerialNumber,
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy,
-                AssetTag = a.AssetTag
-               
-
+                AssetTag = a.AssetTag,
+                Date = a.Date,
+                Employee = new Employee
+                {                                   
+                   FirstName = a.Employee.FirstName,
+                   MiddleName = a.Employee.MiddleName,
+                   LastName = a.Employee.LastName
+                }
             });
 
             return returnPeripherals.ToList();
@@ -94,7 +124,8 @@ namespace AndersonCRMFunction
                 SerialNumber = peripheral.SerialNumber,
                 CreatedBy = peripheral.CreatedBy,
                 UpdatedBy = peripheral.UpdatedBy,
-                AssetTag=peripheral.AssetTag
+                AssetTag=peripheral.AssetTag,
+                Date = peripheral.Date
             };
             return returnEPeripheral;
         }
@@ -111,7 +142,8 @@ namespace AndersonCRMFunction
                 SerialNumber = ePeripheral.SerialNumber,
                 CreatedBy = ePeripheral.CreatedBy,
                 UpdatedBy = ePeripheral.UpdatedBy,
-                AssetTag=ePeripheral.AssetTag
+                AssetTag=ePeripheral.AssetTag,
+                Date = ePeripheral.Date
             };
             return returnPeripheral;
         }

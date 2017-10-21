@@ -3,9 +3,12 @@
 
     angular
     .module('App')
-    .controller('PeripheralController', PeripheralController);
+        .controller('PeripheralController', PeripheralController);
+
+
 
     PeripheralController.$inject = ['PeripheralService', '$window'];
+
 
     function PeripheralController(PeripheralService, $window) {
         var vm = this;
@@ -14,6 +17,9 @@
 
         vm.Peripherals = [];
 
+        vm.PeripheralHistory
+
+
         vm.List = List;
         vm.Create = Create;
         vm.CreateModal = CreateModal;
@@ -21,6 +27,7 @@
         vm.UpdateModal = UpdateModal;
         vm.Delete = Delete;
         vm.Details = Details;
+        vm.InitialiseDate = InitialiseDate;
 
         function Create() {
             PeripheralService.Create(vm.Peripheral)
@@ -53,10 +60,24 @@
             vm.Peripheral = {
                 PeripheralId: 0,
                 EmployeeId: '',
+                Date: '',
                 PeripheralColor: 'ffffff',
                 PeripheralName: '',
                 Description: '',
                 SerialNumber: '',
+                LastName: '',
+            };
+        }
+        function InitialiseDate(date) {
+            vm.Peripheral = {
+                PeripheralId: 0,
+                EmployeeId: '',
+                Date: date,
+                PeripheralColor: 'ffffff',
+                PeripheralName: '',
+                Description: '',
+                SerialNumber: '',
+                LastName: '',
             };
         }
         function List() {

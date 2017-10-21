@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Department</h1>
+<br />
+<div ng-controller="DepartmentController as model" ng-init="model.List()">
+    <a href="/Department/Add" type="button" ng-click="model.Create()" class="btn btn-success" style="float: right; margin-right: 10px"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
+        </div>
+    </div>
+    <div class="row">
+    </div><br />
+    <table class="table table-hover table-sm table-bordered " id="tableid">
+        <thead>
+            <tr class="active" id="info">
+                <th>Department Id</th>
+                <th>Departments </th>
+
+                <th style="width: 100px">Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="Department in model.Departments" ng-click="model.Details(Department)" style="cursor:pointer">
+                <td><span ng-bind="Department.DepartmentId"></span></td>
+                <td><span ng-bind="Department.Description"></span></td>
+                <td>
+                    <a href="/Department/Index" ng-click="model.Delete(Department)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+

@@ -9,7 +9,7 @@
 
     function CompanyController(CompanyService,$window) {
         var vm = this;
-        
+
         vm.Company;
 
         vm.Companies = [];
@@ -105,8 +105,8 @@
                 });
         }
         function Details(company) {
-                $window.location = '/Company/Details/' + company.CompanyId
-            }
+            $window.location = '/Company/Details/' + company.CompanyId
+        }
         
             
 

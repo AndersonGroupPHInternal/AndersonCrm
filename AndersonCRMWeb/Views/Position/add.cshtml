@@ -4,18 +4,18 @@
 }
 
 <h2>Add Position</h2>
-
 <div ng-controller="PositionController as model" ng-init="model.List()">
     <div class="form-group">
         <br />
-        <label for="PositionName">Position Name:</label>
-        <input type="text" class="form-control" id="PositionName" ng-model="model.Position.PositionName"  placeholder="Position Name"/>
+        <form action="~/Position/add" method="get">
+            <label for="PositionName">Position Name:</label>
+            <input type="text" class="form-control" id="PositionName" ng-model="model.Position.PositionName" placeholder="Position Name" required />
+            <br/>
+            <a href="/Position/Index" ng-click="model.Create()" class="btn btn-info" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
+            <a href="/Position/Index" class="btn btn-danger" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-remove"></i>Close</a>
+        </form>
 
     </div>
    
-   <a href="/Position/Index" class="btn btn-info" role="button" ng-click="model.Create() " ><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
-    <a href="/Position/Index" class="btn btn-danger" role="button" style="margin-left:10px" float="left"><i class="glyphicon glyphicon-remove"></i> Close</a>
-
 </div>
-
 

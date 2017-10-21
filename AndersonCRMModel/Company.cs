@@ -8,8 +8,6 @@ namespace AndersonCRMModel
 
         public string CompanyName { get; set; }
 
-
-        
         public List<Employee> Employees { get; set; }
     }
 }
