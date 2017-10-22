@@ -6,18 +6,21 @@ namespace AndersonCRMFunction
     public interface IFPeripheral
     {
         #region CREATE
-        Peripheral Create(Peripheral peripheral);
+        Peripheral Create(int createdBy, Peripheral peripheral);
         #endregion
+
         #region READ
         Peripheral Read(int peripheralId);
-        List<Peripheral> List();
-        List<Peripheral> List(int employeeId);
+        List<Peripheral> Read();
+        List<Peripheral> Read(int employeeId, string sortBy);
         #endregion
+
         #region UPDATE
-        Peripheral Update(Peripheral peripheral);
+        Peripheral Update(int updatedBy, Peripheral peripheral);
         #endregion
+
         #region DELETE
-        void Delete(Peripheral peripheral);
+        void Delete(int peripheralId);
         #endregion
     }
 }

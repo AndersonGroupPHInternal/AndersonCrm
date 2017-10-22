@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using BaseModel;
+using System.Collections.Generic;
 
 namespace AndersonCRMModel
 {
-    public class Department : Base.Base
+    public class Department : Base
     {
         public int DepartmentId { get; set; }
 
-        public string Description { get; set; }
+        public string Name { get; set; }
 
-        public string DepartmentColor { get; set; }
-
-        public List<Employee> Employees { get; set; }
+        public virtual ICollection<EmployeeDepartment> DepartmentEmployees { get; set; }
     }
 }

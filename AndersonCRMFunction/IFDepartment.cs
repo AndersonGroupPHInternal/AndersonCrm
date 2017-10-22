@@ -6,18 +6,21 @@ namespace AndersonCRMFunction
     public interface IFDepartment
     {
         #region CREATE
-        Department Create(Department department);
+        Department Create(int createdBy, Department department);
         #endregion
+
         #region READ
         Department Read(int departmentId);
-        Department Read(string description);
-        List<Department> List();
+        List<Department> Read();
+        List<Department> Read(int employeeId, string sortBy);
         #endregion
+
         #region UPDATE
-        Department Update(Department department);
+        Department Update(int updatedBy, Department department);
         #endregion
+
         #region DELETE
-        void Delete(Department department);
+        void Delete(int departmentId);
         #endregion
     }
 }

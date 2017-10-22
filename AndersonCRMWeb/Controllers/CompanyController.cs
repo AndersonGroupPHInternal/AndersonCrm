@@ -76,7 +76,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFCompany.Update(company);
+                //_iFCompany.Update(company);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -92,7 +92,7 @@ namespace AndersonCRMWeb.Controllers
             //return View(company);
             try
             {
-                company = _iFCompany.Create(company);
+                //company = _iFCompany.Create(company);
                 return Json("");
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFCompany.Update(company);
+                //_iFCompany.Update(company);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -143,7 +143,7 @@ namespace AndersonCRMWeb.Controllers
             try
             {
                 Company company = new Company();
-                return Json(_iFCompany.List());
+                return Json(_iFCompany.Read());
             }
             catch (Exception exception)
             {
@@ -170,7 +170,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                company = _iFCompany.Update(company);
+                //company = _iFCompany.Update(company);
                 return Json("");
             }
             catch (Exception ex)
@@ -184,7 +184,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFCompany.Delete(company);
+                //_iFCompany.Delete(company);
                 return Json("");
             }
             catch (Exception ex)

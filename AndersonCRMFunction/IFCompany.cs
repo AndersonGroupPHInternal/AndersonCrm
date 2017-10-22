@@ -6,19 +6,22 @@ namespace AndersonCRMFunction
     public interface IFCompany
     {
         #region CREATE
-        Company Create(Company company);
+        Company Create(int createdBy, Company company);
         #endregion
-        #region RETRIEVE
+
+        #region Read
         Company Read(int companyId);
         Company Read(string companyName);
-        Company ReadDefault();
-        List<Company> List();
+        Company ReadDefaultCompany();
+        List<Company> Read();
         #endregion
+
         #region UPDATE
-        Company Update(Company company);
+        Company Update(int updatedBy, Company company);
         #endregion
+
         #region DELETE
-        void Delete(Company company);
+        void Delete(int companyId);
         #endregion
     }
 }

@@ -52,7 +52,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFDepartment.Update(department);
+                //_iFDepartment.Update(department);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFDepartment.Update(department);
+                //_iFDepartment.Update(department);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -80,7 +80,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                department = _iFDepartment.Create(department);
+                //department = _iFDepartment.Create(department);
                 return Json("");
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ namespace AndersonCRMWeb.Controllers
             try
             {
                 Department department = new Department();
-                return Json(_iFDepartment.List());
+                return Json(_iFDepartment.Read());
             }
             catch (Exception exception)
             {
@@ -123,7 +123,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                department = _iFDepartment.Update(department);
+                //department = _iFDepartment.Update(department);
                 return Json("");
             }
             catch (Exception ex)
@@ -137,7 +137,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFDepartment.Delete(department);
+                //_iFDepartment.Delete(department);
                 return Json("");
             }
             catch (Exception ex)

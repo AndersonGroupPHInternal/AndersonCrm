@@ -3,7 +3,7 @@ using AndersonCRMData;
 using AndersonCRMEntity;
 using System.Collections.Generic;
 using System.Linq;
-
+using System;
 
 namespace AndersonCRMFunction
 {
@@ -17,9 +17,11 @@ namespace AndersonCRMFunction
         }
 
         #region CREATE
-        public Employee Create(Employee employee)
+        public Employee Create(int createdBy, Employee employee)
         {
             EEmployee eEmployee = EEmployee(employee);
+            eEmployee.CreatedDate = DateTime.Now;
+            eEmployee.CreatedBy = createdBy;
             eEmployee = _iDEmployee.Create(eEmployee);
             return (Employee(eEmployee));
         }
@@ -31,114 +33,114 @@ namespace AndersonCRMFunction
             EEmployee eEmployee = _iDEmployee.Read<EEmployee>(a => a.EmployeeId == employeeId);
             return Employee(eEmployee);
         }
-        //Master Edit this
-        public List<Employee> List()
+
+        public List<Employee> Read()
         {
-            List<EEmployee> eEmployees = _iDEmployee.Read();
+            List<EEmployee> eEmployees = _iDEmployee.List<EEmployee>(a => true);
             return Employees(eEmployees);
         }
 
-        public List<Employee> List(int companyId)
+        public List<Employee> Read(int companyId, string sortBy)
         {
-            List<EEmployee> eEmployees = _iDEmployee.List<EEmployee>(a => a.CompanyId == companyId);
+            List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.CompanyId == companyId, sortBy);
             return Employees(eEmployees);
+        }
 
+        public List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy)
+        {
+            List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.PeripheralHistories.Any(b => b.PeripheralId == peripheralId), sortBy);
+            return Employees(eEmployees);
         }
 
         #endregion
 
         #region UPDATE
-        public Employee Update(Employee employee)
+        public Employee Update(int updatedBy, Employee employee)
         {
-            var eEmployee = _iDEmployee.Update(EEmployee(employee));
+            EEmployee eEmployee = EEmployee(employee);
+            eEmployee.UpdatedDate = DateTime.Now;
+            eEmployee.UpdatedBy = updatedBy;
+            eEmployee = _iDEmployee.Update(EEmployee(employee));
             return (Employee(eEmployee));
         }
         #endregion
 
         #region DELETE
-        public void Delete(Employee employee)
+        public void Delete(int employeeId)
         {
-            _iDEmployee.Delete(EEmployee(employee));
+            _iDEmployee.Delete<EEmployee>(a => a.EmployeeId == employeeId);
         }
         #endregion
 
         private List<Employee> Employees(List<EEmployee> eEmployees)
         {
-            var returnEmployees = eEmployees.Select(a => new Employee
+            return eEmployees.Select(a => new Employee
             {
-                EmployeeId = a.EmployeeId,
+                CreatedDate = a.CreatedDate,
+                DateHired = a.DateHired,
+                DateStarted = a.DateStarted,
+                DateEnded = a.DateEnded,
+                UpdatedDate = a.UpdatedDate,
+
                 CompanyId = a.CompanyId,
-                PositionId = a.PositionId,
-                DepartmentId = a.DepartmentId,
+                CreatedBy = a.CreatedBy,
+                EmployeeId = a.EmployeeId,
+                JobTitleId = a.JobTitleId,
                 ManagerEmployeeId = a.ManagerEmployeeId,
+                UpdatedBy = a.UpdatedBy,
+
+                Email = a.Email,
                 FirstName = a.FirstName,
                 LastName = a.LastName,
-                MiddleName = a.MiddleName,
-                JobTitle= a.JobTitle,
-                Email = a.Email,
-                StartingDate = a.StartingDate,
-                HiringDate = a.HiringDate,
-                CreatedBy = a.CreatedBy,
-                UpdatedBy = a.UpdatedBy,
-                Position = new Position
-                {
-                    PositionName = a.Position.PositionName
-                },
-                Company = new Company
-                {
-                    CompanyName = a.Company.CompanyName
-                },
-                Department = new Department
-                {
-                    Description = a.Department.Description
-                }
-            });
-
-            return returnEmployees.ToList();
+                MiddleName = a.MiddleName
+            }).ToList();
         }
 
         private EEmployee EEmployee(Employee employee)
         {
-            EEmployee returnEEmployee = new EEmployee
+            return new EEmployee
             {
-                EmployeeId = employee.EmployeeId,
+                CreatedDate = employee.CreatedDate,
+                DateHired = employee.DateHired,
+                DateStarted = employee.DateStarted,
+                DateEnded = employee.DateEnded,
+                UpdatedDate = employee.UpdatedDate,
+
                 CompanyId = employee.CompanyId,
-                PositionId = employee.PositionId,
-                DepartmentId = employee.DepartmentId,
-                ManagerEmployeeId = employee.ManagerEmployeeId,        
+                CreatedBy = employee.CreatedBy,
+                EmployeeId = employee.EmployeeId,
+                JobTitleId = employee.JobTitleId,
+                ManagerEmployeeId = employee.ManagerEmployeeId,
+                UpdatedBy = employee.UpdatedBy,
+
+                Email = employee.Email,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
-                MiddleName = employee.MiddleName,
-                Email = employee.Email,
-                JobTitle = employee.JobTitle,
-                StartingDate = employee.StartingDate,
-                HiringDate = employee.HiringDate,
-                CreatedBy = employee.CreatedBy,
-                UpdatedBy = employee.UpdatedBy
-
+                MiddleName = employee.MiddleName
             };
-            return returnEEmployee;
         }
 
         private Employee Employee(EEmployee eEmployee)
         {
             Employee returnEmployee = new Employee
             {
-                EmployeeId = eEmployee.EmployeeId,
+                CreatedDate = eEmployee.CreatedDate,
+                DateHired = eEmployee.DateHired,
+                DateStarted = eEmployee.DateStarted,
+                DateEnded = eEmployee.DateEnded,
+                UpdatedDate = eEmployee.UpdatedDate,
+
                 CompanyId = eEmployee.CompanyId,
-                PositionId = eEmployee.PositionId,
-                DepartmentId = eEmployee.DepartmentId,
-                ManagerEmployeeId = eEmployee.ManagerEmployeeId,               
+                CreatedBy = eEmployee.CreatedBy,
+                EmployeeId = eEmployee.EmployeeId,
+                JobTitleId = eEmployee.JobTitleId,
+                ManagerEmployeeId = eEmployee.ManagerEmployeeId,
+                UpdatedBy = eEmployee.UpdatedBy,
+
+                Email = eEmployee.Email,
                 FirstName = eEmployee.FirstName,
                 LastName = eEmployee.LastName,
-                MiddleName = eEmployee.MiddleName,
-                Email = eEmployee.Email,
-                JobTitle = eEmployee.JobTitle,
-                HiringDate = eEmployee.HiringDate,
-                StartingDate = eEmployee.StartingDate,
-
-                CreatedBy = eEmployee.CreatedBy,
-                UpdatedBy = eEmployee.UpdatedBy
+                MiddleName = eEmployee.MiddleName
             };
             return returnEmployee;
         }

@@ -1,5 +1,8 @@
 ﻿using AndersonCRMEntity;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace AndersonCRMContext
 {
@@ -14,72 +17,204 @@ namespace AndersonCRMContext
             var company = context.Companies.Add(
                 new ECompany
                 {
-                    CompanyName = "AndersonGroup"
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "AndersonGroupPH"
                 });
-            context.SaveChanges();
 
-            var department = context.Departments.Add(
-            new EDepartment
+            List<EDepartment> departments = new List<EDepartment>()
             {
-                Description = "Software Development"
-            });
-            context.SaveChanges();
+                new EDepartment
+                {
+                    CreatedDate = DateTime.Now,
 
-            var position = context.Positions.Add(
-            new EPosition
+                    CreatedBy = 0,
+
+                    Name = "Software Development"
+                },
+                new EDepartment
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Software Development Philippines"
+                }
+            };
+            context.Departments.AddRange(departments);
+
+            List<EJobTitle> jobTitles = new List<EJobTitle>()
             {
-                PositionName = "Manager",
-                PositionColor = "bababa"
-            });
+                new EJobTitle
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Intern Document Specialist"
+                },
+                new EJobTitle
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Intern Project Manager"
+                },
+                new EJobTitle
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Intern Software Architect"
+                },
+                new EJobTitle
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Intern Software Developer"
+                },
+                new EJobTitle
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Junior Software Developer"
+                },
+                new EJobTitle
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Senior Software Developer"
+                },
+                new EJobTitle
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Software Developer"
+                }
+            };            
+            context.JobTitles.AddRange(jobTitles);
+
+            List<EPeripheralType> peripheralTypes = new List<EPeripheralType>()
+            {
+                new EPeripheralType
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Webcam"
+                },
+                new EPeripheralType
+                {
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = 0,
+
+                    Name = "Desktop Computer"
+                }
+            };
+            context.PeripheralTypes.AddRange(peripheralTypes);
+
             context.SaveChanges();
 
-            if (department != null && position != null && company != null)
+            var jobTitle = context.JobTitles.FirstOrDefault(a => a.Name == "Software Developer");
+
+            if (company != null && jobTitle != null)
             {
                 var employee = context.Employees.Add(
                 new EEmployee
                 {
-                    CompanyId = company.CompanyId,
-                    PositionId = position.PositionId,
-                    DepartmentId = department.DepartmentId,
-                    ManagerEmployeeId = 0,
+                    CreatedDate = DateTime.Now,
+                    DateHired = new DateTime(2016, 04, 15),
+                    DateStarted = new DateTime(2016, 04, 22),
 
+                    CompanyId = company.CompanyId,
+                    CreatedBy = 0,
+                    JobTitleId = jobTitle.JobTitleId,
+                    ManagerEmployeeId = 0,
+                    Email = "adriannet@andersongroup.uk.com",
                     FirstName = "Adrianne Claude",
                     LastName = "Tubig",
                     MiddleName = "Ramos",
-                    Email = "andersongroup@yahoo.com",
-                    JobTitle = "Junior Software Developer",
-                    HiringDate = "September 09, 2017",
-                    StartingDate = "Septemeber 09, 2017"
 
                 });
                 context.SaveChanges();
 
+                var peripheralType = context.PeripheralTypes.FirstOrDefault(a => a.Name == "Desktop Computer");
 
-                if (employee != null)
+                if (employee != null && peripheralType != null)
                 {
                     var peripheral = context.Peripherals.Add(
                     new EPeripheral
                     {
-                        AssetTag = "AGPDSK00134",
+                        CreatedDate = DateTime.Now,
+
+                        CreatedBy = 0,
                         EmployeeId = employee.EmployeeId,
-                        Date = "September 09, 2017",
-                        PeripheralColor = "fafafa",
-                        PeripheralName = "Computer",
-                        Description = "computer",
+                        PeripheralTypeId = peripheralType.PeripheralTypeId,
+
+                        AssetTag = "AGPDSK00134",
+                        Description = "Work Computer",
+                        Name = "AGPDSK00134",
                         SerialNumber = "AGPDSK00134"
                     });
-                    context.Peripherals.Add(
-                    new EPeripheral
-                    {
-                        AssetTag = "AGPCAM00004",
-                        EmployeeId = employee.EmployeeId,
-                        Date = "September 09, 2017",
-                        PeripheralColor = "fafafa",
-                        PeripheralName = "Webcam",
-                        Description = "webcam",
-                        SerialNumber = "AGPCAM00004"
+                    context.SaveChanges();
 
-                    });
+                    if (peripheral != null)
+                    {
+                        context.PeripheralHistories.Add(
+                            new EPeripheralHistory
+                            {
+                                CreatedDate = DateTime.Now,
+                                DateAssigned = new DateTime(2016, 04, 22),
+
+                                CreatedBy = 0,
+                                EmployeeId = employee.EmployeeId,
+                                PeripheralId = peripheral.PeripheralId
+                            });
+                        context.SaveChanges();
+                    }
+                }
+
+                var departmentSoftwareDevelopment = context.Departments.FirstOrDefault(a => a.Name == "Software Development");
+                if (employee != null && departmentSoftwareDevelopment != null)
+                {
+                    context.EmployeeDepartments.Add(
+                        new EEmployeeDepartment
+                        {
+                            CreatedDate = DateTime.Now,
+
+                            CreatedBy = 0,
+                            DepartmentId = departmentSoftwareDevelopment.DepartmentId,
+                            EmployeeId = employee.EmployeeId
+                        });
+                    context.SaveChanges();
+                }
+
+                var departmentSoftwareDevelopmentPhilippines = context.Departments.FirstOrDefault(a => a.Name == "Software Development Philippines");
+                if (employee != null && departmentSoftwareDevelopmentPhilippines != null)
+                {
+                    context.EmployeeDepartments.Add(
+                        new EEmployeeDepartment
+                        {
+                            CreatedDate = DateTime.Now,
+
+                            CreatedBy = 0,
+                            DepartmentId = departmentSoftwareDevelopmentPhilippines.DepartmentId,
+                            EmployeeId = employee.EmployeeId
+                        });
                     context.SaveChanges();
                 }
 
