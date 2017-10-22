@@ -36,7 +36,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFEmployee.Update(employee);
+                //_iFEmployee.Update(employee);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -63,7 +63,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFEmployee.Update(employee);
+                //_iFEmployee.Update(employee);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace AndersonCRMWeb.Controllers
             //return View(employee);
             try
             {
-                employee = _iFEmployee.Create(employee);
+                //employee = _iFEmployee.Create(employee);
                 return Json("");
             }
             catch (Exception ex)
@@ -102,7 +102,7 @@ namespace AndersonCRMWeb.Controllers
             try
             {
                 Employee employee = new Employee();
-                return Json(_iFEmployee.List());
+                return Json(_iFEmployee.Read());
             }
             catch (Exception exception)
             {
@@ -128,7 +128,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                employee = _iFEmployee.Update(employee);
+                //employee = _iFEmployee.Update(employee);
                 return Json("");
             }
             catch (Exception ex)
@@ -142,7 +142,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFEmployee.Delete(employee);
+                //_iFEmployee.Delete(employee);
                 return Json("");
             }
             catch (Exception ex)

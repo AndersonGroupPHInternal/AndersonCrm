@@ -44,15 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DJobTitle.cs" />
+    <Compile Include="DEmployeeTeam.cs" />
+    <Compile Include="DEmployeeDepartment.cs" />
+    <Compile Include="DPeripheralType.cs" />
     <Compile Include="IDDepartment.cs" />
     <Compile Include="DDepartment.cs" />
+    <Compile Include="IDJobTitle.cs" />
+    <Compile Include="IDEmployeeTeam.cs" />
+    <Compile Include="IDEmployeeDepartment.cs" />
+    <Compile Include="IDTeam.cs" />
+    <Compile Include="IDPeripheralType.cs" />
     <Compile Include="IDPeripheralHistory.cs" />
     <Compile Include="DPeripheralHistory.cs" />
-    <Compile Include="IDPosition.cs" />
     <Compile Include="IDPeripheral.cs" />
     <Compile Include="IDEmployee.cs" />
     <Compile Include="IDCompany.cs" />
-    <Compile Include="DPosition.cs" />
+    <Compile Include="DTeam.cs" />
     <Compile Include="DPeripheral.cs" />
     <Compile Include="DEmployee.cs" />
     <Compile Include="DCompany.cs" />

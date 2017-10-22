@@ -8,16 +8,15 @@ namespace AndersonCRMEntity
     [Table("Company")]
     public class ECompany: EBase
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CompanyId { get; set; }
 
         [StringLength(6)]
-        public string CompanyColor { get; set; }
-
+        public string Color { get; set; }
         [Required]
         [StringLength(250)]
-        public string CompanyName { get; set; }
+        public string Name { get; set; }
 
         public virtual ICollection<EEmployee> Employees { get; set; }
     }

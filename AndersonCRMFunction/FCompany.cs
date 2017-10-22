@@ -3,6 +3,7 @@ using AndersonCRMData;
 using AndersonCRMEntity;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace AndersonCRMFunction
 {
@@ -16,9 +17,11 @@ namespace AndersonCRMFunction
         }
 
         #region CREATE
-        public Company Create(Company company)
+        public Company Create(int createdBy, Company company)
         {
             ECompany eCompany = ECompany(company);
+            eCompany.CreatedDate = DateTime.Now;
+            eCompany.CreatedBy = createdBy;
             eCompany = _iDCompany.Create(eCompany);
             return (Company(eCompany));
         }
@@ -33,17 +36,17 @@ namespace AndersonCRMFunction
 
         public Company Read(string companyName)
         {
-            ECompany eCompany = _iDCompany.Read<ECompany>(a => a.CompanyName == companyName);
+            ECompany eCompany = _iDCompany.Read<ECompany>(a => a.Name == companyName);
             return Company(eCompany);
         }
 
-        public Company ReadDefault()
+        public Company ReadDefaultCompany()
         {
-            ECompany eCompany = _iDCompany.Read<ECompany>(a => a.CompanyName == "AndersonGroup");
+            ECompany eCompany = _iDCompany.Read<ECompany>(a => a.Name == "AndersonGroupPH");
             return Company(eCompany);
         }
 
-        public List<Company> List()
+        public List<Company> Read()
         {
             List<ECompany> eCompanies = _iDCompany.List<ECompany>(a => true);
             return Companies(eCompanies);
@@ -51,58 +54,70 @@ namespace AndersonCRMFunction
         #endregion
 
         #region UPDATE
-        public Company Update(Company company)
+        public Company Update(int updatedBy, Company company)
         {
-            var eCompany = _iDCompany.Update(ECompany(company));
+            ECompany eCompany = ECompany(company);
+            eCompany.UpdatedDate = DateTime.Now;
+            eCompany.UpdatedBy = updatedBy;
+            eCompany = _iDCompany.Update(eCompany);
             return (Company(eCompany));
         }
         #endregion
 
         #region DELETE
-        public void Delete(Company company)
+        public void Delete(int companyId)
         {
-            _iDCompany.Delete(ECompany(company));
+            _iDCompany.Delete<ECompany>(a => a.CompanyId == companyId);
         }
         #endregion
+
         #region OTHER FUNCTION
         private List<Company> Companies(List<ECompany> eCompanies)
         {
-            var returnCompanies = eCompanies.Select(a => new Company
+            return eCompanies.Select(a => new Company
             {
+                CreatedDate = a.CreatedDate,
+                UpdatedDate = a.UpdatedDate,
+
                 CompanyId = a.CompanyId,
-
-                CompanyName = a.CompanyName,
                 CreatedBy = a.CreatedBy,
-                UpdatedBy = a.UpdatedBy
-            });
+                UpdatedBy = a.UpdatedBy,
 
-            return returnCompanies.ToList();
+                Color = a.Color,
+                Name = a.Name,
+            }).ToList();
         }
 
         private ECompany ECompany(Company company)
         {
-            ECompany returnECompany = new ECompany
+            return new ECompany
             {
-                CompanyId = company.CompanyId,
+                CreatedDate = company.CreatedDate,
+                UpdatedDate = company.UpdatedDate,
 
-                CompanyName = company.CompanyName,
+                CompanyId = company.CompanyId,
                 CreatedBy = company.CreatedBy,
-                UpdatedBy = company.UpdatedBy
+                UpdatedBy = company.UpdatedBy,
+
+                Color = company.Color,
+                Name = company.Name,
             };
-            return returnECompany;
         }
 
         private Company Company(ECompany eCompany)
         {
-            Company returnCompany = new Company
+            return new Company
             {
-                CompanyId = eCompany.CompanyId,
+                CreatedDate = eCompany.CreatedDate,
+                UpdatedDate = eCompany.UpdatedDate,
 
-                CompanyName = eCompany.CompanyName,
+                CompanyId = eCompany.CompanyId,
                 CreatedBy = eCompany.CreatedBy,
-                UpdatedBy = eCompany.UpdatedBy
+                UpdatedBy = eCompany.UpdatedBy,
+
+                Color = eCompany.Color,
+                Name = eCompany.Name,
             };
-            return returnCompany;
         }
         #endregion
     }

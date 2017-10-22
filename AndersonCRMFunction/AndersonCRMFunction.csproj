@@ -32,9 +32,9 @@
     <NoWarn>s</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="BaseData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="BaseEntity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,14 +46,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FDepartment.cs" />
+    <Compile Include="FEmployeeTeam.cs" />
+    <Compile Include="FEmployeeDepartment.cs" />
+    <Compile Include="FPeripheralType.cs" />
+    <Compile Include="FJobTitle.cs" />
     <Compile Include="IFDepartment.cs" />
-    <Compile Include="IFPeripheralHistory.cs" />
-    <Compile Include="FPeripheralHistory.cs" />
-    <Compile Include="IFPosition.cs" />
+    <Compile Include="IFEmployeeTeam.cs" />
+    <Compile Include="IFEmployeeDepartment.cs" />
+    <Compile Include="IFPeripheralType.cs" />
+    <Compile Include="IFJobTitle.cs" />
+    <Compile Include="IFTeam.cs" />
     <Compile Include="IFPeripheral.cs" />
     <Compile Include="IFEmployee.cs" />
     <Compile Include="IFCompany.cs" />
-    <Compile Include="FPosition.cs" />
+    <Compile Include="FTeam.cs" />
     <Compile Include="FCompany.cs" />
     <Compile Include="FEmployee.cs" />
     <Compile Include="FPeripheral.cs" />

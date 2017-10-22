@@ -1,24 +1,22 @@
 ﻿using BaseEntity;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AndersonCRMEntity
 {
-    [Table("PeripheralHistory")]
-    public class EPeripheralHistory : EBase
+    [Table("EmployeeTeam")]
+    public class EEmployeeTeam : EBase
     {
-        public DateTime DateAssigned { get; set; }
-
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PeripheralHistoryId { get; set; }
-        [ForeignKey("Peripheral")]
-        public int PeripheralId { get; set; }
+        public int EmployeeTeamId { get; set; }
+        [ForeignKey("Team")]
+        public int TeamId { get; set; }
 
         public virtual EEmployee Employee { get; set; }
-        public virtual EPeripheral Peripheral { get; set; }
+        public virtual ETeam Team { get; set; }
+
     }
 }

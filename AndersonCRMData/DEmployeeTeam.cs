@@ -3,9 +3,9 @@ using BaseData;
 
 namespace AndersonCRMData
 {
-    public class DEmployee : DBase, IDEmployee
+    public class DEmployeeTeam : DBase, IDEmployeeTeam
     {
-        public DEmployee() : base(new Context())
+        public DEmployeeTeam() : base(new Context())
         {
         }
     }

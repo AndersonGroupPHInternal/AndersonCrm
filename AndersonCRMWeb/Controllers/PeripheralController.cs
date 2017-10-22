@@ -46,7 +46,7 @@ namespace AndersonCRMWeb.Controllers
         public ActionResult Add()
         {
             Peripheral peripheral = new Peripheral();
-            peripheral.Date = DateTime.Now.ToString("MMMM dd, yyyy");
+            //peripheral.Date = DateTime.Now.ToString("MMMM dd, yyyy");
             return View(peripheral);
         }
 
@@ -55,7 +55,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                peripheral = _iFPeripheral.Create(peripheral);
+                //peripheral = _iFPeripheral.Create(peripheral);
                 return Json("");
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFPeripheral.Update(peripheral);
+                //_iFPeripheral.Update(peripheral);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFPeripheral.Update(peripheral);
+                //_iFPeripheral.Update(peripheral);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -98,7 +98,7 @@ namespace AndersonCRMWeb.Controllers
             try
             {
                 Peripheral peripheral = new Peripheral();
-                return Json(_iFPeripheral.List());
+                return Json(_iFPeripheral.Read());
             }
             catch (Exception exception)
             {
@@ -125,7 +125,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                peripheral = _iFPeripheral.Update(peripheral);
+                //peripheral = _iFPeripheral.Update(peripheral);
 
                 return Json("");
             }
@@ -140,7 +140,7 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                _iFPeripheral.Delete(peripheral);
+                //_iFPeripheral.Delete(peripheral);
                 return Json("");
             }
             catch (Exception ex)

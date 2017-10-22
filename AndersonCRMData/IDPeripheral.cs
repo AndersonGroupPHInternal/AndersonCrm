@@ -1,12 +1,8 @@
-﻿using AndersonCRMContext;
-using AndersonCRMEntity;
-using BaseData;
-using System.Collections.Generic;
+﻿using BaseData;
 
 namespace AndersonCRMData
 {
     public interface IDPeripheral : IDBase
     {
-        List<EPeripheral> Read();
     }
 }
