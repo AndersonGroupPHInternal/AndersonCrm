@@ -11,7 +11,7 @@ namespace AndersonCRMEntity
     {
         public DateTime DateHired { get; set; }
         public DateTime DateStarted { get; set; }
-        public DateTime DateEnded { get; set; }
+        public DateTime? DateEnded { get; set; }
 
         [ForeignKey("Company")]
         public int CompanyId { get; set; }
