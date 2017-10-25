@@ -46,6 +46,12 @@ namespace AndersonCRMFunction
             return Employees(eEmployees);
         }
 
+        public List<Employee> ReadAndersonPhEmployees()
+        {
+            List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.Company.Name == "AndersonGroupPH", "LastName");
+            return Employees(eEmployees);
+        }
+
         public List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy)
         {
             List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.PeripheralHistories.Any(b => b.PeripheralId == peripheralId), sortBy);

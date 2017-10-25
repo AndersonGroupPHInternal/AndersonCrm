@@ -13,6 +13,7 @@ namespace AndersonCRMFunction
         Employee Read(int employeeId);
         List<Employee> Read();
         List<Employee> Read(int companyId, string sortBy);
+        List<Employee> ReadAndersonPhEmployees();
         List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy);
         #endregion
 
