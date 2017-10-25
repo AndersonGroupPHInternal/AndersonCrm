@@ -5,14 +5,14 @@ using System.Web.Mvc;
 
 namespace AndersonCRMWeb.Controllers
 {
-    [RoutePrefix("Position")]
-    public class PositionController : Controller
+    [RoutePrefix("JobTitle")]
+    public class JobTitleController : Controller
     {
-        private IFPosition _iFPosition;
+        private IFJobTitle _iFJobTitle;
 
-        public PositionController()
+        public JobTitleController()
         {
-            _iFPosition = new FPosition();
+            _iFJobTitle = new FJobTitle();
         }
 
         [Route("")]
@@ -30,28 +30,28 @@ namespace AndersonCRMWeb.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new Position());
+            return View(new JobTitle());
         }
 
         public ActionResult Edit(int id)
         {
-            var position = _iFPosition.Read(id);
-            return View(position);
+            var jobTitle = _iFJobTitle.Read(id);
+            return View(jobTitle);
         }
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var position = _iFPosition.Read(id);
-            return View(position);
+            var jobTitle = _iFJobTitle.Read(id);
+            return View(jobTitle);
         }
 
 
         [HttpPost]
-        public ActionResult Details(Position position)
+        public ActionResult Details(JobTitle jobTitle)
         {
             try
             {
-                _iFPosition.Update(position);
+                //_iFJobTitle.Update(jobTitle);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -61,11 +61,11 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Position position)
+        public ActionResult Edit(JobTitle jobTitle)
         {
             try
             {
-                _iFPosition.Update(position);
+                //_iFJobTitle.Update(jobTitle);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -75,11 +75,11 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(Position position)
+        public JsonResult Create(JobTitle jobTitle)
         {
             try
             {
-                position = _iFPosition.Create(position);
+                //jobTitle = _iFJobTitle.Create(jobTitle);
                 return Json("");
             }
             catch (Exception ex)
@@ -94,8 +94,8 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                Position position = new Position();
-                return Json(_iFPosition.List());
+                JobTitle jobTitle = new JobTitle();
+                return Json(_iFJobTitle.Read());
             }
             catch (Exception exception)
             {
@@ -108,21 +108,21 @@ namespace AndersonCRMWeb.Controllers
         {
             try
             {
-                Position position = _iFPosition.Read(id);
-                return View(position);
+                JobTitle jobTitle = _iFJobTitle.Read(id);
+                return View(jobTitle);
             }
             catch (Exception ex)
             {
-                return View(new Position());
+                return View(new JobTitle());
             }
         }
 
         [HttpPost]
-        public JsonResult Update(Position position)
+        public JsonResult Update(JobTitle jobTitle)
         {
             try
             {
-                position = _iFPosition.Update(position);
+                //jobTitle = _iFJobTitle.Update(jobTitle);
                 return Json("");
             }
             catch (Exception ex)
@@ -132,11 +132,11 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(Position position)
+        public ActionResult Delete(JobTitle jobTitle)
         {
             try
             {
-                _iFPosition.Delete(position);
+                //_iFJobTitle.Delete(jobTitle);
                 return Json("");
             }
             catch (Exception ex)

@@ -33,7 +33,7 @@
     </NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DLL\EntityFramework.dll</HintPath>
@@ -49,11 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Department.cs" />
+    <Compile Include="EmployeeDepartment.cs" />
+    <Compile Include="EmployeeTeam.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="PeripheralType.cs" />
+    <Compile Include="JobTitle.cs" />
     <Compile Include="PeripheralHistory.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Peripheral.cs" />
-    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -17,25 +17,32 @@ namespace AndersonCRMFunction
         }
 
         #region CREATE
-        public Peripheral Create(Peripheral peripheral)
+        public Peripheral Create(int createdBy, Peripheral peripheral)
         {
-            //var ePeripheral = _iDPeripheral.Create(EPeripheral(peripheral));
-
-            //return (Peripheral(ePeripheral));
             EPeripheral ePeripheral = EPeripheral(peripheral);
+            ePeripheral.CreatedDate = DateTime.Now;
+            ePeripheral.CreatedBy = createdBy;
             ePeripheral = _iDPeripheral.Create(ePeripheral);
+
+            CreatePeripheralHistory(createdBy, ePeripheral);
+
+            return (Peripheral(ePeripheral));  
+        }   
+
+        private void CreatePeripheralHistory(int createdBy, EPeripheral ePeripheral)
+        {
 
             EPeripheralHistory ePeripheralHistory = new EPeripheralHistory
             {
                 CreatedDate = DateTime.Now,
-                Date = ePeripheral.Date,
+                DateAssigned = DateTime.Now,
+
+                CreatedBy = createdBy,
                 EmployeeId = ePeripheral.EmployeeId,
                 PeripheralId = ePeripheral.PeripheralId
             };
-
             _iDPeripheral.Create(ePeripheralHistory);
-            return (Peripheral(ePeripheral));  
-        }   
+        }
         #endregion
 
         #region READ
@@ -45,107 +52,101 @@ namespace AndersonCRMFunction
             return Peripheral(ePeripheral);
         }
 
-        public List<Peripheral> List()
+        public List<Peripheral> Read()
         {
             List<EPeripheral> ePeripherals = _iDPeripheral.List<EPeripheral>(a => true);
             return Peripherals(ePeripherals);
         }
 
-        public List<Peripheral> List(int employeeId)
+        public List<Peripheral> Read(int employeeId, string sortBy)
         {
-            List<EPeripheral> ePeripherals = _iDPeripheral.List<EPeripheral>(a => a.EmployeeId == employeeId);
+            List<EPeripheral> ePeripherals = _iDPeripheral.Read<EPeripheral>(a => a.EmployeeId == employeeId, sortBy);
             return Peripherals(ePeripherals);
         }
 
         #endregion
 
         #region UPDATE
-        public Peripheral Update(Peripheral peripheral)
+        public Peripheral Update(int updatedBy, Peripheral peripheral)
         {
             EPeripheral currentPeripheral = _iDPeripheral.Read<EPeripheral>(a => a.PeripheralId == peripheral.PeripheralId);
-            var ePeripheral = _iDPeripheral.Update(EPeripheral(peripheral));
-            if (peripheral.EmployeeId != currentPeripheral.EmployeeId)
-            {
-                EPeripheralHistory ePeripheralHistory = new EPeripheralHistory
-                {
-                    CreatedDate = DateTime.Now,
-                    Date = ePeripheral.Date,
-                    EmployeeId = ePeripheral.EmployeeId,
-                    PeripheralId = ePeripheral.PeripheralId,
-                    
-                };
 
-                _iDPeripheral.Create(ePeripheralHistory);
-            }
+            var ePeripheral = EPeripheral(peripheral);
+            ePeripheral.UpdatedDate = DateTime.Now;
+            ePeripheral.UpdatedBy = updatedBy;
+            ePeripheral = _iDPeripheral.Update(EPeripheral(peripheral));
+
+            if (peripheral.EmployeeId != currentPeripheral.EmployeeId)
+                CreatePeripheralHistory(updatedBy, ePeripheral);
+
             return (Peripheral(ePeripheral));
         }
         #endregion
 
         #region DELETE
-        public void Delete(Peripheral peripheral)
+        public void Delete(int peripheralId)
         {
-            _iDPeripheral.Delete(EPeripheral(peripheral));
+            _iDPeripheral.Delete<EPeripheral>(a => a.PeripheralId == peripheralId);
         }
         #endregion
 
         private List<Peripheral> Peripherals(List<EPeripheral> ePeripherals)
         {
-            var returnPeripherals = ePeripherals.Select(a => new Peripheral
+            return ePeripherals.Select(a => new Peripheral
             {
-                PeripheralId = a.PeripheralId,
-                EmployeeId = a.EmployeeId,
-                PeripheralColor = a.PeripheralColor,
-                PeripheralName = a.PeripheralName,
-                Description = a.Description,
-                SerialNumber = a.SerialNumber,
+                CreatedDate = a.CreatedDate,
+                UpdatedDate = a.UpdatedDate,
+                
                 CreatedBy = a.CreatedBy,
+                EmployeeId = a.EmployeeId,
+                PeripheralId = a.PeripheralId,
+                PeripheralTypeId = a.PeripheralTypeId,
                 UpdatedBy = a.UpdatedBy,
-                AssetTag = a.AssetTag,
-                Date = a.Date,
-                Employee = new Employee
-                {                                   
-                   FirstName = a.Employee.FirstName,
-                   MiddleName = a.Employee.MiddleName,
-                   LastName = a.Employee.LastName
-                }
-            });
 
-            return returnPeripherals.ToList();
+                AssetTag = a.AssetTag,
+                Description = a.Description,
+                Name = a.Name,
+                SerialNumber = a.SerialNumber
+            }).ToList();
         }
         private EPeripheral EPeripheral(Peripheral peripheral)
         {
-            EPeripheral returnEPeripheral = new EPeripheral
+            return new EPeripheral
             {
-                PeripheralId = peripheral.PeripheralId,
-                EmployeeId = peripheral.EmployeeId,
-                PeripheralColor = peripheral.PeripheralColor,
-                PeripheralName = peripheral.PeripheralName,
-                Description = peripheral.Description,
-                SerialNumber = peripheral.SerialNumber,
+                CreatedDate = peripheral.CreatedDate,
+                UpdatedDate = peripheral.UpdatedDate,
+
                 CreatedBy = peripheral.CreatedBy,
+                EmployeeId = peripheral.EmployeeId,
+                PeripheralId = peripheral.PeripheralId,
+                PeripheralTypeId = peripheral.PeripheralTypeId,
                 UpdatedBy = peripheral.UpdatedBy,
-                AssetTag=peripheral.AssetTag,
-                Date = peripheral.Date
+
+                AssetTag = peripheral.AssetTag,
+                Description = peripheral.Description,
+                Name = peripheral.Name,
+                SerialNumber = peripheral.SerialNumber
             };
-            return returnEPeripheral;
         }
 
         private Peripheral Peripheral(EPeripheral ePeripheral)
         {
-            Peripheral returnPeripheral = new Peripheral
+            return new Peripheral
             {
-                PeripheralId = ePeripheral.PeripheralId,
-                EmployeeId = ePeripheral.EmployeeId,
-                PeripheralColor = ePeripheral.PeripheralColor,
-                PeripheralName = ePeripheral.PeripheralName,
-                Description = ePeripheral.Description,
-                SerialNumber = ePeripheral.SerialNumber,
+                CreatedDate = ePeripheral.CreatedDate,
+                UpdatedDate = ePeripheral.UpdatedDate,
+
                 CreatedBy = ePeripheral.CreatedBy,
+                EmployeeId = ePeripheral.EmployeeId,
+                PeripheralId = ePeripheral.PeripheralId,
+                PeripheralTypeId = ePeripheral.PeripheralTypeId,
                 UpdatedBy = ePeripheral.UpdatedBy,
-                AssetTag=ePeripheral.AssetTag,
-                Date = ePeripheral.Date
+
+                AssetTag = ePeripheral.AssetTag,
+                Description = ePeripheral.Description,
+                Name = ePeripheral.Name,
+                SerialNumber = ePeripheral.SerialNumber
             };
-            return returnPeripheral;
         }
     }
 }

@@ -5,19 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AndersonCRMEntity
 {
-    [Table("Position")]
-    public class EPosition: EBase
+    [Table("JobTitle")]
+    public class EJobTitle : EBase
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int PositionId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int JobTitleId { get; set; }
 
         [StringLength(6)]
-        public string PositionColor { get; set; }
-
+        public string Color { get; set; }
         [Required]
         [StringLength(250)]
-        public string PositionName { get; set; }
+        public string Name { get; set; }
 
         public virtual ICollection<EEmployee> Employees { get; set; }
 

@@ -42,9 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EEmployeeDepartment.cs" />
     <Compile Include="EDepartment.cs" />
+    <Compile Include="EPeripheralType.cs" />
+    <Compile Include="EEmployeeTeam.cs" />
+    <Compile Include="ETeam.cs" />
     <Compile Include="EPeripheralHistory.cs" />
-    <Compile Include="EPosition.cs" />
+    <Compile Include="EJobTitle.cs" />
     <Compile Include="EPeripheral.cs" />
     <Compile Include="EEmployee.cs" />
     <Compile Include="ECompany.cs" />

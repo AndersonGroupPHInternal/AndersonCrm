@@ -3,11 +3,10 @@ using BaseData;
 
 namespace AndersonCRMData
 {
-    public class DPosition : DBase, IDPosition
+    public class DJobTitle : DBase, IDJobTitle
     {
-        public DPosition() : base(new Context())
+        public DJobTitle() : base(new Context())
         {
         }
     }
 }
-    

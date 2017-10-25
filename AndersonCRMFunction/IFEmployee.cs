@@ -6,18 +6,22 @@ namespace AndersonCRMFunction
     public interface IFEmployee
     {
         #region CREATE
-        Employee Create(Employee employee);
+        Employee Create(int createdBy, Employee employee);
         #endregion
+
         #region READ
         Employee Read(int employeeId);
-        List<Employee> List();
-        List<Employee> List(int companyId);
+        List<Employee> Read();
+        List<Employee> Read(int companyId, string sortBy);
+        List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy);
         #endregion
+
         #region UPDATE
-        Employee Update(Employee employee);
+        Employee Update(int updatedBy, Employee employee);
         #endregion
+
         #region DELETE
-        void Delete(Employee employee);
+        void Delete(int employeeId);
         #endregion
     }
 }

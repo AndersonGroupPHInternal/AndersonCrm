@@ -1,30 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using BaseModel;
+using System;
+using System.Collections.Generic;
 
 namespace AndersonCRMModel
 {
-    public class Employee : Base.Base
+    public class Employee : Base
     {
+        public DateTime DateHired { get; set; }
+        public DateTime DateStarted { get; set; }
+        public DateTime DateEnded { get; set; }
+
         public int CompanyId { get; set; }
-        public int? DepartmentId { get; set; }
         public int EmployeeId { get; set; }
-        public int ManagerEmployeeId { get; set; }  
-        public int PositionId { get; set; }
+        public int JobTitleId { get; set; }
+        public int ManagerEmployeeId { get; set; }
 
         public string Email { get; set; }
         public string FirstName { get; set; }
-        public string HiringDate { get; set; }// change this to date
-        public string JobTitle { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        public string StartingDate { get; set; }// change this to date
-        public string Team { get; set; }//there should be a team list
 
-        public Company Company { get; set; }
-        public Department Department { get; set; }
-        public Position Position { get; set; }
+        public virtual Company Company { get; set; }
+        public virtual JobTitle JobTitle { get; set; }
+        public virtual Team Team { get; set; }
 
-        public List<Peripheral> Peripherals { get; set; }
-        public List<PeripheralHistory> PeripheralHistories { get; set; }
-
+        public virtual ICollection<EmployeeDepartment> EmployeeDepartments { get; set; }
+        public virtual ICollection<EmployeeTeam> EmployeeTeams { get; set; }
+        public virtual ICollection<Peripheral> Peripherals { get; set; }
+        public virtual ICollection<PeripheralHistory> PeripheralHistories { get; set; }
     }
 }

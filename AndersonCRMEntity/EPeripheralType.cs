@@ -5,17 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AndersonCRMEntity
 {
-    [Table("Department")]
-    public class EDepartment: EBase 
+    [Table("PeripheralType")]
+    public class EPeripheralType : EBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DepartmentId { get; set; }
+        public int PeripheralTypeId { get; set; }
 
+        [StringLength(6)]
+        public string Color { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(250)]
         public string Name { get; set; }
 
-        public virtual ICollection<EEmployeeDepartment> EmployeeDepartments { get; set; }
+        public virtual ICollection<EPeripheral> Peripherals { get; set; }
+
     }
 }
