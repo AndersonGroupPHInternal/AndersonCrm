@@ -1,196 +1,68 @@
 ﻿using AndersonCRMModel;
 using AndersonCRMFunction;
-//using System.Data;
-using System;
 using System.Web.Mvc;
-using System.Web.Routing;
-using System.Net;
-using System.Data.Entity;
-//using System.Net;
-//using System.Collections.Generic;
 
 namespace AndersonCRMWeb.Controllers
 {
-    [RoutePrefix("Company")]
-    public class CompanyController : Controller
+    public class CompanyController : BaseController
     {
-
-
         private IFCompany _iFCompany;
-
-
-        //public object db { get; private set; }
-
-        public CompanyController()
+        public CompanyController(IFCompany iFCompany)
         {
-            _iFCompany = new FCompany();
-           
+            _iFCompany = iFCompany;
         }
-        
 
+        #region Create
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View(new Company());
+        }
 
-        [Route("")]
+        [HttpPost]
+        public ActionResult Create(Company company)
+        {
+            var createdCompany = _iFCompany.Create(UserId, company);
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region Read
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
-        [HttpGet]
-        public ActionResult Edit(int id)
-        {
-            var company = _iFCompany.Read(id);
-            return View(company);
-        }
-        [HttpGet]
-        public ActionResult Add()
-        {
-            return View();
-        }
-    
-
-        //[HttpGet]
-        //public ActionResult Create()
-        //{
-           
-        //        //ViewBag.CompanyId = new SelectList(db.Company, "GenderId", "Description");
-              
-        //    return View(new Company());
-        //}
-
-        //[HttpGet]
-        //public ActionResult Details()
-        //{
-        //    return View();
-        //}
-
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-            var company = _iFCompany.Read(id);
-            return View(company);
-        }
-
 
         [HttpPost]
-        public ActionResult Details(Company company)
+        public JsonResult Read()
         {
-            try
-            {
-                //_iFCompany.Update(company);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
+            return Json(_iFCompany.Read());
         }
+        #endregion
 
-        [HttpPost]
-        public JsonResult Create(Company company)
-        {
-            //company = _iFCompany.Create(company);
-            //return View(company);
-            try
-            {
-                //company = _iFCompany.Create(company);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex);
-            }
-        }
-
-
-      
-        public static void RegisterRoutes(RouteCollection routes)
-        {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                name: "Default",
-                url: "Company/Index/CompanyId",
-                defaults: new
-                {
-                    controller = "Company",
-                    action = "Index",
-                    id = UrlParameter.Optional
-                }
-            );
-        }
-
-
-        [HttpPost]
-        public ActionResult Edit(Company company)
-        {
-            try
-            {
-                //_iFCompany.Update(company);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-
-
-        [Route("List")]
-        [HttpPost]
-        public ActionResult List()
-        {
-            try
-            {
-                Company company = new Company();
-                return Json(_iFCompany.Read());
-            }
-            catch (Exception exception)
-            {
-                return Json(exception);
-            }
-        }
-        
+        #region Update
         [HttpGet]
         public ActionResult Update(int id)
         {
-            try
-            {
-                Company company = _iFCompany.Read(id);
-                return View(company);
-            }
-            catch (Exception ex)
-            {
-                return View(new Company());
-            }
+            return View(_iFCompany.Read(id));
         }
 
         [HttpPost]
         public ActionResult Update(Company company)
         {
-            try
-            {
-                //company = _iFCompany.Update(company);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return View(ex);
-            }
+            var createdCompany = _iFCompany.Update(UserId, company);
+            return RedirectToAction("Index");
         }
+        #endregion
 
-        [HttpPost]
-        public ActionResult Delete(Company company)
+        #region Delete
+        [HttpDelete]
+        public JsonResult Delete(int id)
         {
-            try
-            {
-                //_iFCompany.Delete(company);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex);
-            }
+            _iFCompany.Delete(id);
+            return Json(string.Empty);
         }
+        #endregion
     }
 }

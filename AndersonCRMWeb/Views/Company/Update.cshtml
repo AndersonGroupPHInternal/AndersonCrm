@@ -1,0 +1,18 @@
+﻿@using AndersonCRMModel;
+@model Company
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <form action="~/Company/Update" method="post">
+            @{
+                Html.RenderPartial("_Company", Model);
+            }
+        </form>
+    </div>
+</div>

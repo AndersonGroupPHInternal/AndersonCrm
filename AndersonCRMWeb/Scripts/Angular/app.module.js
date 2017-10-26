@@ -3,10 +3,10 @@
 
     angular
         .module('App', [
-        // Angular modules
+            // Angular modules
+            'ui.select'
+            // Custom modules
 
-        // Custom modules
-
-        // 3rd Party Modules
+            // 3rd Party Modules
         ]);
 })();
