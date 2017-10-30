@@ -4,25 +4,25 @@ using System.Web.Mvc;
 
 namespace AndersonCRMWeb.Controllers
 {
-    public class JobTitleController : BaseController
+    public class TeamController : BaseController
     {
-        private IFJobTitle _iFJobTitle;
-        public JobTitleController(IFJobTitle iFJobTitle)
+        private IFTeam _iFTeam;
+        public TeamController(IFTeam iFTeam)
         {
-            _iFJobTitle = iFJobTitle;
+            _iFTeam = iFTeam;
         }
 
         #region Create
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new JobTitle());
+            return View(new Team());
         }
 
         [HttpPost]
-        public ActionResult Create(JobTitle jobTitle)
+        public ActionResult Create(Team team)
         {
-            var createdJobTitle = _iFJobTitle.Create(UserId, jobTitle);
+            var createdTeam = _iFTeam.Create(UserId, team);
             return RedirectToAction("Index");
         }
         #endregion
@@ -37,7 +37,7 @@ namespace AndersonCRMWeb.Controllers
         [HttpPost]
         public JsonResult Read()
         {
-            return Json(_iFJobTitle.Read());
+            return Json(_iFTeam.Read());
         }
         #endregion
 
@@ -45,13 +45,13 @@ namespace AndersonCRMWeb.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            return View(_iFJobTitle.Read(id));
+            return View(_iFTeam.Read(id));
         }
 
         [HttpPost]
-        public ActionResult Update(JobTitle jobTitle)
+        public ActionResult Update(Team team)
         {
-            var createdJobTitle = _iFJobTitle.Update(UserId, jobTitle);
+            var createdTeam = _iFTeam.Update(UserId, team);
             return RedirectToAction("Index");
         }
         #endregion
@@ -60,7 +60,7 @@ namespace AndersonCRMWeb.Controllers
         [HttpDelete]
         public JsonResult Delete(int id)
         {
-            _iFJobTitle.Delete(id);
+            _iFTeam.Delete(id);
             return Json(string.Empty);
         }
         #endregion

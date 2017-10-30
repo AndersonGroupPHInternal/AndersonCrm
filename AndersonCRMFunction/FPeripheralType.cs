@@ -71,6 +71,7 @@ namespace AndersonCRMFunction
                 PeripheralTypeId = a.PeripheralTypeId,
                 UpdatedBy = a.UpdatedBy,
 
+                Color = "#" + a.Color,
                 Name = a.Name
             }).ToList();
         }
@@ -85,6 +86,7 @@ namespace AndersonCRMFunction
                 PeripheralTypeId = peripheralType.PeripheralTypeId,
                 UpdatedBy = peripheralType.UpdatedBy,
 
+                Color = peripheralType.Color.Trim(new Char[] { '#' }),
                 Name = peripheralType.Name
             };
         }
@@ -100,6 +102,7 @@ namespace AndersonCRMFunction
                 PeripheralTypeId = ePeripheralType.PeripheralTypeId,
                 UpdatedBy = ePeripheralType.UpdatedBy,
 
+                Color = "#" + ePeripheralType.Color,
                 Name = ePeripheralType.Name
             };
         }

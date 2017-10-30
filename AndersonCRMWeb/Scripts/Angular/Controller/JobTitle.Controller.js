@@ -3,24 +3,24 @@
 
     angular
         .module('App')
-        .controller('DepartmentController', DepartmentController);
+        .controller('JobTitleController', JobTitleController);
 
-    DepartmentController.$inject = ['$window', 'DepartmentService'];
+    JobTitleController.$inject = ['$window', 'JobTitleService'];
 
-    function DepartmentController($window, DepartmentService) {
+    function JobTitleController($window, JobTitleService) {
         var vm = this;
 
         vm.Employees = [];
-        vm.Departments = [];
+        vm.JobTitles = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
 
         vm.Delete = Delete;
-
-        function GoToUpdatePage(departmentId) {
-            $window.location.href = '../Department/Update/' + departmentId;
-        }
+        
+        function GoToUpdatePage(jobTitleId) {
+            $window.location.href = '../JobTitle/Update/' + jobTitleId;
+        } 
 
         function Initialise() {
             Read();
@@ -44,9 +44,9 @@
         }
 
         function Read() {
-            DepartmentService.Read()
+            JobTitleService.Read()
                 .then(function (response) {
-                    vm.Departments = response.data;
+                    vm.JobTitles = response.data;
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -60,8 +60,8 @@
                 });
         }
 
-        function Delete(departmentId) {
-            DepartmentService.Delete(departmentId)
+        function Delete(jobTitleId) {
+            JobTitleService.Delete(jobTitleId)
                 .then(function (response) {
                     Read();
                 })

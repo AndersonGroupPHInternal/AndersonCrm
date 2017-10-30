@@ -3,11 +3,11 @@
 
     angular
         .module('App')
-        .factory('DepartmentService', DepartmentService);
+        .factory('TeamService', TeamService);
 
-    DepartmentService.$inject = ['$http'];
+    TeamService.$inject = ['$http'];
 
-    function DepartmentService($http) {
+    function TeamService($http) {
         return {
             Read: Read,
             Delete: Delete
@@ -16,15 +16,15 @@
         function Read() {
             return $http({
                 method: 'POST',
-                url: '/Department/Read',
+                url: '/Team/Read',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
 
-        function Delete(departmentId) {
+        function Delete(teamId) {
             return $http({
                 method: 'DELETE',
-                url: '/Department/Delete/' + departmentId,
+                url: '/Team/Delete/' + teamId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

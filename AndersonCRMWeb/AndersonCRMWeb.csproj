@@ -955,12 +955,18 @@
     <Content Include="Scripts\Angular\app.module.min.js">
       <DependentUpon>app.module.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\Angular\Controller\Team.Controller.js" />
+    <Content Include="Scripts\Angular\Controller\PeripheralType.Controller.js" />
+    <Content Include="Scripts\Angular\Controller\JobTitle.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Company.Controller.js" />
     <Content Include="Scripts\Angular\Controller\DepartmentController.js" />
     <Content Include="Scripts\Angular\Controller\EmployeeController.js" />
     <Content Include="Scripts\Angular\Controller\PeripheralHistoryController.js" />
     <Content Include="Scripts\Angular\Controller\PeripheralController.js" />
     <Content Include="Scripts\Angular\Controller\PositionController.js" />
+    <Content Include="Scripts\Angular\Service\Team.Service.js" />
+    <Content Include="Scripts\Angular\Service\PeripheralType.Service.js" />
+    <Content Include="Scripts\Angular\Service\JobTitle.Service.js" />
     <Content Include="Scripts\Angular\Service\Company.Service.js" />
     <None Include="bundleconfig.json" />
     <Content Include="Scripts\Angular\Service\DepartmentService.js" />
@@ -980,6 +986,8 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\PeripheralTypeController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -1016,12 +1024,24 @@
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Position\Details.cshtml" />
     <Content Include="Views\Peripheral\Details.cshtml" />
-    <Content Include="Views\Department\Index.cshtml" />
-    <Content Include="Views\Department\Add.cshtml" />
-    <Content Include="Views\Department\Edit.cshtml" />
-    <Content Include="Views\Department\Details.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
+    <Content Include="Views\Department\_Department.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\Update.cshtml" />
+    <Content Include="Views\JobTitle\_JobTitle.cshtml" />
+    <Content Include="Views\JobTitle\Create.cshtml" />
+    <Content Include="Views\JobTitle\Index.cshtml" />
+    <Content Include="Views\JobTitle\Update.cshtml" />
+    <Content Include="Views\PeripheralType\_PeripheralType.cshtml" />
+    <Content Include="Views\PeripheralType\Create.cshtml" />
+    <Content Include="Views\PeripheralType\Index.cshtml" />
+    <Content Include="Views\PeripheralType\Update.cshtml" />
+    <Content Include="Views\Team\_Team.cshtml" />
+    <Content Include="Views\Team\Create.cshtml" />
+    <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Team\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

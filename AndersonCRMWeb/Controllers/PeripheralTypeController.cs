@@ -4,25 +4,25 @@ using System.Web.Mvc;
 
 namespace AndersonCRMWeb.Controllers
 {
-    public class JobTitleController : BaseController
+    public class PeripheralTypeController : BaseController
     {
-        private IFJobTitle _iFJobTitle;
-        public JobTitleController(IFJobTitle iFJobTitle)
+        private IFPeripheralType _iFPeripheralType;
+        public PeripheralTypeController(IFPeripheralType iFPeripheralType)
         {
-            _iFJobTitle = iFJobTitle;
+            _iFPeripheralType = iFPeripheralType;
         }
 
         #region Create
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new JobTitle());
+            return View(new PeripheralType());
         }
 
         [HttpPost]
-        public ActionResult Create(JobTitle jobTitle)
+        public ActionResult Create(PeripheralType peripheralType)
         {
-            var createdJobTitle = _iFJobTitle.Create(UserId, jobTitle);
+            var createdPeripheralType = _iFPeripheralType.Create(UserId, peripheralType);
             return RedirectToAction("Index");
         }
         #endregion
@@ -37,7 +37,7 @@ namespace AndersonCRMWeb.Controllers
         [HttpPost]
         public JsonResult Read()
         {
-            return Json(_iFJobTitle.Read());
+            return Json(_iFPeripheralType.Read());
         }
         #endregion
 
@@ -45,13 +45,13 @@ namespace AndersonCRMWeb.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            return View(_iFJobTitle.Read(id));
+            return View(_iFPeripheralType.Read(id));
         }
 
         [HttpPost]
-        public ActionResult Update(JobTitle jobTitle)
+        public ActionResult Update(PeripheralType peripheralType)
         {
-            var createdJobTitle = _iFJobTitle.Update(UserId, jobTitle);
+            var createdPeripheralType = _iFPeripheralType.Update(UserId, peripheralType);
             return RedirectToAction("Index");
         }
         #endregion
@@ -60,7 +60,7 @@ namespace AndersonCRMWeb.Controllers
         [HttpDelete]
         public JsonResult Delete(int id)
         {
-            _iFJobTitle.Delete(id);
+            _iFPeripheralType.Delete(id);
             return Json(string.Empty);
         }
         #endregion
