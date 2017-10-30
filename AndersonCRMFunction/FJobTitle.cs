@@ -71,6 +71,7 @@ namespace AndersonCRMFunction
                 JobTitleId = a.JobTitleId,
                 UpdatedBy = a.UpdatedBy,
 
+                Color = "#" + a.Color,
                 Name = a.Name
             }).ToList();
         }
@@ -85,6 +86,7 @@ namespace AndersonCRMFunction
                 JobTitleId = jobTitle.JobTitleId,
                 UpdatedBy = jobTitle.UpdatedBy,
 
+                Color = jobTitle.Color.Trim(new Char[] { '#' }),
                 Name = jobTitle.Name
             };
         }
@@ -100,6 +102,7 @@ namespace AndersonCRMFunction
                 JobTitleId = eJobTitle.JobTitleId,
                 UpdatedBy = eJobTitle.UpdatedBy,
 
+                Color = "#" + eJobTitle.Color,
                 Name = eJobTitle.Name
             };
         }

@@ -3,24 +3,24 @@
 
     angular
         .module('App')
-        .controller('DepartmentController', DepartmentController);
+        .controller('PeripheralTypeController', PeripheralTypeController);
 
-    DepartmentController.$inject = ['$window', 'DepartmentService'];
+    PeripheralTypeController.$inject = ['$window', 'PeripheralTypeService'];
 
-    function DepartmentController($window, DepartmentService) {
+    function PeripheralTypeController($window, PeripheralTypeService) {
         var vm = this;
 
         vm.Employees = [];
-        vm.Departments = [];
+        vm.PeripheralTypes = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
 
         vm.Delete = Delete;
-
-        function GoToUpdatePage(departmentId) {
-            $window.location.href = '../Department/Update/' + departmentId;
-        }
+        
+        function GoToUpdatePage(peripheralTypeId) {
+            $window.location.href = '../PeripheralType/Update/' + peripheralTypeId;
+        } 
 
         function Initialise() {
             Read();
@@ -44,9 +44,9 @@
         }
 
         function Read() {
-            DepartmentService.Read()
+            PeripheralTypeService.Read()
                 .then(function (response) {
-                    vm.Departments = response.data;
+                    vm.PeripheralTypes = response.data;
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -60,8 +60,8 @@
                 });
         }
 
-        function Delete(departmentId) {
-            DepartmentService.Delete(departmentId)
+        function Delete(peripheralTypeId) {
+            PeripheralTypeService.Delete(peripheralTypeId)
                 .then(function (response) {
                     Read();
                 })

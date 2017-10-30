@@ -1,0 +1,18 @@
+﻿@using AndersonCRMModel;
+@model PeripheralType
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <form action="~/PeripheralType/Update" method="post">
+            @{
+                Html.RenderPartial("_PeripheralType", Model);
+            }
+        </form>
+    </div>
+</div>

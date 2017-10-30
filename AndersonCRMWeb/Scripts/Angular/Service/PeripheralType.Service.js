@@ -3,11 +3,11 @@
 
     angular
         .module('App')
-        .factory('DepartmentService', DepartmentService);
+        .factory('PeripheralTypeService', PeripheralTypeService);
 
-    DepartmentService.$inject = ['$http'];
+    PeripheralTypeService.$inject = ['$http'];
 
-    function DepartmentService($http) {
+    function PeripheralTypeService($http) {
         return {
             Read: Read,
             Delete: Delete
@@ -16,15 +16,15 @@
         function Read() {
             return $http({
                 method: 'POST',
-                url: '/Department/Read',
+                url: '/PeripheralType/Read',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
 
-        function Delete(departmentId) {
+        function Delete(peripheralTypeId) {
             return $http({
                 method: 'DELETE',
-                url: '/Department/Delete/' + departmentId,
+                url: '/PeripheralType/Delete/' + peripheralTypeId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

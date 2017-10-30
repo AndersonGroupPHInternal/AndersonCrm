@@ -3,24 +3,24 @@
 
     angular
         .module('App')
-        .controller('DepartmentController', DepartmentController);
+        .controller('TeamController', TeamController);
 
-    DepartmentController.$inject = ['$window', 'DepartmentService'];
+    TeamController.$inject = ['$window', 'TeamService'];
 
-    function DepartmentController($window, DepartmentService) {
+    function TeamController($window, TeamService) {
         var vm = this;
 
         vm.Employees = [];
-        vm.Departments = [];
+        vm.Teams = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
 
         vm.Delete = Delete;
-
-        function GoToUpdatePage(departmentId) {
-            $window.location.href = '../Department/Update/' + departmentId;
-        }
+        
+        function GoToUpdatePage(teamId) {
+            $window.location.href = '../Team/Update/' + teamId;
+        } 
 
         function Initialise() {
             Read();
@@ -44,9 +44,9 @@
         }
 
         function Read() {
-            DepartmentService.Read()
+            TeamService.Read()
                 .then(function (response) {
-                    vm.Departments = response.data;
+                    vm.Teams = response.data;
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -60,8 +60,8 @@
                 });
         }
 
-        function Delete(departmentId) {
-            DepartmentService.Delete(departmentId)
+        function Delete(teamId) {
+            TeamService.Delete(teamId)
                 .then(function (response) {
                     Read();
                 })

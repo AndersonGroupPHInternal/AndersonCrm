@@ -1,149 +1,68 @@
-﻿using AndersonCRMFunction;
-using AndersonCRMModel;
-using System;
+﻿using AndersonCRMModel;
+using AndersonCRMFunction;
 using System.Web.Mvc;
 
 namespace AndersonCRMWeb.Controllers
 {
-    [RoutePrefix("Department")]
-    public class DepartmentController : Controller
+    public class DepartmentController : BaseController
     {
         private IFDepartment _iFDepartment;
-
-        public DepartmentController()
+        public DepartmentController(IFDepartment iFDepartment)
         {
-            _iFDepartment = new FDepartment();
+            _iFDepartment = iFDepartment;
         }
 
-        [Route("")]
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Add()
-        {
-            return View();
-        }
-
+        #region Create
         [HttpGet]
         public ActionResult Create()
         {
             return View(new Department());
         }
 
-        public ActionResult Edit(int id)
+        [HttpPost]
+        public ActionResult Create(Department department)
         {
-            var department = _iFDepartment.Read(id);
-            return View(department);
+            var createdDepartment = _iFDepartment.Create(UserId, department);
+            return RedirectToAction("Index");
         }
+        #endregion
 
+        #region Read
         [HttpGet]
-        public ActionResult Details(int id)
+        public ActionResult Index()
         {
-            var department = _iFDepartment.Read(id);
-            return View(department);
-        }
-
-
-        [HttpPost]
-        public ActionResult Details(Department department)
-        {
-            try
-            {
-                //_iFDepartment.Update(department);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Edit(Department department)
+        public JsonResult Read()
         {
-            try
-            {
-                //_iFDepartment.Update(department);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
+            return Json(_iFDepartment.Read());
         }
+        #endregion
 
-        [HttpPost]
-        public JsonResult Create(Department department)
-        {
-            try
-            {
-                //department = _iFDepartment.Create(department);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex);
-            }
-        }
-
-        [Route("List")]
-        [HttpPost]
-        public ActionResult List()
-        {
-            try
-            {
-                Department department = new Department();
-                return Json(_iFDepartment.Read());
-            }
-            catch (Exception exception)
-            {
-                return Json(exception);
-            }
-        }
-
+        #region Update
         [HttpGet]
         public ActionResult Update(int id)
         {
-            try
-            {
-                Department department = _iFDepartment.Read(id);
-                return View(department);
-            }
-            catch (Exception ex)
-            {
-                return View(new Department());
-            }
+            return View(_iFDepartment.Read(id));
         }
 
         [HttpPost]
-        public JsonResult Update(Department department)
+        public ActionResult Update(Department department)
         {
-            try
-            {
-                //department = _iFDepartment.Update(department);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex);
-            }
+            var createdDepartment = _iFDepartment.Update(UserId, department);
+            return RedirectToAction("Index");
         }
+        #endregion
 
-        [HttpPost]
-        public ActionResult Delete(Department department)
+        #region Delete
+        [HttpDelete]
+        public JsonResult Delete(int id)
         {
-            try
-            {
-                //_iFDepartment.Delete(department);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex);
-            }
+            _iFDepartment.Delete(id);
+            return Json(string.Empty);
         }
+        #endregion
     }
 }

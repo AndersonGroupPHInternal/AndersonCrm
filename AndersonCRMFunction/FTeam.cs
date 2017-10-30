@@ -77,6 +77,7 @@ namespace AndersonCRMFunction
                 TeamId = a.TeamId,
                 UpdatedBy = a.UpdatedBy,
 
+                Color = "#" + a.Color,
                 Name = a.Name
             }).ToList();
         }
@@ -91,6 +92,7 @@ namespace AndersonCRMFunction
                 TeamId = team.TeamId,
                 UpdatedBy = team.UpdatedBy,
 
+                Color = team.Color.Trim(new Char[] { '#' }),
                 Name = team.Name
             };
         }
@@ -106,6 +108,7 @@ namespace AndersonCRMFunction
                 TeamId = eTeam.TeamId,
                 UpdatedBy = eTeam.UpdatedBy,
 
+                Color = "#" + eTeam.Color,
                 Name = eTeam.Name
             };
         }

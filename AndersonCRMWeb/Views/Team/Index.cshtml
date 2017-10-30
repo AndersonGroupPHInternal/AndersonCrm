@@ -3,10 +3,10 @@
     ViewBag.Title = "Index";
 }
 
-<div ng-controller="DepartmentController as model" ng-init="model.Initialise()">
+<div ng-controller="TeamController as model" ng-init="model.Initialise()">
     <div class="row">
         <div class="col-sm-4">
-            <a href="../Department/Create" class="btn btn-default">Create</a>
+            <a href="../Team/Create" class="btn btn-default">Create</a>
         </div>
     </div>
     <div class="row">
@@ -14,23 +14,25 @@
             <table class="table table-hover table-sm table-bordered ">
                 <thead>
                     <tr class="thead-inverse">
-                        <th>DepartmentId</th>
+                        <th>TeamId</th>
+                        <th>Color</th>
                         <th>Name</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="department in model.Departments" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(department.DepartmentId)">
-                        <td><span ng-bind="department.DepartmentId"></span></td>
-                        <td><span ng-bind="department.Name"></span></td>
+                    <tr class="clickableRow" ng-repeat="team in model.Teams" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(team.TeamId)">
+                        <td><span ng-bind="team.TeamId"></span></td>
+                        <td><span ng-bind="team.Color"></span></td>
+                        <td><span ng-bind="team.Name"></span></td>
                         <td ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#" ng-click="model.GoToUpdatePage(department.DepartmentId)">Edit</a></li>
-                                    <li><a href="#" ng-click="model.Delete(department.DepartmentId)">Delete</a></li>
+                                    <li><a href="#" ng-click="model.GoToUpdatePage(team.TeamId)">Edit</a></li>
+                                    <li><a href="#" ng-click="model.Delete(team.TeamId)">Delete</a></li>
                                 </ul>
                             </div>
                         </td>

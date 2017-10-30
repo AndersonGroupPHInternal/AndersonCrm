@@ -83,7 +83,7 @@ namespace AndersonCRMFunction
                 CreatedBy = a.CreatedBy,
                 UpdatedBy = a.UpdatedBy,
 
-                Color = a.Color,
+                Color = "#" + a.Color,
                 Name = a.Name,
             }).ToList();
         }
@@ -99,7 +99,7 @@ namespace AndersonCRMFunction
                 CreatedBy = company.CreatedBy,
                 UpdatedBy = company.UpdatedBy,
 
-                Color = company.Color,
+                Color = company.Color.Trim(new Char[] { '#' }),
                 Name = company.Name,
             };
         }
@@ -115,7 +115,7 @@ namespace AndersonCRMFunction
                 CreatedBy = eCompany.CreatedBy,
                 UpdatedBy = eCompany.UpdatedBy,
 
-                Color = eCompany.Color,
+                Color = "#" + eCompany.Color,
                 Name = eCompany.Name,
             };
         }
