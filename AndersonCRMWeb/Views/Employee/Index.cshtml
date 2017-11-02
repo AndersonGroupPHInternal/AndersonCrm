@@ -3,59 +3,64 @@
     ViewBag.Title = "Index";
 }
 
-<h1>EMPLOYEE</h1>
-<br/>
-<div ng-controller="EmployeeController as model" ng-init="model.List()">
-    <a href="/Employee/Add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
-    <div class="wrap">
-        <div class="search">
-            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
-        </div>
-    </div>   
+<div ng-controller="EmployeeController as model" ng-init="model.Initialise()">
     <div class="row">
-    </div><br />
-    <table class="table table-hover table-sm table-bordered "  id="tableid">
-        <thead>
-            <tr class="active" id="info">
-                <th>Employee Id</th>
-                @*<th>Company Id</th>*@
-                <th>Company</th>
-                @*<th>Position Id</th>*@
-                <th>Position</th>
-                <th>Department</th>
-                <th>Manager Employee Id</th>
-                <th>Employee Name</th>
-                <th>Email</th>
-                <th>Job Title</th>
-                <th>Hiring Date</th>
-                <th>Starting Date</th>
+        <div class="col-sm-4">
+            <a href="../Employee/Create" class="btn btn-default">Create</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-hover table-sm table-bordered ">
+                <thead>
+                    <tr class="thead-inverse">
+                        <th>DateHired</th>
+                        <th>DateStarted</th>
+                        <th>DateEnded</th>
 
-                <th style="width: 100px">Update</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="Employee in model.Employees"  ng-click="model.Details(Employee)" style="cursor:pointer"  filter="">
-                <td><span ng-bind="Employee.EmployeeId"></span></td>
-                @*<td><span ng-bind="Employee.CompanyId"></span></td>*@
-                <td><span ng-bind="Employee.Company.CompanyName"></span></td>
-                @*<td><span ng-bind="Employee.PositionId"></span></td>*@
-                <td><span ng-bind="Employee.Position.PositionName"></span></td>
-                <td><span ng-bind="Employee.Department.Description"></span></td>
-                <td><span ng-bind="Employee.ManagerEmployeeId"></span></td> 
-                <td><span ng-bind="Employee.FirstName+' '+Employee.MiddleName+' '+Employee.LastName"></span></td>
-                <td><span ng-bind="Employee.Email"></span></td>
-                <td><span ng-bind="Employee.JobTitle"></span></td>
-                <td> <span>{{Employee.HiringDate |date : "MMMM dd, yyyy"}}</span></td>
-                <td><span> {{Employee.StartingDate |date : "MMMM dd, yyyy"}}</span></td>
-                <td>
-                  
+                        <th>CompanyId</th>
+                        <th>EmployeeId</th>
+                        <th>JobTitleId</th>
+                        <th>ManagerEmployeeId</th>
 
-                    <a href="/employee/Index" ng-click="model.Delete(Employee)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        <th>Email</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>MiddleName</th>
 
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
+                        <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
+
+                        <td><span ng-bind="employee.CompanyId"></span></td>
+                        <td><span ng-bind="employee.EmployeeId"></span></td>
+                        <td><span ng-bind="employee.JobTitleId"></span></td>
+                        <td><span ng-bind="employee.ManagerEmployeeId"></span></td>
+
+                        <td><span ng-bind="employee.Email"></span></td>
+                        <td><span ng-bind="employee.FirstName"></span></td>
+                        <td><span ng-bind="employee.LastName"></span></td>
+                        <td><span ng-bind="employee.MiddleName"></span></td>
+
+                        <td ng-click="$event.originalEvent.dropdown = true">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="model.GoToUpdatePage(employee.EmployeeId)">Edit</a></li>
+                                    <li><a href="#" ng-click="model.Delete(employee.EmployeeId)">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-

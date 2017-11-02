@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="company in model.Companys" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(company.CompanyId)">
+                    <tr class="clickableRow" ng-repeat="company in model.Companies" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(company.CompanyId)">
                         <td><span ng-bind="company.CompanyId"></span></td>
                         <td><span ng-bind="company.Color"></span></td>
                         <td><span ng-bind="company.Name"></span></td>
