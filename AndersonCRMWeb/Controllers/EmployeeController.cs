@@ -1,77 +1,18 @@
-﻿using AndersonCRMFunction;
-using AndersonCRMModel;
-using System;
+﻿using AndersonCRMModel;
+using AndersonCRMFunction;
 using System.Web.Mvc;
-using System.Web.Routing;
 
 namespace AndersonCRMWeb.Controllers
 {
-    [RoutePrefix("Employee")]
-    public class EmployeeController : Controller
+    public class EmployeeController : BaseController
     {
         private IFEmployee _iFEmployee;
-
-        public EmployeeController()
+        public EmployeeController(IFEmployee iFEmployee)
         {
-            _iFEmployee = new FEmployee();
+            _iFEmployee = iFEmployee;
         }
 
-        [Route("")]
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-            var employee = _iFEmployee.Read(id);
-            return View(employee);
-        }
-
-        [HttpPost]
-        public ActionResult Details(Employee employee)
-        {
-            try
-            {
-                //_iFEmployee.Update(employee);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-        [HttpGet]
-        public ActionResult Add()
-        {
-            return View();
-        }
-
-        public ActionResult Edit(int id)
-        {
-            var employee = _iFEmployee.Read(id);
-            return View(employee);
-        }
-
-
-        [HttpPost]
-        public ActionResult Edit(Employee employee)
-        {
-            try
-            {
-                //_iFEmployee.Update(employee);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
+        #region Create
         [HttpGet]
         public ActionResult Create()
         {
@@ -79,77 +20,49 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(Employee employee)
+        public ActionResult Create(Employee employee)
         {
-            //employee = _iFEmployee.Create(employee);
-            //return View(employee);
-            try
-            {
-                //employee = _iFEmployee.Create(employee);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex);
-            }
+            var createdEmployee = _iFEmployee.Create(UserId, employee);
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region Read
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
         }
 
-
-        [Route("List")]
         [HttpPost]
-        public ActionResult List()
+        public JsonResult Read()
         {
-            try
-            {
-                Employee employee = new Employee();
-                return Json(_iFEmployee.Read());
-            }
-            catch (Exception exception)
-            {
-                return Json(exception);
-            }
+            return Json(_iFEmployee.Read());
         }
+        #endregion
+
+        #region Update
         [HttpGet]
         public ActionResult Update(int id)
         {
-            try
-            {
-                Employee employee = _iFEmployee.Read(id);
-                return View(employee);
-            }
-            catch (Exception ex)
-            {
-                return View(new Employee());
-            }
+            return View(_iFEmployee.Read(id));
         }
 
         [HttpPost]
         public ActionResult Update(Employee employee)
         {
-            try
-            {
-                //employee = _iFEmployee.Update(employee);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return View(ex);
-            }
+            var createdEmployee = _iFEmployee.Update(UserId, employee);
+            return RedirectToAction("Index");
         }
+        #endregion
 
-        [HttpPost]
-        public ActionResult Delete(Employee employee)
+        #region Delete
+        [HttpDelete]
+        public JsonResult Delete(int id)
         {
-            try
-            {
-                //_iFEmployee.Delete(employee);
-                return Json("");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex);
-            }
+            _iFEmployee.Delete(id);
+            return Json(string.Empty);
         }
-
+        #endregion
     }
 }

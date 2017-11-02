@@ -5,16 +5,20 @@
         .module('App')
         .controller('JobTitleController', JobTitleController);
 
-    JobTitleController.$inject = ['$window', 'JobTitleService'];
+    JobTitleController.$inject = ['$filter', '$window', 'JobTitleService'];
 
-    function JobTitleController($window, JobTitleService) {
+    function JobTitleController($filter, $window, JobTitleService) {
         var vm = this;
 
-        vm.Employees = [];
+        vm.JobTitleId;
+
+        vm.JobTitle;
+
         vm.JobTitles = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
+        vm.InitialiseDropdown = InitialiseDropdown;
 
         vm.Delete = Delete;
         
@@ -26,10 +30,17 @@
             Read();
         }
 
-        function ReadEmployees() {
-            EmployeeService.Read()
+        function InitialiseDropdown(jobTitleId) {
+            vm.JobTitleId = jobTitleId;
+            Read();
+        } 
+
+        function Read() {
+            JobTitleService.Read()
                 .then(function (response) {
-                    vm.Employees = response.data;
+                    vm.JobTitles = response.data;
+                    if (vm.JobTitleId)
+                        UpdateJobTitle();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -43,21 +54,8 @@
                 });
         }
 
-        function Read() {
-            JobTitleService.Read()
-                .then(function (response) {
-                    vm.JobTitles = response.data;
-                })
-                .catch(function (data, status) {
-                    new PNotify({
-                        title: status,
-                        text: data,
-                        type: 'error',
-                        hide: true,
-                        addclass: "stack-bottomright"
-                    });
-
-                });
+        function UpdateJobTitle() {
+            vm.JobTitle = $filter('filter')(vm.JobTitles, { JobTitleId: vm.JobTitleId })[0];
         }
 
         function Delete(jobTitleId) {
