@@ -25,6 +25,7 @@
         </ui-select-match>
         <ui-select-choices repeat="company in (model.Companies | filter: $select.search) track by $index">
             <span ng-bind="company.Name"></span>
+
         </ui-select-choices>
     </ui-select>
     <input type="hidden" class="form-control" name="CompanyId" value="{{model.Company.CompanyId}}">
