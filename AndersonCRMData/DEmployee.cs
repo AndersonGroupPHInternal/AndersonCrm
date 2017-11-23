@@ -5,7 +5,7 @@ namespace AndersonCRMData
 {
     public class DEmployee : DBase, IDEmployee
     {
-        public DEmployee() : base(new Context())
+        public DEmployee() :base(new Context())
         {
         }
     }

@@ -14,14 +14,12 @@
         vm.Employee;
         vm.Employees = [];
         vm.Companies = [];
-        vm.Jobs = [];
+        vm.JobTitles = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
         vm.InitialiseDropdown = InitialiseDropdown;
-
-        vm.UpdateCompany = UpdateCompany;
-        vm.UpdateJobs = UpdateJobs;
+        
         vm.Delete = Delete;
 
         function GoToUpdatePage(employeeId) {
@@ -30,19 +28,24 @@
 
         function Initialise() {
             Read();
-            ReadCompanies();
-            ReadJobs();
         }
 
         function InitialiseDropdown(employeeId) {
             vm.EmployeeId = employeeId;
             Read();
-        } 
+        }
 
-        function ReadJobs() {
-            JobTitleService.Read()
+        function Read() {
+            EmployeeService.Read()
                 .then(function (response) {
-                    vm.Jobs = response.data;
+                    vm.Employees = response.data;
+                    if (vm.EmployeeId) {
+                        UpdateEmployee();
+                    }
+                    else {
+                        ReadCompanies();
+                        ReadJobTitles();
+                    }
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -60,6 +63,7 @@
             CompanyService.Read()
                 .then(function (response) {
                     vm.Companies = response.data;
+                    UpdateCompany();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -73,12 +77,11 @@
                 });
         }
 
-        function Read() {
-            EmployeeService.Read()
+        function ReadJobTitles() {
+            JobTitleService.Read()
                 .then(function (response) {
-                    vm.Employees = response.data;
-                    if (vm.EmployeeId)
-                        UpdateEmployee();
+                    vm.JobTitles = response.data;
+                    UpdateJobTitles();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -91,17 +94,21 @@
 
                 });
         }
-
-        function UpdateCompany(employee) {
-            employee.Company = $filter('filter')(vm.Companies, { CompanyId: employee.CompanyId })[0];
+        
+        function UpdateCompany() {
+            angular.forEach(vm.Employees, function (employee) {
+                employee.Company = $filter('filter')(vm.Companies, { CompanyId: employee.CompanyId })[0];
+            });
         }
 
         function UpdateEmployee() {
             vm.Employee = $filter('filter')(vm.Employees, { EmployeeId: vm.EmployeeId })[0];
         }
 
-        function UpdateJobs(employee) {
-            employee.JobTitle = $filter('filter')(vm.Jobs, { JobTitleId: employee.JobTitleId })[0];
+        function UpdateJobTitles() {
+            angular.forEach(vm.Employees, function (employee) {
+                employee.JobTitle = $filter('filter')(vm.JobTitles, { JobTitleId: employee.JobTitleId })[0];
+            });
         }
 
         function Delete(employeeId) {

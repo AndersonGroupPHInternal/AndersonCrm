@@ -146,7 +146,7 @@ namespace AndersonCRMFunction
                 Email = eEmployee.Email,
                 FirstName = eEmployee.FirstName,
                 LastName = eEmployee.LastName,
-                MiddleName = eEmployee.MiddleName
+                MiddleName = eEmployee.MiddleName           
             };
             return returnEmployee;
         }
