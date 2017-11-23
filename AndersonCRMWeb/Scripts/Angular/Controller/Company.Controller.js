@@ -27,8 +27,11 @@
         } 
 
         function Initialise() {
+            // vm.CompanyId = companyId;
             Read();
+           
         }
+        
 
         function InitialiseDropdown(companyId) {
             vm.CompanyId = companyId;
@@ -57,6 +60,7 @@
         function UpdateCompany() {
             vm.Company = $filter('filter')(vm.Companies, { CompanyId: vm.CompanyId })[0];
         }
+
 
         function Delete(companyId) {
             CompanyService.Delete(companyId)
