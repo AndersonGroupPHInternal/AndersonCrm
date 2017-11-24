@@ -3,47 +3,45 @@
 
     angular
         .module('App')
-        .controller('TeamController', TeamController);
+        .controller('PeripheralController', PeripheralController);
 
-    TeamController.$inject = ['$filter', '$window', 'TeamService'];
+    PeripheralController.$inject = ['$filter','$window', 'PeripheralService'];
 
-    function TeamController($filter, $window, TeamService) {
+    function PeripheralController($window, PeripheralService) {
         var vm = this;
 
-        vm.TeamId;
+        vm.PeripheralId;
 
-        vm.Team;
+        vm.Peripheral;
 
-        vm.Teams = [];
+        vm.Peripherals = [];
+
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
         vm.InitialiseDropdown = InitialiseDropdown;
-
+        
         vm.Delete = Delete;
 
-        function GoToUpdatePage(companyId) {
-            $window.location.href = '../Team/Update/' + teamId;
+        function GoToUpdatePage(peripheralId) {
+            $window.location.href = '../Peripheral/Update/' + peripheralId;
         }
 
         function Initialise() {
-            // vm.TeamId = companyId;
             Read();
-
         }
 
-
-        function InitialiseDropdown(teamId) {
-            vm.TeamId = teamId;
+        function InitialiseDropdown(peripheralId) {
+            vm.PeripheralId = peripheralId;
             Read();
         }
 
         function Read() {
-            TeamService.Read()
+            PeripheralService.Read()
                 .then(function (response) {
-                    vm.Teams = response.data;
-                    if (vm.TeamId)
-                        UpdateTeam();
+                    vm.Peripherals = response.data;
+                    if (vm.PeripheralId)
+                        UpdatePeripheral();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -57,13 +55,12 @@
                 });
         }
 
-        function UpdateTeam() {
-            vm.Team = $filter('filter')(vm.Teams, { TeamId: vm.TeamId })[0];
+        function UpdatePeripheral() {
+            vm.Peripheral = $filter('filter')(vm.Peripherals, { PeripheralId: vm.PeripheralId })[0];
         }
 
-
-        function Delete(teamId) {
-            TeamService.Delete(teamId)
+        function Delete(peripheralId) {
+            PeripheralService.Delete(peripheralId)
                 .then(function (response) {
                     Read();
                 })
