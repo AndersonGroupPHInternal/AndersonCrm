@@ -958,12 +958,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Angular\app.module.js" />
+    <Content Include="Scripts\Angular\Controller\Peripheral.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Team.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Peripheral.Type.Controller.js" />
     <Content Include="Scripts\Angular\Controller\JobTitle.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Company.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Department.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Employee.Controller.js" />
+    <Content Include="Scripts\Angular\Service\Peripheral.Service.js" />
     <Content Include="Scripts\Angular\Service\Team.Service.js" />
     <Content Include="Scripts\Angular\Service\PeripheralType.Service.js" />
     <Content Include="Scripts\Angular\Service\JobTitle.Service.js" />
@@ -1004,19 +1006,19 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
-    <Content Include="Views\Peripheral\Index.cshtml" />
+    <Content Include="Views\Peripheral\Update.cshtml" />
     <Content Include="Views\Position\Index.cshtml" />
     <Content Include="Views\Shared\_PartialCSS.cshtml" />
     <Content Include="Views\Shared\_PartialScript.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
     <Content Include="Views\Company\Update.cshtml" />
     <Content Include="Views\Position\add.cshtml" />
-    <Content Include="Views\Peripheral\Add.cshtml" />
+    <Content Include="Views\Peripheral\_Peripheral.cshtml" />
     <Content Include="Views\Position\Edit.cshtml" />
-    <Content Include="Views\Peripheral\Edit.cshtml" />
+    <Content Include="Views\Peripheral\Index.cshtml" />
     <Content Include="Views\Company\_Company.cshtml" />
     <Content Include="Views\Position\Details.cshtml" />
-    <Content Include="Views\Peripheral\Details.cshtml" />
+    <Content Include="Views\Peripheral\Create.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
     <Content Include="Views\Department\_Department.cshtml" />
@@ -1040,6 +1042,7 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Update.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="Scripts\Angular\Controller\Peripheral.Controller" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
