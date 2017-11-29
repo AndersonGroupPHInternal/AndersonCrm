@@ -45,6 +45,21 @@
     <input type="hidden" class="form-control" name="Departments[{{$index}}].DepartmentId" value="{{department.DepartmentId}}">
 </div>
 
+<div class="form-group" ng-controller="TeamController as model" ng-init="model.Initialise(@Model.TeamId)">
+    <label>Team</label>
+    <ui-select multiple ng-model="model.Team">
+        <ui-select-match placeholder="Select Team(s)...">
+            {{$item.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="team in (model.Teams | filter: $select.search) track by $index">
+            <span ng-bind="team.Name"></span>
+        </ui-select-choices>
+    </ui-select>
+    <div ng-repeat="team in model.Teams track by $index">
+    </div>
+    <input type="hidden" class="form-control" name="Teams[{{$index}}].TeamId" value="{{team.Team}}">
+</div>
+
 <div class="form-group" ng-controller="JobTitleController as model" ng-init="model.InitialiseDropdown(@Model.JobTitleId)">
     <label>JobTitle</label>
     <ui-select ng-model="model.JobTitle">
