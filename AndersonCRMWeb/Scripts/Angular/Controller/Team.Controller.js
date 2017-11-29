@@ -5,36 +5,23 @@
         .module('App')
         .controller('TeamController', TeamController);
 
-    TeamController.$inject = ['$filter', '$window', 'TeamService'];
+    TeamController.$inject = ['$window', 'TeamService'];
 
-    function TeamController($filter, $window, TeamService) {
+    function TeamController($window, TeamService) {
         var vm = this;
-
-        vm.TeamId;
-
-        vm.Team;
 
         vm.Teams = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
-        vm.InitialiseDropdown = InitialiseDropdown;
 
         vm.Delete = Delete;
-
-        function GoToUpdatePage(companyId) {
+        
+        function GoToUpdatePage(teamId) {
             $window.location.href = '../Team/Update/' + teamId;
-        }
+        } 
 
         function Initialise() {
-            // vm.TeamId = companyId;
-            Read();
-
-        }
-
-
-        function InitialiseDropdown(teamId) {
-            vm.TeamId = teamId;
             Read();
         }
 
@@ -42,8 +29,6 @@
             TeamService.Read()
                 .then(function (response) {
                     vm.Teams = response.data;
-                    if (vm.TeamId)
-                        UpdateTeam();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -56,11 +41,6 @@
 
                 });
         }
-
-        function UpdateTeam() {
-            vm.Team = $filter('filter')(vm.Teams, { TeamId: vm.TeamId })[0];
-        }
-
 
         function Delete(teamId) {
             TeamService.Delete(teamId)

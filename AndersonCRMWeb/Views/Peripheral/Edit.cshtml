@@ -1,0 +1,39 @@
+﻿
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div ng-controller="PeripheralController as model" ng-init="model.List()">
+
+
+    <form method="post" action="~/Peripheral/Edit">
+        <br />
+        @*<label for="Date">Date:</label>*@
+        <input type="hidden" class="form-control" id="PeripheralDate" name="Peripheral.Date" value="@Model.Date" required/>
+        <label for="EmployeeId">Employee Number: </label><br />
+       
+        <input list="EmployeeId" class="form-control" name="Peripheral.EmployeeId" value="@Model.EmployeeId">
+        <input type="hidden" name="Peripheral.PeripheralId" value="@Model.PeripheralId" required/>
+        
+        <label for="AssetTag">Asset Tag:</label>
+        <input type="text" class="form-control" name="Peripheral.AssetTag" value="@Model.AssetTag" required/>
+        
+        <label for="PeripheralName">Asset name:</label>
+        <input type="text" class="form-control" name="Peripheral.PeripheralName" value="@Model.PeripheralName" required />
+        
+        <label for="Description">Make:</label>
+        <input type="text" class="form-control" name="Peripheral.Description" value="@Model.Description" required />
+        
+        <label for="SerialNumber">Serial Number:</label>
+        <input type="text" class="form-control" name="Peripheral.SerialNumber" value="@Model.SerialNumber" required/>
+        <br />
+        <input type="Submit" value="Save"  class="btn btn-primary"  /> &nbsp;&nbsp;
+
+        <a href="/Peripheral/Index" class="btn btn-danger" style="margin-left:10px;" float="left"><i class="glyphicon glyphicon-close "></i>Close</a>
+
+    </form>
+
+</div>

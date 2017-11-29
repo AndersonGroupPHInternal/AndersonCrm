@@ -15,18 +15,18 @@
             <table class="table table-hover table-sm table-bordered ">
                 <thead>
                     <tr class="thead-inverse">
-                        @*<th>DateHired</th>
+                        <th>DateHired</th>
                         <th>DateStarted</th>
-                        <th>DateEnded</th>*@
+                        <th>DateEnded</th>
 
-                        @*<th>CompanyId</th>*@
+                        <th>CompanyId</th>
                         <th>CompanyName</th>
-                        @*<th>EmployeeId</th>
-                        <th>JobTitleId</th>*@
+                        <th>EmployeeId</th>
+                        <th>JobTitleId</th>
                         <th>JobTitleName</th>
-                        @*<th>ManagerEmployeeId</th>*@
+                        <th>ManagerEmployeeId</th>
 
-                        @*<th>Email</th>*@
+                        <th>Email</th>
                         <th>FirstName</th>
                         <th>LastName</th>
                         <th>MiddleName</th>
@@ -36,17 +36,18 @@
                 </thead>
                 <tbody>
                     <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
-                        @*<td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
-                        <td><span ng-bind="employee.CompanyId"></span></td>*@
-                        <td><span ng-bind="employee.Company.Name"></span></td>
-                        @*<td><span ng-bind="employee.EmployeeId"></span></td>
-                        <td><span ng-bind="employee.JobTitleId"></span></td>*@
-                        <td><span ng-bind="employee.JobTitle.Name"></span></td>
-                        @*<td><span ng-bind="employee.ManagerEmployeeId"></span></td>*@
 
-                        @*<td><span ng-bind="employee.Email"></span></td>*@
+                        <td><span ng-bind="employee.CompanyId"></span></td>
+                        <td><span ng-bind="employee.Company.Name"></span></td>
+                        <td><span ng-bind="employee.EmployeeId"></span></td>
+                        <td><span ng-bind="employee.JobTitleId"></span></td>
+                        <td><span ng-bind="employee.JobTitle.Name"></span></td>
+                        <td><span ng-bind="employee.ManagerEmployeeId"></span></td>
+
+                        <td><span ng-bind="employee.Email"></span></td>
                         <td><span ng-bind="employee.FirstName"></span></td>
                         <td><span ng-bind="employee.LastName"></span></td>
                         <td><span ng-bind="employee.MiddleName"></span></td>

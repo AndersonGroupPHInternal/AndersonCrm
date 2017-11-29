@@ -5,9 +5,9 @@
         .module('App')
         .controller('EmployeeController', EmployeeController);
 
-    EmployeeController.$inject = ['$filter', '$window', 'CompanyService', 'JobTitleService','EmployeeService','DepartmentService'];
+    EmployeeController.$inject = ['$filter', '$window', 'CompanyService', 'JobTitleService','EmployeeService'];
 
-    function EmployeeController($filter, $window, CompanyService, JobTitleService, EmployeeService, DepartmentService) {
+    function EmployeeController($filter, $window, CompanyService, JobTitleService, EmployeeService) {
         var vm = this;
 
         vm.EmployeeId;
@@ -15,7 +15,6 @@
         vm.Employees = [];
         vm.Companies = [];
         vm.JobTitles = [];
-        vm.Departments = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
@@ -44,7 +43,6 @@
                         UpdateEmployee();
                     }
                     else {
-                        //ReadDepartments()
                         ReadCompanies();
                         ReadJobTitles();
                     }
@@ -61,26 +59,6 @@
                 });
         }
 
-        //Department
-        //function ReadDepartments() {
-        //    DepartmentService.Read()
-        //        .then(function (response) {
-        //            vm.Departments = response.data;
-        //            UpdateDepartment();
-        //        })
-        //        .catch(function (data, status) {
-        //            new PNotify({
-        //                title: status,
-        //                text: data,
-        //                type: 'error',
-        //                hide: true,
-        //                addclass: "stack-bottomright"
-        //            });
-
-        //        });
-        //}
-
-        //Company
         function ReadCompanies() {
             CompanyService.Read()
                 .then(function (response) {
@@ -116,27 +94,17 @@
 
                 });
         }
-
-        //UpdateDepartment
-        //function UpdateDepartment() {
-        //    angular.forEach(vm.Employees, function (employee) {
-        //        employee.Department = $filter('filter')(vm.Departments, { DepartmentId: employee.DepartmentId })[0];
-        //    });
-        //}
-
-        //UpdateCompany
+        
         function UpdateCompany() {
             angular.forEach(vm.Employees, function (employee) {
                 employee.Company = $filter('filter')(vm.Companies, { CompanyId: employee.CompanyId })[0];
             });
         }
 
-        //UpdateEmployee
         function UpdateEmployee() {
             vm.Employee = $filter('filter')(vm.Employees, { EmployeeId: vm.EmployeeId })[0];
         }
 
-        //UpdateJob
         function UpdateJobTitles() {
             angular.forEach(vm.Employees, function (employee) {
                 employee.JobTitle = $filter('filter')(vm.JobTitles, { JobTitleId: employee.JobTitleId })[0];
