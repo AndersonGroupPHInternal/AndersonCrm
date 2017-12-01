@@ -1,10 +1,12 @@
 ﻿using BaseModel;
+using System;
 using System.Collections.Generic;
 
 namespace AndersonCRMModel
 {
     public class Peripheral : Base
     {
+
         public int EmployeeId { get; set; }
         public int PeripheralId { get; set; }
         public int PeripheralTypeId { get; set; }
