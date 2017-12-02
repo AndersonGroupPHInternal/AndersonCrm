@@ -5,9 +5,9 @@
         .module('App')
         .controller('EmployeeController', EmployeeController);
 
-    EmployeeController.$inject = ['$filter', '$window', 'CompanyService', 'JobTitleService','EmployeeService'];
+    EmployeeController.$inject = ['$filter', '$window', 'CompanyService', 'JobTitleService', 'EmployeeService','DepartmentService'];
 
-    function EmployeeController($filter, $window, CompanyService, JobTitleService, EmployeeService) {
+    function EmployeeController($filter, $window, CompanyService, JobTitleService, EmployeeService, DepartmentService) {
         var vm = this;
 
         vm.EmployeeId;
@@ -15,6 +15,7 @@
         vm.Employees = [];
         vm.Companies = [];
         vm.JobTitles = [];
+        vm.Departments = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;

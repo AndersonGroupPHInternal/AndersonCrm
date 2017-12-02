@@ -22,6 +22,7 @@ namespace AndersonCRMFunction
             EPeripheral ePeripheral = EPeripheral(peripheral);
             ePeripheral.CreatedDate = DateTime.Now;
             ePeripheral.CreatedBy = createdBy;
+
             ePeripheral = _iDPeripheral.Create(ePeripheral);
 
             CreatePeripheralHistory(createdBy, ePeripheral);

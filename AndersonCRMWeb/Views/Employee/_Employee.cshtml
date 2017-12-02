@@ -25,10 +25,39 @@
         </ui-select-match>
         <ui-select-choices repeat="company in (model.Companies | filter: $select.search) track by $index">
             <span ng-bind="company.Name"></span>
-
         </ui-select-choices>
     </ui-select>
     <input type="hidden" class="form-control" name="CompanyId" value="{{model.Company.CompanyId}}">
+</div>
+
+<div class="form-group" ng-controller="DepartmentController as model" ng-init="model.Initialise(@Model.DepartmentId)">
+    <label>Department</label>
+    <ui-select multiple ng-model="model.Department">
+        <ui-select-match placeholder="Select Department(s)...">
+            {{$item.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="department in (model.Departments | filter: $select.search) track by $index">
+            <span ng-bind="department.Name"></span>
+        </ui-select-choices>
+    </ui-select>
+    <div ng-repeat="department in model.Departments track by $index">
+    </div>
+    <input type="hidden" class="form-control" name="Departments[{{$index}}].DepartmentId" value="{{department.DepartmentId}}">
+</div>
+
+<div class="form-group" ng-controller="TeamController as model" ng-init="model.Initialise(@Model.TeamId)">
+    <label>Team</label>
+    <ui-select multiple ng-model="model.Team">
+        <ui-select-match placeholder="Select Team(s)...">
+            {{$item.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="team in (model.Teams | filter: $select.search) track by $index">
+            <span ng-bind="team.Name"></span>
+        </ui-select-choices>
+    </ui-select>
+    <div ng-repeat="team in model.Teams track by $index">
+    </div>
+    <input type="hidden" class="form-control" name="Teams[{{$index}}].TeamId" value="{{team.Team}}">
 </div>
 
 <div class="form-group" ng-controller="JobTitleController as model" ng-init="model.InitialiseDropdown(@Model.JobTitleId)">
@@ -43,6 +72,7 @@
     </ui-select>
     <input type="hidden" class="form-control" name="JobTitleId" value="{{model.JobTitle.JobTitleId}}">
 </div>
+
 <div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.ManagerEmployeeId)">
     <label>Manager</label>
     <ui-select ng-model="model.Employee">

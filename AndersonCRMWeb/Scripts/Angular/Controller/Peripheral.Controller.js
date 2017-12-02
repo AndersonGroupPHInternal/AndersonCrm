@@ -3,18 +3,18 @@
 
     angular
         .module('App')
-        .controller('DepartmentController', DepartmentController);
+        .controller('PeripheralController', PeripheralController);
 
-    DepartmentController.$inject = ['$filter', '$window', 'DepartmentService'];
+    PeripheralController.$inject = ['$filter', '$window', 'PeripheralService'];
 
-    function DepartmentController($filter, $window, DepartmentService) {
+    function PeripheralController($filter, $window, PeripheralService) {
         var vm = this;
 
-        vm.DepartmentId;
+        vm.PeripheralId;
 
-        vm.Department;
+        vm.Peripheral;
 
-        vm.Departments = [];
+        vm.Peripherals = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
@@ -22,25 +22,28 @@
 
         vm.Delete = Delete;
 
-        function GoToUpdatePage(departmentId) {
-            $window.location.href = '../Department/Update/' + departmentId;
+        function GoToUpdatePage(peripheralId) {
+            $window.location.href = '../Peripheral/Update/' + peripheralId;
         }
 
         function Initialise() {
+            // vm.PeripheralId = companyId;
             Read();
+
         }
 
-        function InitialiseDropdown(departmentId) {
-            vm.DepartmentId = departmentId;
+
+        function InitialiseDropdown(peripheralId) {
+            vm.PeripheralId = peripheralId;
             Read();
         }
 
         function Read() {
-            DepartmentService.Read()
+            PeripheralService.Read()
                 .then(function (response) {
-                    vm.Departments = response.data;
-                    if (vm.DepartmentId)
-                        UpdateDepartment();
+                    vm.Peripherals = response.data;
+                    if (vm.PeripheralId)
+                        UpdatePeripheral();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -54,12 +57,13 @@
                 });
         }
 
-        function UpdateDepartment() {
-            vm.Department = $filter('filter')(vm.Departments, { DepartmentId: vm.DepartmentId })[0];
+        function UpdatePeripheral() {
+            vm.Peripheral = $filter('filter')(vm.Peripherals, { PeripheralId: vm.PeripheralId })[0];
         }
 
-        function Delete(departmentId) {
-            DepartmentService.Delete(departmentId)
+
+        function Delete(peripheralId) {
+            PeripheralService.Delete(peripheralId)
                 .then(function (response) {
                     Read();
                 })
