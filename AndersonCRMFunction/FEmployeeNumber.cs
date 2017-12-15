@@ -7,11 +7,11 @@ using System;
 
 namespace AndersonCRMFunction
 {
-    public class FEmployee : IFEmployee
+    public class FEmployeeNumber : IFEmployee
     {
         private IDEmployee _iDEmployee;
 
-        public FEmployee()
+        public FEmployeeNumber()
         {
             _iDEmployee = new DEmployee();
         }
@@ -149,7 +149,7 @@ namespace AndersonCRMFunction
                 Email = eEmployee.Email,
                 FirstName = eEmployee.FirstName,
                 LastName = eEmployee.LastName,
-                MiddleName = eEmployee.MiddleName           
+                MiddleName = eEmployee.MiddleName
             };
             return returnEmployee;
         }

@@ -19,12 +19,13 @@
                         <th>DateStarted</th>
                         <th>DateEnded</th>
 
+                        <th>EmployeeNumber</th>
                         <th>CompanyId</th>
                         <th>CompanyName</th>
                         <th>EmployeeId</th>
                         <th>JobTitleId</th>
                         <th>JobTitleName</th>
-                        <th>ManagerEmployeeId</th>
+                        <th>Manager</th>
 
                         <th>Email</th>
                         <th>FirstName</th>
@@ -40,12 +41,17 @@
                         <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
 
+                        <td><span ng-bind="employee.EmployeeNumber"></span></td>
                         <td><span ng-bind="employee.CompanyId"></span></td>
                         <td><span ng-bind="employee.Company.Name"></span></td>
                         <td><span ng-bind="employee.EmployeeId"></span></td>
                         <td><span ng-bind="employee.JobTitleId"></span></td>
                         <td><span ng-bind="employee.JobTitle.Name"></span></td>
-                        <td><span ng-bind="employee.ManagerEmployeeId"></span></td>
+
+                        <td><span ng-bind="employee.FirstName"></span>
+                            <span ng-bind="employee.MiddleName"></span>
+                            <span ng-bind="employee.LastName"></span>
+                        </td>
 
                         <td><span ng-bind="employee.Email"></span></td>
                         <td><span ng-bind="employee.FirstName"></span></td>

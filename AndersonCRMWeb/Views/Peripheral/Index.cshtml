@@ -3,105 +3,68 @@
     ViewBag.Title = "Index";
 }
 
-<h1>ASSET</h1>
-<br/>
-<div ng-controller="PeripheralController as model" ng-init="model.List()">
-    <a href="/Peripheral/Add" class="btn btn-success" role="button" ng-click="model.Create()" style="margin-right: 10px;float: right"><i class="glyphicon glyphicon-plus-sign"></i> ADD</a>
-    <a href="/PeripheralHistory/Index" class="btn btn-primary" role="button" style="margin-left: 10px;float: right"><i class="glyphicon glyphicon-list"></i>Asset History</a>
-    <div class="wrap">
-        <div class="search">
-            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
+<div ng-controller="PeripheralController as model" ng-init="model.Initialise()">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="../Peripheral/Create" class="btn btn-default">Create</a>
         </div>
     </div>
+
     <div class="row">
-        </div><br />
-        <table class="table table-hover table-sm table-bordered "  id="tableid">
-            <thead>
-                <tr class="active" id="info">
-                    @*<th>Asset Id</th>*@
-                    @*<th>Date</th>*@
-                    <th>Employee Id</th>
-                    <th>Asset Tag</th>
-                    <th>Asset Name</th>
-                    <th>Make</th>
-                    <th>Serial Number</th>
-                     @*<th>Assigned To</th>*@
-                    <th style="width: 100px">Update</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="Peripheral in model.Peripherals" ng-click="model.Details(Peripheral)" style="cursor:pointer" >
-                    @*<td><span ng-bind="Peripheral.PeripheralId"></span></td>*@
-                    @*<td><span>{{Peripheral.Date | date: "MMMM dd, yyyy"}}</span></td>*@
-                    <td><span ng-bind="Peripheral.EmployeeId"></span></td>
-                    <td><span ng-bind="Peripheral.AssetTag"></span></td>
-                    <td><span ng-bind="Peripheral.PeripheralName"></span></td>
-                    <td><span ng-bind="Peripheral.Description"></span></td>
-                    <td><span ng-bind="Peripheral.SerialNumber"></span></td>
-                    <td>
-                        @*<a ng-href="{{'/Company/Update/' + Company.CompanyId}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>*@
-                        @*<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="model.UpdateModal(Company)" data-target="#CompanyModal">
-                                Edit
-                            </button>*@
-                        @*<button type="button" class="btn btn-info " data-toggle="modal" ng-click="model.UpdateModal(Peripheral)" data-target="#PeripheralModal"><i class="glyphicon glyphicon-edit"></i> Edit</button>*@
+        <div class="col-sm-12">
+            <table class="table table-hover table-sm table-bordered ">
+                <thead>
+                    <tr class="thead-inverse">
+                        <th>PeripheralId</th>
+                        <th>EmployeeId</th>
+                        <th>PeripheralTypeId</th>
 
-                        <a href="/Peripheral/Index" ng-click="model.Delete(Peripheral)" type="button" class="btn btn-danger"> <i class="glyphicon glyphicon-trash"></i> Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- Modal -->
-        @*<div class="modal fade" id="PeripheralModal" role="dialog">
-            <div class="modal-dialog">*@
+                        <th>AssetTag</th>
+                        <th>Description</th>
+                        <th>Name</th>
+                        <th>SerialNumber</th>
+                        <th>CreatedBy</th>
+                        <th>UpdatedBy</th>
 
-        <!-- Modal content-->
-        @*<div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="EmployeeNumber">Employee Number:</label>
-                    <input list="EmployeeNumber" name="EmployeeNumber" ng-model="model.Peripheral.EmployeeNumber" type="text" class="form-control">
-                    <datalist id="EmployeeNumber">*@
-        @*<option ng-value="Employee.EmployeeNumber">*@
-        @*<option value="1">
-            <option value="11">
-            <option value="13">
-            <option value="15">
-            </datalist>*@
+                        <th>CreateDate</th>
+                        <th>UpdateDate</th>
+                       
 
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickableRow" ng-repeat="peripheral in model.Peripherals" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(peripheral.PeripheralId)">
 
+                        <td><span ng-bind="peripheral.PeripheralId"></span></td>
+                        <td><span ng-bind="peripheral.EmployeeId"></span></td>
+                        <td><span ng-bind="peripheral.PeripheralTypeId"></span></td>
+                        <td><span ng-bind="peripheral.AssetTag"></span></td>
+                        <td><span ng-bind="peripheral.Description"></span></td>
+                        <td><span ng-bind="peripheral.Name"></span></td>
 
-        @*<input type="text" class="form-control" id="EmployeeNumber" ng-model="model.Peripheral.EmployeeNumber" />*@
-        @*<label for="PeripheralName">Peripheral Name:</label>
-            <input type="text" class="form-control" id="PeripheralName" ng-model="model.Peripheral.PeripheralName" />
-            <label for="Description">Description :</label>
-            <input type="text" class="form-control" id="Description" ng-model="model.Peripheral.Description" />
-            <label for="SerialNumber">Serial Number:</label>
-            <input type="text" class="form-control" id="SerialNumber" ng-model="model.Peripheral.SerialNumber" />*@
-        @*</div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" ng-click="model.Update()" ng-show="model.Peripheral.PeripheralId > 0">Save changes</button>
-                            <button type="button" class="btn btn-primary" ng-click="model.Create()" ng-show="model.Peripheral.PeripheralId == 0">Add</button>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
+                        <td><span ng-bind="peripheral.SerialNumber"></span></td>
+                        <td><span ng-bind="peripheral.CreatedBy"></span></td>
+                        <td><span ng-bind="peripheral.UpdatedBy"></span></td>
 
+                        <td><span ng-bind="peripheral.CreateDate | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-bind="peripheral.UpdateDate | date:'yyyy-MM-dd'"></span></td>
+                        
 
-
+                        <td ng-click="$event.originalEvent.dropdown = true">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="model.GoToUpdatePage(peripheral.PeripheralId)">Edit</a></li>
+                                    <li><a href="#" ng-click="model.Delete(peripheral.PeripheralId)">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
+</div>
