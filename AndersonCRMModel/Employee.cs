@@ -6,6 +6,7 @@ namespace AndersonCRMModel
 {
     public class Employee : Base
     {
+        
         public DateTime DateHired { get; set; }
         public DateTime DateStarted { get; set; }
         public DateTime? DateEnded { get; set; }
@@ -17,6 +18,7 @@ namespace AndersonCRMModel
         public int JobTitleId { get; set; }
         public int ManagerEmployeeId { get; set; }
 
+        public string EmployeeNumber { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -14,8 +14,10 @@ namespace AndersonCRMEntity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PeripheralId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [ForeignKey("PeripheralType")]
         public int PeripheralTypeId { get; set; }
+        
 
         [StringLength(50)]
         public string AssetTag { get; set; }
