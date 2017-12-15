@@ -17,6 +17,11 @@
     <input type="date" class="form-control" id="DateEnded" name="DateEnded" placeholder="DateEnded" value="@(Model.DateEnded?.ToString("yyyy-MM-dd") ?? null)">
 </div>
 
+<div class="form-group">
+    <label for="EmployeeNumber">EmployeeNumber</label>
+    <input type="text" class="form-control" id="EmployeeNumber" name="EmployeeNumber" placeholder="EmployeeNumber" value="@Model.EmployeeNumber">
+</div>
+
 <div class="form-group" ng-controller="CompanyController as model" ng-init="model.InitialiseDropdown(@Model.CompanyId)">
     <label>Company</label>
     <ui-select ng-model="model.Company">
@@ -30,25 +35,25 @@
     <input type="hidden" class="form-control" name="CompanyId" value="{{model.Company.CompanyId}}">
 </div>
 
-<div class="form-group" ng-controller="DepartmentController as model" ng-init="model.Initialise(@Model.DepartmentId)">
+@*<div class="form-group" ng-controller="DepartmentController as model" ng-init="model.InitialiseDropdown(@Model.DepartmentId)">
     <label>Department</label>
     <ui-select multiple ng-model="model.Department">
-        <ui-select-match placeholder="Select Department(s)...">
+        <ui-select-match placeholder="Select Department...">
+            <span ng-bind="$select.selected.Name"></span>
             {{$item.Name}}
         </ui-select-match>
         <ui-select-choices repeat="department in (model.Departments | filter: $select.search) track by $index">
             <span ng-bind="department.Name"></span>
         </ui-select-choices>
     </ui-select>
-    <div ng-repeat="department in model.Departments track by $index">
-    </div>
-    <input type="hidden" class="form-control" name="Departments[{{$index}}].DepartmentId" value="{{department.DepartmentId}}">
+    <input type="hidden" class="form-control" name="DepartmentId" value="{{model.Department.DepartmentId}}">
 </div>
 
-<div class="form-group" ng-controller="TeamController as model" ng-init="model.Initialise(@Model.TeamId)">
+<div class="form-group" ng-controller="TeamController as model" ng-init="model.InitialiseDropdown(@Model.TeamId)">
     <label>Team</label>
-    <ui-select multiple ng-model="model.Team">
+    <ui-select  ng-model="model.Team">
         <ui-select-match placeholder="Select Team(s)...">
+            <span ng-bind="$select.selected.Name"></span>
             {{$item.Name}}
         </ui-select-match>
         <ui-select-choices repeat="team in (model.Teams | filter: $select.search) track by $index">
@@ -57,8 +62,8 @@
     </ui-select>
     <div ng-repeat="team in model.Teams track by $index">
     </div>
-    <input type="hidden" class="form-control" name="Teams[{{$index}}].TeamId" value="{{team.Team}}">
-</div>
+    <input type="hidden" class="form-control" name="TeamId" value="{{model.Team.TeamId}}">
+</div>*@
 
 <div class="form-group" ng-controller="JobTitleController as model" ng-init="model.InitialiseDropdown(@Model.JobTitleId)">
     <label>JobTitle</label>

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FDepartment.cs" />
+    <Compile Include="FEmployeeNumber.cs" />
     <Compile Include="FEmployeeTeam.cs" />
     <Compile Include="FEmployeeDepartment.cs" />
     <Compile Include="FPeripheralType.cs" />

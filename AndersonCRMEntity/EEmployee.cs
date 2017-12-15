@@ -22,6 +22,8 @@ namespace AndersonCRMEntity
         public int JobTitleId { get; set; }
         public int ManagerEmployeeId { get; set; }
 
+        [StringLength(250)]
+        public string EmployeeNumber { get; set; }
         [StringLength(50)]
         public string Email { get; set; }
         [StringLength(250)]
