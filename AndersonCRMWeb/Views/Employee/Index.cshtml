@@ -25,7 +25,7 @@
                         <th>EmployeeId</th>
                         <th>JobTitleId</th>
                         <th>JobTitleName</th>
-                        <th>ManagerEmployeeId</th>
+                        <th>Manager</th>
 
                         <th>Email</th>
                         <th>FirstName</th>
@@ -47,7 +47,11 @@
                         <td><span ng-bind="employee.EmployeeId"></span></td>
                         <td><span ng-bind="employee.JobTitleId"></span></td>
                         <td><span ng-bind="employee.JobTitle.Name"></span></td>
-                        <td><span ng-bind="employee.ManagerEmployeeId"></span></td>
+
+                        <td><span ng-bind="employee.FirstName"></span>
+                            <span ng-bind="employee.MiddleName"></span>
+                            <span ng-bind="employee.LastName"></span>
+                        </td>
 
                         <td><span ng-bind="employee.Email"></span></td>
                         <td><span ng-bind="employee.FirstName"></span></td>
