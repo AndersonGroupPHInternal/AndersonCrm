@@ -22,13 +22,13 @@ namespace AndersonCRMFunction
             EPeripheral ePeripheral = EPeripheral(peripheral);
             ePeripheral.CreatedDate = DateTime.Now;
             ePeripheral.CreatedBy = createdBy;
-
+            
             ePeripheral = _iDPeripheral.Create(ePeripheral);
 
             CreatePeripheralHistory(createdBy, ePeripheral);
 
-            return (Peripheral(ePeripheral));  
-        }   
+            return (Peripheral(ePeripheral));
+        }
 
         private void CreatePeripheralHistory(int createdBy, EPeripheral ePeripheral)
         {
@@ -97,7 +97,7 @@ namespace AndersonCRMFunction
             {
                 CreatedDate = a.CreatedDate,
                 UpdatedDate = a.UpdatedDate,
-                
+
                 CreatedBy = a.CreatedBy,
                 EmployeeId = a.EmployeeId,
                 PeripheralId = a.PeripheralId,

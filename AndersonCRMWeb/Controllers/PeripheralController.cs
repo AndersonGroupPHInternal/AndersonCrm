@@ -175,9 +175,9 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Peripheral Peripheral)
+        public ActionResult Create(Peripheral peripheral)
         {
-            var createdPeripheral = _iFPeripheral.Create(UserId, Peripheral);
+            var createdPeripheral = _iFPeripheral.Create(UserId, peripheral);
             return RedirectToAction("Index");
         }
         #endregion
@@ -204,9 +204,9 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update(Peripheral Peripheral)
+        public ActionResult Update(Peripheral peripheral)
         {
-            var createdPeripheral = _iFPeripheral.Update(UserId, Peripheral);
+            var createdPeripheral = _iFPeripheral.Update(UserId, peripheral);
             return RedirectToAction("Index");
         }
         #endregion

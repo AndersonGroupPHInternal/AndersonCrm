@@ -39,21 +39,25 @@
 </div>*@ 
 
 
-<input type="hidden" name="PeripheralId" value="@Model.PeripheralId" />
+<input type="hidden" name="EmployeeId" value="@Model.EmployeeId" />
 @{
     Html.RenderPartial("_AuditColumns");
 }
 
-<div class="form-group">
-    
-    <input type="hidden" class="form-control" id="PeripheralId" name="PeripheralId" placeholder="PeripheralId" value="@Model.PeripheralId">
+<div class="form-group" ng-controller="PeripheralController as model" ng-init="model.InitialiseDropdown(@Model.PeripheralId)">
+    <label>PeripheralId</label>
+    <ui-select ng-model="model.PeripheralId">
+        <ui-select-match placeholder="Select PeripheralId...">
+            <span ng-bind="$select.selected.PeripheralId"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="peripheral in (model.Peripherals | filter: $select.search) track by $index">
+            <span ng-bind="company.PeripheralId"></span>
+        </ui-select-choices>
+    </ui-select>
+    <input type="hidden" class="form-control" name="PeripheralId" value="{{model.Peripheral.PeripheralId}}">
 </div>
+
 <div class="form-group">
-    
-    <input type="hidden" class="form-control" id="EmployeeId" name="EmployeeId" placeholder="EmployeeId" value="@Model.EmployeeId">
-</div>
-<div class="form-group">
-    
     <input type="hidden" class="form-control" id="PeripheralTypeId" name="PeripheralTypeId" placeholder="PeripheralTypeId" value="@Model.PeripheralTypeId">
 </div>
  

@@ -10,10 +10,13 @@
     function TeamController($window, TeamService) {
         var vm = this;
 
+        vm.TeamId;
+        vm.Team;
         vm.Teams = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
+        vm.InitialiseDropdown = InitialiseDropdown;
 
         vm.Delete = Delete;
         
@@ -22,6 +25,11 @@
         } 
 
         function Initialise() {
+            Read();
+        }
+
+        function InitialiseDropdown(teamId) {
+            vm.TeamId = teamId;
             Read();
         }
 
