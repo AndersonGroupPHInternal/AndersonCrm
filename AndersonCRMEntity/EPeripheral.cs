@@ -11,11 +11,13 @@ namespace AndersonCRMEntity
     {
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
+       
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PeripheralId { get; set; }
         [ForeignKey("PeripheralType")]
         public int PeripheralTypeId { get; set; }
+
 
         [StringLength(50)]
         public string AssetTag { get; set; }

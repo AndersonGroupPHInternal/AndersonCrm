@@ -10,7 +10,8 @@ namespace AndersonCRMModel
         public int EmployeeId { get; set; }
         public int PeripheralId { get; set; }
         public int PeripheralTypeId { get; set; }
-        
+
+        public string Manager { get; set; }
         public string AssetTag { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
