@@ -113,6 +113,7 @@ namespace AndersonCRMFunction
                 FirstName = a.FirstName,
                 LastName = a.LastName,
                 MiddleName = a.MiddleName
+
             }).ToList();
         }
 
@@ -125,6 +126,7 @@ namespace AndersonCRMFunction
                 DateStarted = employee.DateStarted,
                 DateEnded = employee.DateEnded,
                 UpdatedDate = employee.UpdatedDate,
+                EmployeeNumber = employee.EmployeeNumber, 
 
                 CompanyId = employee.CompanyId,
                 CreatedBy = employee.CreatedBy,
