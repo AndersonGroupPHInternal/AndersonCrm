@@ -15,57 +15,75 @@
             <table class="table table-hover table-sm table-bordered ">
                 <thead>
                     <tr class="thead-inverse">
-                        <th>EmployeeNumber</th> 
-                        <th>Email</th> 
-                        <th>FirstName</th> 
-                        <th>LastName</th> 
-                        <th>MiddleName</th> 
+                        <th>Employee Number</th>
+                        <th>DateHired</th>
+                        <th>DateStarted</th>
+                        @*@<th>DateEnded</th>*@
+                       
 
-                        <th>CompanyName</th> 
-                        <th>JobTitleName</th> 
-                        <th>Manager</th> 
-                         
-                        <th>DateHired</th> 
-                        <th>DateStarted</th> 
-                         
-                        <th>Actions</th> 
+
+                        @*<th>CompanyId</th>*@
+                        <th>CompanyName</th>
+                        @*<th>EmployeeId</th>
+        <th>JobTitleId</th>*@
+                        <th>JobTitleName</th>
+                        <th>Manager</th>
+
+                        <th>Email</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>MiddleName</th>
+                        <th>Employee Image</th>
+
+
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
-
-                        <td><span ng-bind="employee.EmployeeNumber"></span></td> 
-                        <td><span ng-bind="employee.Email"></span></td> 
-                        <td><span ng-bind="employee.FirstName"></span></td> 
-                        <td><span ng-bind="employee.LastName"></span></td> 
-                        <td><span ng-bind="employee.MiddleName"></span></td> 
-
-                        <td><span ng-bind="employee.Company.Name"></span></td> 
-                        <td><span ng-bind="employee.JobTitle.Name"></span></td> 
-
-                        <td>
-                            <span ng-bind="employee.FirstName"></span>  
-                            <span ng-bind="employee.MiddleName"></span> 
-                            <span ng-bind="employee.LastName"></span> 
-                        </td>
-
+                        <td><span ng-bind="employee.EmployeeNumber"></span></td>
                         <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
+                        @*@<td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>*@
+
+
+                        @*<td><span ng-bind="employee.CompanyId"></span></td>*@
+                        <td><span ng-bind="employee.Company.Name"></span></td>
+                        @*<td><span ng-bind="employee.EmployeeId"></span></td>
+        <td><span ng-bind="employee.JobTitleId"></span></td>*@
+                        <td><span ng-bind="employee.JobTitle.Name"></span></td>
+
+                        <td>
+                            <span ng-bind="employee.FirstName"></span>
+                            <span ng-bind="employee.MiddleName"></span>
+                            <span ng-bind="employee.LastName"></span>
+                        </td>
+
+                        <td><span ng-bind="employee.Email"></span></td>
+                        <td><span ng-bind="employee.FirstName"></span></td>
+                        <td><span ng-bind="employee.LastName"></span></td>
+                        <td><span ng-bind="employee.MiddleName"></span></td>
+                        <td>
+                            <img ng-src="~/Content/Images/{{employee.Url}}" alt="None" style="height:150px;width:150px;" />
+                        </td>
+
+
+
 
                         <td ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle"  type="button" data-toggle="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#" ng-click="model.GoToUpdatePage(employee.EmployeeId)">Edit</a></li>
-                                    <li><a href="#" ng-click="model.Delete(employee.EmployeeId)">Delete</a></li>
+                                    <li><a href="#" ng-click="model.Delete(employee.EmployeeId);"onclick="return confirm('Are you sure to delete?')" >Delete</a></li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
+        </tbody>
+        </table>
+    </div>
     </div>
 </div>

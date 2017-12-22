@@ -56,9 +56,8 @@ namespace AndersonCRMFunction
         public void Delete(int jobTitleId)
         {
             _iDJobTitle.Delete<EJobTitle>(a => a.JobTitleId == jobTitleId);
-        }
         #endregion
-
+        }
         #region OTHER FUNCTION
         private List<JobTitle> JobTitles(List<EJobTitle> eJobTitles)
         {
