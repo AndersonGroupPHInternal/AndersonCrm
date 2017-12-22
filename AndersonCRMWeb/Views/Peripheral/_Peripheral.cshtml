@@ -45,9 +45,9 @@
 }
 
 <div class="form-group" ng-controller="PeripheralController as model" ng-init="model.InitialiseDropdown(@Model.PeripheralId)">
-    <label>PeripheralId</label>
+    <label>AssetId</label>
     <ui-select ng-model="model.PeripheralId">
-        <ui-select-match placeholder="Select PeripheralId...">
+        <ui-select-match placeholder="Select AssetId...">
             <span ng-bind="$select.selected.PeripheralId"></span>
         </ui-select-match>
         <ui-select-choices repeat="peripheral in (model.Peripherals | filter: $select.search) track by $index">
