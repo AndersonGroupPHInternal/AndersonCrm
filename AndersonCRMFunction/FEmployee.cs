@@ -99,7 +99,7 @@ namespace AndersonCRMFunction
                 DateHired = a.DateHired,
                 DateStarted = a.DateStarted,
                 UpdatedDate = a.UpdatedDate,
-                EmployeeNumber = a.EmployeeNumber, 
+                
 
                 EmployeeNumber = a.EmployeeNumber,
                 CompanyId = a.CompanyId,
@@ -125,7 +125,7 @@ namespace AndersonCRMFunction
                 DateHired = employee.DateHired,
                 DateStarted = employee.DateStarted,
                 UpdatedDate = employee.UpdatedDate,
-                EmployeeNumber = employee.EmployeeNumber, 
+               
 
                 EmployeeNumber = employee.EmployeeNumber,
                 CompanyId = employee.CompanyId,
