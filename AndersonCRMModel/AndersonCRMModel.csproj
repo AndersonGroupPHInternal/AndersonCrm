@@ -52,12 +52,12 @@
     <Compile Include="EmployeeDepartment.cs" />
     <Compile Include="EmployeeTeam.cs" />
     <Compile Include="Team.cs" />
-    <Compile Include="PeripheralType.cs" />
+    <Compile Include="AssetType.cs" />
     <Compile Include="JobTitle.cs" />
-    <Compile Include="PeripheralHistory.cs" />
+    <Compile Include="AssetHistory.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="Peripheral.cs" />
+    <Compile Include="Asset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

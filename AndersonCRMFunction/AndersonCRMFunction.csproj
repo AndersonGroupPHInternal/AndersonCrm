@@ -49,21 +49,21 @@
     <Compile Include="FEmployeeNumber.cs" />
     <Compile Include="FEmployeeTeam.cs" />
     <Compile Include="FEmployeeDepartment.cs" />
-    <Compile Include="FPeripheralType.cs" />
+    <Compile Include="FAssetType.cs" />
     <Compile Include="FJobTitle.cs" />
     <Compile Include="IFDepartment.cs" />
     <Compile Include="IFEmployeeTeam.cs" />
     <Compile Include="IFEmployeeDepartment.cs" />
-    <Compile Include="IFPeripheralType.cs" />
+    <Compile Include="IFAssetType.cs" />
     <Compile Include="IFJobTitle.cs" />
     <Compile Include="IFTeam.cs" />
-    <Compile Include="IFPeripheral.cs" />
+    <Compile Include="IFAsset.cs" />
     <Compile Include="IFEmployee.cs" />
     <Compile Include="IFCompany.cs" />
     <Compile Include="FTeam.cs" />
     <Compile Include="FCompany.cs" />
     <Compile Include="FEmployee.cs" />
-    <Compile Include="FPeripheral.cs" />
+    <Compile Include="FAsset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

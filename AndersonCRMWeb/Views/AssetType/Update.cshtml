@@ -1,0 +1,18 @@
+﻿@using AndersonCRMModel;
+@model AssetType
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <form action="~/AssetType/Update" method="post">
+            @{
+                Html.RenderPartial("_AssetType", Model);
+            }
+        </form>
+    </div>
+</div>

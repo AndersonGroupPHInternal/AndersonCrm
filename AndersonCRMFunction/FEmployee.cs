@@ -52,9 +52,9 @@ namespace AndersonCRMFunction
             return Employees(eEmployees);
         }
 
-        public List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy)
+        public List<Employee> ReadAssetHistory(int assetId, string sortBy)
         {
-            List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.PeripheralHistories.Any(b => b.PeripheralId == peripheralId), sortBy);
+            List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.AssetHistories.Any(b => b.AssetId == assetId), sortBy);
             return Employees(eEmployees);
         }
 
@@ -149,6 +149,11 @@ namespace AndersonCRMFunction
                 MiddleName = eEmployee.MiddleName           
             };
             return returnEmployee;
+        }
+
+        public List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy)
+        {
+            throw new NotImplementedException();
         }
     }
 }

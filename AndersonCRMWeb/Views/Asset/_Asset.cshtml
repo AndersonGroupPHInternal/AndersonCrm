@@ -1,0 +1,42 @@
+﻿<input type="hidden" name="EmployeeId" value="@Model.EmployeeId" />
+@{
+    Html.RenderPartial("_AuditColumns");
+}
+
+<div class="form-group" ng-controller="AssetController as model" ng-init="model.InitialiseDropdown(@Model.AssetId)">
+    <label>AssetId</label>
+    <ui-select ng-model="model.AssetId">
+        <ui-select-match placeholder="Select AssetId...">
+            <span ng-bind="$select.selected.AssetId"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="asset in (model.Assets | filter: $select.search) track by $index">
+            <span ng-bind="company.AssetId"></span>
+        </ui-select-choices>
+    </ui-select>
+    <input type="hidden" class="form-control" name="AssetId" value="{{model.Asset.AssetId}}">
+</div>
+
+<div class="form-group">
+    <input type="hidden" class="form-control" id="AssetTypeId" name="AssetTypeId" placeholder="AssetTypeId" value="@Model.AssetTypeId">
+</div>
+ 
+<div class="form-group">
+    <label for="AssetTag">AssetTag</label>
+    <input type="text" class="form-control" id="AssetTag" name="AssetTag" placeholder="AssetTag" value="@Model.AssetTag">
+</div>
+<div class="form-group">
+    <label for="Description">Description</label>
+    <input type="text" class="form-control" id="Description" name="Description" placeholder="Description" value="@Model.Description">
+</div>
+
+<div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control" id="Name" name="Name" placeholder="Name" value="@Model.Name">
+</div>
+<div class="form-group">
+    <label for="SerialNumber">SerialNumber</label>
+    <input type="text" class="form-control" id="SerialNumber" name="SerialNumber" placeholder="SerialNumber" value="@Model.SerialNumber">
+</div>
+<div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</div>

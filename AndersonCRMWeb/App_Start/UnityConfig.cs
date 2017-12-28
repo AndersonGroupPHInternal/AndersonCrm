@@ -53,9 +53,9 @@ namespace AndersonCRMWeb
             container.RegisterType<IDEmployeeDepartment, DEmployeeDepartment>(new PerRequestLifetimeManager());
             container.RegisterType<IDEmployeeTeam, DEmployeeTeam>(new PerRequestLifetimeManager());
             container.RegisterType<IDJobTitle, DJobTitle>(new PerRequestLifetimeManager());
-            container.RegisterType<IDPeripheral, DPeripheral>(new PerRequestLifetimeManager());
-            container.RegisterType<IDPeripheralHistory, DPeripheralHistory>(new PerRequestLifetimeManager());
-            container.RegisterType<IDPeripheralType, DPeripheralType>(new PerRequestLifetimeManager());
+            container.RegisterType<IDAsset, DAsset>(new PerRequestLifetimeManager());
+            container.RegisterType<IDAssetHistory, DAssetHistory>(new PerRequestLifetimeManager());
+            container.RegisterType<IDAssetType, DAssetType>(new PerRequestLifetimeManager());
             container.RegisterType<IDTeam, DTeam>(new PerRequestLifetimeManager());
             #endregion
 
@@ -66,8 +66,8 @@ namespace AndersonCRMWeb
             container.RegisterType<IFEmployeeDepartment, FEmployeeDepartment>(new PerRequestLifetimeManager());
             container.RegisterType<IFEmployeeTeam, FEmployeeTeam>(new PerRequestLifetimeManager());
             container.RegisterType<IFJobTitle, FJobTitle>(new PerRequestLifetimeManager());
-            container.RegisterType<IFPeripheral, FPeripheral>(new PerRequestLifetimeManager());
-            container.RegisterType<IFPeripheralType, FPeripheralType>(new PerRequestLifetimeManager());
+            container.RegisterType<IFAsset, FAsset>(new PerRequestLifetimeManager());
+            container.RegisterType<IFAssetType, FAssetType>(new PerRequestLifetimeManager());
             container.RegisterType<IFTeam, FTeam>(new PerRequestLifetimeManager());
             #endregion
         }

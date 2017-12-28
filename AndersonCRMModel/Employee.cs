@@ -31,7 +31,7 @@ namespace AndersonCRMModel
 
         public virtual ICollection<EmployeeDepartment> EmployeeDepartments { get; set; }
         public virtual ICollection<EmployeeTeam> EmployeeTeams { get; set; }
-        public virtual ICollection<Peripheral> Peripherals { get; set; }
-        public virtual ICollection<PeripheralHistory> PeripheralHistories { get; set; }
+        public virtual ICollection<Asset> Assets { get; set; }
+        public virtual ICollection<AssetHistory> AssetHistories { get; set; }
     }
 }

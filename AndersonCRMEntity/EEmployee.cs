@@ -22,7 +22,7 @@ namespace AndersonCRMEntity
         public int JobTitleId { get; set; }
         public int ManagerEmployeeId { get; set; }
 
-        [StringLength(250)]
+        [StringLength(50)]
         public string EmployeeNumber { get; set; }
         [StringLength(50)]
         public string Email { get; set; }
@@ -39,7 +39,7 @@ namespace AndersonCRMEntity
 
         public virtual ICollection<EEmployeeDepartment> EmployeeDepartments { get; set; }
         public virtual ICollection<EEmployeeTeam> EmployeeTeams { get; set; }
-        public virtual ICollection<EPeripheral> Peripherals { get; set; }
-        public virtual ICollection<EPeripheralHistory> PeripheralHistories { get; set; }
+        public virtual ICollection<EAsset> Assets { get; set; }
+        public virtual ICollection<EAssetHistory> AssetHistories { get; set; }
     }
 }
