@@ -1,0 +1,18 @@
+﻿@using AndersonCRMModel;
+@model Asset
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <form action="~/Asset/Create" method="post">
+            @{
+                Html.RenderPartial("_Asset", Model);
+            }
+        </form>
+    </div>
+</div>

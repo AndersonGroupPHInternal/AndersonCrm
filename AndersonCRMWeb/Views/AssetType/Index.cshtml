@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="AssetTypeController as model" ng-init="model.Initialise()">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="../AssetType/Create" class="btn btn-default">Create</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-hover table-sm table-bordered ">
+                <thead>
+                    <tr class="thead-inverse">
+                        <th>AssetTypeId</th>
+                        <th>Color</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickableRow" ng-repeat="assetType in model.AssetTypes" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(assetType.AssetTypeId)">
+                        <td><span ng-bind="assetType.AssetTypeId"></span></td>
+                        <td><span ng-bind="assetType.Color"></span></td>
+                        <td><span ng-bind="assetType.Name"></span></td>
+                        <td ng-click="$event.originalEvent.dropdown = true">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="model.GoToUpdatePage(assetType.AssetTypeId)">Edit</a></li>
+                                    <li><a href="#" ng-click="model.Delete(assetType.AssetTypeId)">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
