@@ -32,6 +32,8 @@ namespace AndersonCRMEntity
         public string LastName { get; set; }
         [StringLength(250)]
         public string MiddleName { get; set; }
+        [StringLength(4)]
+        public string Pin { get; set; }
 
         public virtual ECompany Company { get; set; }
         public virtual EJobTitle JobTitle { get; set; }

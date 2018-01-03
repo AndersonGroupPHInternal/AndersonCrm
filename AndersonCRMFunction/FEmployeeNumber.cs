@@ -34,6 +34,12 @@ namespace AndersonCRMFunction
             return Employee(eEmployee);
         }
 
+        public Employee Read(string employeeNumber, string pin)
+        {
+            EEmployee eEmployee = _iDEmployee.Read<EEmployee>(a => a.EmployeeNumber == employeeNumber && a.Pin == pin);
+            return Employee(eEmployee);
+        }
+
         public List<Employee> Read()
         {
             List<EEmployee> eEmployees = _iDEmployee.List<EEmployee>(a => true);

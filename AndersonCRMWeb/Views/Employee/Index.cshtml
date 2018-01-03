@@ -15,38 +15,37 @@
             <table class="table table-hover table-sm table-bordered ">
                 <thead>
                     <tr class="thead-inverse">
-                        <th>EmployeeNumber</th> 
-                        <th>Email</th> 
-                        <th>FirstName</th> 
-                        <th>LastName</th> 
-                        <th>MiddleName</th> 
+                        <th>EmployeeNumber</th>
+                        <th>Email</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>MiddleName</th>
 
-                        <th>CompanyName</th> 
-                        <th>JobTitleName</th> 
-                        <th>Manager</th> 
-                         
-                        <th>DateHired</th> 
-                        <th>DateStarted</th> 
-                         
-                        <th>Actions</th> 
+                        <th>CompanyName</th>
+                        <th>JobTitleName</th>
+                        <th>Manager</th>
+
+                        <th>DateHired</th>
+                        <th>DateStarted</th>
+
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
 
-                        <td><span ng-bind="employee.EmployeeNumber"></span></td> 
-                        <td><span ng-bind="employee.Email"></span></td> 
-                        <td><span ng-bind="employee.FirstName"></span></td> 
-                        <td><span ng-bind="employee.LastName"></span></td> 
-                        <td><span ng-bind="employee.MiddleName"></span></td> 
-
-                        <td><span ng-bind="employee.Company.Name"></span></td> 
-                        <td><span ng-bind="employee.JobTitle.Name"></span></td> 
+                        <td><span ng-bind="employee.EmployeeNumber"></span></td>
+                        <td><span ng-bind="employee.Email"></span></td>
+                        <td><span ng-bind="employee.FirstName"></span></td>
+                        <td><span ng-bind="employee.LastName"></span></td>
+                        <td><span ng-bind="employee.MiddleName"></span></td>
+                        <td><span ng-bind="employee.Company.Name"></span></td>
+                        <td><span ng-bind="employee.JobTitle.Name"></span></td>
 
                         <td>
-                            <span ng-bind="employee.FirstName"></span>  
-                            <span ng-bind="employee.MiddleName"></span> 
-                            <span ng-bind="employee.LastName"></span> 
+                            <span ng-bind="employee.FirstName"></span>
+                            <span ng-bind="employee.MiddleName"></span>
+                            <span ng-bind="employee.LastName"></span>
                         </td>
 
                         <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
@@ -54,7 +53,7 @@
 
                         <td ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle"  type="button" data-toggle="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
