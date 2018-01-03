@@ -11,6 +11,7 @@ namespace AndersonCRMFunction
     {
         private IDAsset _iDAsset;
 
+
         public FAsset()
         {
             _iDAsset = new DAsset();
@@ -22,7 +23,9 @@ namespace AndersonCRMFunction
             EAsset eAsset = EAsset(asset);
             eAsset.CreatedDate = DateTime.Now;
             eAsset.CreatedBy = createdBy;
-
+            eAsset.AssetTypeId = 1;
+            eAsset.EmployeeId = 1;
+            
             eAsset = _iDAsset.Create(eAsset);
 
             CreateAssetHistory(createdBy, eAsset);
@@ -87,6 +90,7 @@ namespace AndersonCRMFunction
         #region DELETE
         public void Delete(int assetId)
         {
+            _iDAsset.Delete<EAssetHistory>(a => a.AssetId == assetId);
             _iDAsset.Delete<EAsset>(a => a.AssetId == assetId);
         }
         #endregion
@@ -148,11 +152,6 @@ namespace AndersonCRMFunction
                 Name = eAsset.Name,
                 SerialNumber = eAsset.SerialNumber
             };
-        }
-
-        Asset IFAsset.Read(int assetId)
-        {
-            throw new NotImplementedException();
         }
     }
 }
