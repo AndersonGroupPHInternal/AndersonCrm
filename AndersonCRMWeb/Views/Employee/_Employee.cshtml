@@ -47,7 +47,7 @@
 <div class="form-group" ng-controller="DepartmentController as model" ng-init="model.InitialiseDropdown(@Model.DepartmentId)">
     <label>Department</label>
     <ui-select multiple ng-model="model.Department">
-        <ui-select-match placeholder="Select Department...">
+        <ui-select-match allow-clear="true" placeholder="Select Department...">
             <span ng-bind="$select.selected.Name"></span>
             {{$item.Name}}
         </ui-select-match>
@@ -55,13 +55,13 @@
             <span ng-bind="department.Name"></span>
         </ui-select-choices>
     </ui-select>
-    <input type="hidden" class="form-control" name="DepartmentId" value="{{model.Department.DepartmentId}}">
+    <input type="hidden" class="form-control" name="Department" value="{{model.Department.DepartmentId}}">
 </div>
 
 <div class="form-group" ng-controller="TeamController as model" ng-init="model.InitialiseDropdown(@Model.TeamId)">
     <label>Team</label>
     <ui-select multiple ng-model="model.Team">
-        <ui-select-match placeholder="Select Team...">
+        <ui-select-match  placeholder="Select Team...">
             <span ng-bind="$select.selected.Name"></span>
             {{$item.Name}}
         </ui-select-match>
@@ -69,13 +69,13 @@
             <span ng-bind="team.Name"></span>
         </ui-select-choices>
     </ui-select>
-    <input type="hidden" class="form-control" name="TeamId" value="{{model.Team.TeamId}}">
+    <input type="hidden" class="form-control" name="Team" value="{{model.Team.TeamId}}">
 </div>
 
 <div class="form-group" ng-controller="JobTitleController as model" ng-init="model.InitialiseDropdown(@Model.JobTitleId)">
     <label>JobTitle</label>
     <ui-select ng-model="model.JobTitle">
-        <ui-select-match placeholder="Select JobTitle...">
+        <ui-select-match  placeholder="Select JobTitle...">
             <span ng-bind="$select.selected.Name"></span>
         </ui-select-match>
         <ui-select-choices repeat="jobTitle in (model.JobTitles | filter: $select.search) track by $index">
@@ -85,7 +85,7 @@
     <input type="hidden" class="form-control" name="JobTitleId" value="{{model.JobTitle.JobTitleId}}">
 </div>
 
-<div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.ManagerEmployeeId)">
+<div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
     <label>Manager</label>
     <ui-select ng-model="model.Employee">
         <ui-select-match allow-clear="true" placeholder="Select Manager...">
