@@ -12,8 +12,12 @@
 
         vm.AssetTypes = [];
 
+        vm.AssetTypeId;
+
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
+        vm.InitialiseDropdown = InitialiseDropdown;
+
 
         vm.Delete = Delete;
         
@@ -22,6 +26,10 @@
         } 
 
         function Initialise() {
+            Read();
+        }
+        function InitialiseDropdown(assetTypeId) {
+            vm.AssetTypeId = assetTypeId;
             Read();
         }
 

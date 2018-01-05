@@ -3,14 +3,24 @@
     Html.RenderPartial("_AuditColumns");
 }
 
-<div class="form-group">
+<div class="form-group" ng-controller="AssetTypeController as model" ng-init="model.InitialiseDropdown(@Model.AssetTypeId)">
+    <label>AssetType Id</label>
+    <ui-select  ng-model="model.AssetTypeId">
+        <ui-select-match allow-clear="true" placeholder ="Select AssetTypeID...">
+            <span ng-bind="$select.selected.AssetTypeId"></span>
+            {{$item.AssetTypeId}}
+        </ui-select-match>
+        <ui-select-choices repeat="asset in (model.AssetTypes | filter: $select.search) track by $index">
+            <span ng-bind="asset.AssetTypeId"></span>
+        </ui-select-choices>
+    </ui-select>
     <input type="hidden" class="form-control" id="AssetTypeId" name="AssetTypeId" placeholder="AssetTypeId" value="@Model.AssetTypeId">
 </div>
 
 <div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
     <label>Employee Id</label>
     <ui-select ng-model="model.Employee">
-        <ui-select-match placeholder="Select EmployeeID...">
+        <ui-select-match allow-clear="true" placeholder="Select EmployeeID...">
             <span ng-bind="$select.selected.EmployeeId"></span>
             {{$item.EmployeeId}}
         </ui-select-match>
