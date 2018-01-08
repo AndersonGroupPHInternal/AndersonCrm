@@ -4,31 +4,30 @@
 }
 
 <div class="form-group" ng-controller="AssetTypeController as model" ng-init="model.InitialiseDropdown(@Model.AssetTypeId)">
-    <label>AssetType Id</label>
-    <ui-select  ng-model="model.AssetTypeId">
-        <ui-select-match allow-clear="true" placeholder ="Select AssetTypeID...">
-            <span ng-bind="$select.selected.AssetTypeId"></span>
-            {{$item.AssetTypeId}}
+    <label>Asset Type</label>
+    <ui-select  ng-model="model.AssetType">
+        <ui-select-match allow-clear="true" placeholder ="Select AssetType...">
+            <span ng-bind="$select.selected.Name"></span>
+            {{$item.Name}}
         </ui-select-match>
-        <ui-select-choices repeat="asset in (model.AssetTypes | filter: $select.search) track by $index">
-            <span ng-bind="asset.AssetTypeId"></span>
+        <ui-select-choices repeat="assetType in (model.AssetTypes | filter: $select.search) track by $index">
+            <span ng-bind="assetType.Name"></span>
         </ui-select-choices>
     </ui-select>
-    <input type="hidden" class="form-control" id="AssetTypeId" name="AssetTypeId" placeholder="AssetTypeId" value="@Model.AssetTypeId">
 </div>
 
 <div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
-    <label>Employee Id</label>
+    <label>Employee</label>
     <ui-select ng-model="model.Employee">
-        <ui-select-match allow-clear="true" placeholder="Select EmployeeID...">
-            <span ng-bind="$select.selected.EmployeeId"></span>
-            {{$item.EmployeeId}}
+        <ui-select-match allow-clear="true" placeholder="Select Manager...">
+            <span ng-bind="$select.selected.FirstName + ' ' + $select.selected.MiddleName + ' ' + $select.selected.LastName"></span>
         </ui-select-match>
-        <ui-select-choices repeat="asset in (model.Employees | filter: $select.search) track by $index">
-            <span ng-bind="asset.EmployeeId"></span>
+        <ui-select-choices repeat="employee in (model.Employees | filter: $select.search) track by $index">
+            <span ng-bind="employee.FirstName"></span>
+            <span ng-bind="employee.MiddleName"></span>
+            <span ng-bind="employee.LastName"></span>
         </ui-select-choices>
     </ui-select>
-    <input type="hidden" class="form-control" id="EmployeeId" name="EmployeeId" placeholder="EmployeeId" value="@Model.EmployeeId">
 </div>
  
 <div class="form-group">
