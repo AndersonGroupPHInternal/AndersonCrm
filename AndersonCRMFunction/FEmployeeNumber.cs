@@ -91,7 +91,7 @@ namespace AndersonCRMFunction
                 CreatedDate = a.CreatedDate,
                 DateHired = a.DateHired,
                 DateStarted = a.DateStarted,
-                DateEnded = a.DateEnded,
+               // DateEnded = a.DateEnded,
                 UpdatedDate = a.UpdatedDate,
 
                 EmployeeNumber = a.EmployeeNumber,
@@ -105,7 +105,8 @@ namespace AndersonCRMFunction
                 Email = a.Email,
                 FirstName = a.FirstName,
                 LastName = a.LastName,
-                MiddleName = a.MiddleName
+                MiddleName = a.MiddleName,
+                Pin = a.Pin
             }).ToList();
         }
 
@@ -116,7 +117,7 @@ namespace AndersonCRMFunction
                 CreatedDate = employee.CreatedDate,
                 DateHired = employee.DateHired,
                 DateStarted = employee.DateStarted,
-                DateEnded = employee.DateEnded,
+                //DateEnded = employee.DateEnded,
                 UpdatedDate = employee.UpdatedDate,
 
                 EmployeeNumber = employee.EmployeeNumber,
@@ -130,7 +131,8 @@ namespace AndersonCRMFunction
                 Email = employee.Email,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
-                MiddleName = employee.MiddleName
+                MiddleName = employee.MiddleName,
+                Pin = employee.Pin
             };
         }
 
@@ -141,7 +143,7 @@ namespace AndersonCRMFunction
                 CreatedDate = eEmployee.CreatedDate,
                 DateHired = eEmployee.DateHired,
                 DateStarted = eEmployee.DateStarted,
-                DateEnded = eEmployee.DateEnded,
+                //DateEnded = eEmployee.DateEnded,
                 UpdatedDate = eEmployee.UpdatedDate,
 
                 EmployeeNumber = eEmployee.EmployeeNumber,
@@ -155,9 +157,15 @@ namespace AndersonCRMFunction
                 Email = eEmployee.Email,
                 FirstName = eEmployee.FirstName,
                 LastName = eEmployee.LastName,
-                MiddleName = eEmployee.MiddleName
+                MiddleName = eEmployee.MiddleName,
+                Pin = eEmployee.Pin
             };
             return returnEmployee;
+        }
+
+        public Employee Read(string employeeNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }

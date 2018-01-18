@@ -5,8 +5,8 @@
 
 <div class="form-group" ng-controller="AssetTypeController as model" ng-init="model.InitialiseDropdown(@Model.AssetTypeId)">
     <label>Asset Type</label>
-    <ui-select  ng-model="model.AssetType">
-        <ui-select-match allow-clear="true" placeholder ="Select AssetType...">
+    <ui-select ng-model="model.AssetType">
+        <ui-select-match allow-clear="true" placeholder="Select AssetType...">
             <span ng-bind="$select.selected.Name"></span>
             {{$item.Name}}
         </ui-select-match>
@@ -14,6 +14,7 @@
             <span ng-bind="assetType.Name"></span>
         </ui-select-choices>
     </ui-select>
+    <input type="hidden" class="form-control" id="AssetTypeId" name="AssetTypeId" placeholder="AssetTypeId" value="@Model.AssetTypeId">
 </div>
 
 <div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
@@ -28,6 +29,7 @@
             <span ng-bind="employee.LastName"></span>
         </ui-select-choices>
     </ui-select>
+    <input type="hidden" class="form-control" id="EmployeeId" name="EmployeeId" placeholder="EmployeeId" value="@Model.EmployeeId">
 </div>
  
 <div class="form-group">
