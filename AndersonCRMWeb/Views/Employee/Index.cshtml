@@ -27,6 +27,7 @@
 
                         <th>DateHired</th>
                         <th>DateStarted</th>
+                        <th>DateEnded</th>
 
                         <th>Actions</th>
                     </tr>
@@ -50,7 +51,7 @@
 
                         <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
-
+                        <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
                         <td ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
