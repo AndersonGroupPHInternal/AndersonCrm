@@ -46,7 +46,7 @@ namespace AndersonCRMFunction
 
         public List<Employee> Read()
         {
-            List<EEmployee> eEmployees = _iDEmployee.List<EEmployee>(a => true);
+            List<EEmployee> eEmployees = _iDEmployee.List<EEmployee>(a => !a.DateEnded.HasValue);
             return Employees(eEmployees);
         }
 
@@ -95,6 +95,7 @@ namespace AndersonCRMFunction
                 CreatedDate = a.CreatedDate,
                 DateHired = a.DateHired,
                 DateStarted = a.DateStarted,
+                DateEnded = a.DateEnded,
                 UpdatedDate = a.UpdatedDate,
 
                 EmployeeNumber = a.EmployeeNumber,
@@ -120,6 +121,7 @@ namespace AndersonCRMFunction
                 CreatedDate = employee.CreatedDate,
                 DateHired = employee.DateHired,
                 DateStarted = employee.DateStarted,
+                DateEnded = employee.DateEnded,
                 UpdatedDate = employee.UpdatedDate,
 
                 EmployeeNumber = employee.EmployeeNumber,
@@ -145,6 +147,7 @@ namespace AndersonCRMFunction
                 CreatedDate = eEmployee.CreatedDate,
                 DateHired = eEmployee.DateHired,
                 DateStarted = eEmployee.DateStarted,
+                DateEnded = eEmployee.DateEnded,
                 UpdatedDate = eEmployee.UpdatedDate,
 
                 EmployeeNumber = eEmployee.EmployeeNumber,
