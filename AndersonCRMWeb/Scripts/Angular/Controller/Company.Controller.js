@@ -63,6 +63,8 @@
 
 
         function Delete(companyId) {
+            var conf = window.confirm("Are you sure you want to delete?");
+            if (conf == true) {
             CompanyService.Delete(companyId)
                 .then(function (response) {
                     Read();
@@ -75,7 +77,9 @@
                         hide: true,
                         addclass: "stack-bottomright"
                     });
-                });
+                    });
+            }
+            else { return; false }
         }
 
     }
