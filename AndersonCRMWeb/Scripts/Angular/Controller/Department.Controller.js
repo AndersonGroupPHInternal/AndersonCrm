@@ -59,6 +59,8 @@
         }
 
         function Delete(departmentId) {
+            var conf = window.confirm("Are you sure you want to delete?");
+            if (conf == true) {
             DepartmentService.Delete(departmentId)
                 .then(function (response) {
                     Read();
@@ -71,7 +73,9 @@
                         hide: true,
                         addclass: "stack-bottomright"
                     });
-                });
+                    });
+            }
+            else { return; false }
         }
 
     }

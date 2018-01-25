@@ -59,6 +59,8 @@
         }
 
         function Delete(jobTitleId) {
+            var conf = window.confirm("Are you sure you want to delete?");
+            if (conf == true) {
             JobTitleService.Delete(jobTitleId)
                 .then(function (response) {
                     Read();
@@ -71,7 +73,9 @@
                         hide: true,
                         addclass: "stack-bottomright"
                     });
-                });
+                    });
+            }
+            else { return; false }
         }
 
     }
