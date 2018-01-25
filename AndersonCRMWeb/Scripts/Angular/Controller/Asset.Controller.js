@@ -5,9 +5,9 @@
         .module('App')
         .controller('AssetController', AssetController);
 
-    AssetController.$inject = ['$filter', '$window', 'AssetService'];
+    AssetController.$inject = ['$filter', '$window', 'AssetService','AssetTypeService','EmployeeService'];
 
-    function AssetController($filter, $window, AssetService) {
+    function AssetController($filter, $window, AssetService, AssetTypeService, EmployeeService) {
         var vm = this;
 
         vm.AssetId;
@@ -15,6 +15,8 @@
         vm.Asset;
 
         vm.Assets = [];
+        vm.AssetTypes = [];
+        vm.Employees = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
@@ -44,6 +46,47 @@
                     vm.Assets = response.data;
                     if (vm.AssetId)
                         UpdateAsset();
+                    else
+                    {
+                        ReadAssetType();
+                        ReadEmployee();
+                    }
+                })
+                .catch(function (data, status) {
+                    new PNotify({
+                        title: status,
+                        text: data,
+                        type: 'error',
+                        hide: true,
+                        addclass: "stack-bottomright"
+                    });
+
+                });
+        }
+
+        function ReadAssetType() {
+            AssetTypeService.Read()
+                .then(function (response) {
+                    vm.AssetTypes = response.data;
+                    UpdateAssetType();
+                })
+                .catch(function (data, status) {
+                    new PNotify({
+                        title: status,
+                        text: data,
+                        type: 'error',
+                        hide: true,
+                        addclass: "stack-bottomright"
+                    });
+
+                });
+        }
+
+        function ReadEmployee() {
+            EmployeeService.Read()
+                .then(function (response) {
+                    vm.Employees = response.data;
+                    UpdateEmployee();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -59,6 +102,18 @@
 
         function UpdateAsset() {
             vm.Asset = $filter('filter')(vm.Assets, { AssetId: vm.AssetId })[0];
+        }
+
+        function UpdateAssetType() {
+            angular.forEach(vm.Assets, function (asset) {
+                asset.AssetType = $filter('filter')(vm.AssetTypes, { AssetTypeId: asset.AssetTypeId })[0];
+            });
+        }
+
+        function UpdateEmployee() {
+            angular.forEach(vm.Assets, function (asset) {
+                asset.Employee = $filter('filter')(vm.Employees, { EmployeeId: asset.EmployeeId })[0];
+            });
         }
 
 
