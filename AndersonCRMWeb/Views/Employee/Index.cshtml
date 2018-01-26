@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-sm-4">
             <a href="../Employee/Create" class="btn btn-default">Create</a>
+            <input type="text" placeholder="SearchName" ng-model="SearchEmployee"  ng-model-options="SearchJob" />
         </div>
     </div>
     
@@ -33,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
+                    <tr class="clickableRow" ng-repeat="employee in model.Employees | filter : SearchEmployee | filter : JobTitle.Name" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
 
                         <td><span ng-bind="employee.EmployeeNumber"></span></td>
                         <td><span ng-bind="employee.Email"></span></td>
