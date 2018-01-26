@@ -9,7 +9,7 @@
             <a href="../Employee/Create" class="btn btn-default">Create</a>
         </div>
     </div>
-    
+    <input type="text" placeholder="Search for names.." ng-model="SearchEmployee">
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-hover table-sm table-bordered ">
@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
+                    <tr class="clickableRow" ng-repeat="employee in model.Employees | filter:SearchEmployee" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
 
                         <td><span ng-bind="employee.EmployeeNumber"></span></td>
                         <td><span ng-bind="employee.Email"></span></td>

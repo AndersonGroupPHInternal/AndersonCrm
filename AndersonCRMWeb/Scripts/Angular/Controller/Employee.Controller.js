@@ -12,6 +12,7 @@
 
         vm.EmployeeId;
         vm.Employee;
+        vm.SearchEmployee;
         vm.Employees = [];
         vm.Companies = [];
         vm.JobTitles = [];
