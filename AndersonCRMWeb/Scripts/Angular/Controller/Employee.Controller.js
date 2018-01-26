@@ -10,6 +10,7 @@
     function EmployeeController($filter, $window, CompanyService, JobTitleService, EmployeeService) {
         var vm = this;
 
+
         vm.EmployeeId;
         vm.Employee;
         vm.SearchEmployee;
