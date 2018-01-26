@@ -3,12 +3,17 @@
     ViewBag.Title = "Index";
 }
 
+
 <div ng-controller="EmployeeController as model" ng-init="model.Initialise()">
     <div class="row">
         <div class="col-sm-4">
             <a href="../Employee/Create" class="btn btn-default">Create</a>
+
+            <input type="text" placeholder="Search for names.." ng-model="SearchEmployee">
+
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-hover table-sm table-bordered ">
@@ -32,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
+                    <tr class="clickableRow" ng-repeat="employee in model.Employees | filter:SearchEmployee" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
                         <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>

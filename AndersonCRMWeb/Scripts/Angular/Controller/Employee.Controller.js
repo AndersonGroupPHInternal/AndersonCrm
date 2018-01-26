@@ -22,6 +22,8 @@
 
         vm.Delete = Delete;
 
+        vm.SearchEmployee;
+        
         function GoToUpdatePage(employeeId) {
             $window.location.href = '../Employee/Update/' + employeeId;
         }
@@ -41,6 +43,7 @@
                     vm.Employees = response.data;
                     if (vm.EmployeeId)
                         UpdateEmployee();
+
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -73,6 +76,5 @@
                     });
                 });
         }
-
     }
 })();
