@@ -24,6 +24,8 @@
         
         vm.Delete = Delete;
 
+        vm.SearchEmployee;
+        
         function GoToUpdatePage(employeeId) {
             $window.location.href = '../Employee/Update/' + employeeId;
         }
