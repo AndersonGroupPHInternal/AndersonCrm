@@ -6,7 +6,7 @@ namespace AndersonCRMFunction
     public interface IFEmployeeDepartment
     {
         #region CREATE
-        void Create(int createdBy, int employeeId, List<Department> departments);
+        void Create(int createdBy, int employeeId, List<EmployeeDepartment> employeeDepartments);
         #endregion
 
         #region READ

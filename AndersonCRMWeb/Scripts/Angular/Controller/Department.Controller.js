@@ -10,10 +10,9 @@
     function DepartmentController($filter, $window, DepartmentService) {
         var vm = this;
 
-        vm.DepartmentId;
-
+        vm.EmployeeId;
         vm.Department;
-
+        vm.EmployeeDepartments = [];
         vm.Departments = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
@@ -30,8 +29,8 @@
             Read();
         }
 
-        function InitialiseDropdown(departmentId) {
-            vm.DepartmentId = departmentId;
+        function InitialiseDropdown(employeeId) {
+            vm.EmployeeId = employeeId;
             Read();
         }
 
@@ -39,8 +38,7 @@
             DepartmentService.Read()
                 .then(function (response) {
                     vm.Departments = response.data;
-                    if (vm.DepartmentId)
-                        UpdateDepartment();
+                        ReadSelectedDepartment();
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -54,8 +52,25 @@
                 });
         }
 
-        function UpdateDepartment() {
-            vm.Department = $filter('filter')(vm.Departments, { DepartmentId: vm.DepartmentId })[0];
+        function ReadSelectedDepartment() {
+            DepartmentService.ReadSelectedDepartment(vm.EmployeeId)
+                .then(function (response) {
+                    var employeeDepartments = response.data;
+                    angular.forEach(employeeDepartments, function (employeeDepartment) {
+                        var employeeDepartment = $filter('filter')(vm.Departments, { DepartmentId: employeeDepartment.DepartmentId })[0];
+                        vm.EmployeeDepartments.push(employeeDepartment);
+                    });
+                })
+                .catch(function (data, status) {
+                    new PNotify({
+                        title: status,
+                        text: data,
+                        type: 'error',
+                        hide: true,
+                        addclass: "stack-bottomright"
+                    });
+
+                });
         }
 
         function Delete(departmentId) {

@@ -41,6 +41,12 @@ namespace AndersonCRMWeb.Controllers
         }
         #endregion
 
+        [HttpPost]
+        public JsonResult ReadSelectedDepartment(int id)
+        {
+            return Json(_iFDepartment.Read(id, "DepartmentId"));
+        }
+
         #region Update
         [HttpGet]
         public ActionResult Update(int id)
