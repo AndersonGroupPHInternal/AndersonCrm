@@ -120,8 +120,8 @@
         function Delete(assetId) {
             var conf = window.confirm("Are you sure you want to delete?");
             if (conf == true) {
-            AssetService.Delete(assetId)
-                .then(function (response) {
+                    AssetService.Delete(assetId)
+                  .then(function (response) {
                     Read();
                 })
                 .catch(function (data, status) {

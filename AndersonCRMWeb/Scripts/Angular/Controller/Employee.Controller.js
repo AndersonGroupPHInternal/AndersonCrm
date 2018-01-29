@@ -17,6 +17,8 @@
         vm.JobTitles = [];
         vm.Departments = [];
 
+        vm.SearchEmployee;
+        vm.SearchJob = vm.JobTitle = $filter('filter')(vm.JobTitles, { JobTitleId: vm.JobTitleId })[0];
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
         vm.InitialiseDropdown = InitialiseDropdown;

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Department.cs" />
+    <Compile Include="EmployeeFilter.cs" />
     <Compile Include="EmployeeDepartment.cs" />
     <Compile Include="EmployeeTeam.cs" />
     <Compile Include="Team.cs" />

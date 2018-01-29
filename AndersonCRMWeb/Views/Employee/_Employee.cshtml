@@ -28,7 +28,7 @@
 
 <div class="form-group">
     <label for="Pin">Pin</label>
-    <input type="password" class="form-control" id="Pin " name="Pin" maxlength="4" placeholder="Pin Number" value="@Model.Pin ">
+    <input type="password" class="form-control" id="Pin " name="Pin" maxlength="4" placeholder="Pin Number" value="@Model.Pin">
 </div>
 
 <div class="form-group" ng-controller="CompanyController as model" ng-init="model.InitialiseDropdown(@Model.CompanyId)">
@@ -44,10 +44,10 @@
     <input type="hidden" class="form-control" name="CompanyId" value="{{model.Company.CompanyId}}">
 </div>
 
-<div class="form-group" ng-controller="DepartmentController as model" ng-init="model.InitialiseDropdown(@Model.DepartmentId)">
+<div class="form-group" ng-controller="DepartmentController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
     <label>Department</label>
-    <ui-select multiple ng-model="model.Department">
-        <ui-select-match allow-clear="true" placeholder="Select Department...">
+    <ui-select multiple ng-model="model.EmployeeDepartments">
+        <ui-select-match placeholder="Select Department...">
             <span ng-bind="$select.selected.Name"></span>
             {{$item.Name}}
         </ui-select-match>
@@ -55,13 +55,13 @@
             <span ng-bind="department.Name"></span>
         </ui-select-choices>
     </ui-select>
-    <input type="hidden" class="form-control" name="Department" value="{{model.Department.DepartmentId}}">
+    <input ng-repeat="employeeDepartment in model.EmployeeDepartments track by $index" type="hidden" class="form-control" name="EmployeeDepartments[{{$index}}].DepartmentId" ng-value="employeeDepartment.DepartmentId">
 </div>
 
-<div class="form-group" ng-controller="TeamController as model" ng-init="model.InitialiseDropdown(@Model.TeamId)">
+<div class="form-group" ng-controller="TeamController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
     <label>Team</label>
-    <ui-select multiple ng-model="model.Team">
-        <ui-select-match  placeholder="Select Team...">
+    <ui-select multiple ng-model="model.EmployeeTeams">
+        <ui-select-match placeholder="Select Team...">
             <span ng-bind="$select.selected.Name"></span>
             {{$item.Name}}
         </ui-select-match>
@@ -69,7 +69,7 @@
             <span ng-bind="team.Name"></span>
         </ui-select-choices>
     </ui-select>
-    <input type="hidden" class="form-control" name="Team" value="{{model.Team.TeamId}}">
+    <input ng-repeat="employeeTeam in model.EmployeeTeams track by $index" type="hidden" class="form-control" name="EmployeeTeams[{{$index}}].TeamId" ng-value="employeeTeam.TeamId">
 </div>
 
 <div class="form-group" ng-controller="JobTitleController as model" ng-init="model.InitialiseDropdown(@Model.JobTitleId)">
