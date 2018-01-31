@@ -39,6 +39,12 @@ namespace AndersonCRMWeb.Controllers
         {
             return Json(_iFEmployee.Read());
         }
+
+        [HttpPost]
+        public JsonResult FilteredRead(EmployeeFilter employeeFilter)
+        {
+            return Json(_iFEmployee.Read(employeeFilter));
+        }
         #endregion
 
         #region Update

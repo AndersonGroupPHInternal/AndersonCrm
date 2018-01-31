@@ -13,7 +13,8 @@
 
         vm.EmployeeId;
         vm.Employee;
-        vm.SearchEmployee;
+        vm.SearchEmployee;  
+        vm.EmployeeFilter; //
         vm.Employees = [];
         vm.Companies = [];
         vm.JobTitles = [];
@@ -26,7 +27,26 @@
         vm.Delete = Delete;
 
         vm.SearchEmployee;
-        
+
+        vm.Rfilter = Rfilter;
+
+        function Rfilter() {
+            EmployeeService.FilteredRead(vm.EmployeeFilter)
+                .then(function (response) {
+                    vm.Employees = response.data;
+                })
+                .catch(function (data, status) {
+                    new PNotify({
+                        title: status,
+                        text: data,
+                        type: 'error',
+                        hide: true,
+                        addclass: "stack-bottomright"
+                    });
+
+                });
+        } 
+
         function GoToUpdatePage(employeeId) {
             $window.location.href = '../Employee/Update/' + employeeId;
         }

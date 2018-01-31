@@ -68,6 +68,20 @@ namespace AndersonCRMFunction
             return Employees(eEmployees);
         }
 
+        public List<Employee> Read(EmployeeFilter employeeFilter)
+        {
+            Expression<Func<EEmployee, bool>> predicate =
+                a => (a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name)) || a.LastName.Contains(employeeFilter.Name)
+                || employeeFilter.Name == null;
+
+            //Expression<Func<EEmployee, bool>> predicate =
+            //   a => (a.DateEnded >= employeeFilter.DateFrom)
+            //   || (a.DateEnded < employeeFilter.DateTo);
+
+            List<EEmployee> eEmployees = _iDEmployee.List(predicate);
+            return Employees(eEmployees);
+        }
+
         #endregion
 
         #region UPDATE
