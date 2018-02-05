@@ -10,6 +10,7 @@
     function EmployeeService($http) {
         return {
             Read: Read,
+            FilteredRead: FilteredRead, 
             Delete: Delete
         }
 
@@ -20,6 +21,15 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
+
+        function FilteredRead(employeeFilter) {
+            return $http({
+                method: 'POST',
+                url: '/Employee/FilteredRead',
+                data: $.param(employeeFilter),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+        } 
 
         function Delete(employeeId) {
             return $http({

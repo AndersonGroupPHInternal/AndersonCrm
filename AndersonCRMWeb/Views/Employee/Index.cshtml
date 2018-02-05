@@ -3,14 +3,17 @@
     ViewBag.Title = "Index";
 }
 
+
 <div ng-controller="EmployeeController as model" ng-init="model.Initialise()">
     <div class="row">
         <div class="col-sm-4">
             <a href="../Employee/Create" class="btn btn-default">Create</a>
-            <input type="text" placeholder="SearchName" ng-model="SearchEmployee"  ng-model-options="SearchJob" />
+        </div>
+       <div class="col-sm-4 form-group-sm pull-right" style="text-align:right">
+            <input type="text" placeholder="Name Of Employee" ng-model="model.EmployeeFilter.Name" ng-change="model.Rfilter()">
+            <label>Search</label>
         </div>
     </div>
-    
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-hover table-sm table-bordered ">
@@ -34,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="employee in model.Employees | filter : SearchEmployee | filter : JobTitle.Name" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
+                    <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
 
                         <td><span ng-bind="employee.EmployeeNumber"></span></td>
                         <td><span ng-bind="employee.Email"></span></td>
@@ -49,6 +52,7 @@
                             <span ng-bind="employee.MiddleName"></span>
                             <span ng-bind="employee.LastName"></span>
                         </td>
+
 
                         <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
                         <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
