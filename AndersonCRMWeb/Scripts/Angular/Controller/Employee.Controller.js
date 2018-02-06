@@ -10,20 +10,43 @@
     function EmployeeController($filter, $window, CompanyService, JobTitleService, EmployeeService) {
         var vm = this;
 
+
         vm.EmployeeId;
-        vm.Employee;
+        vm.Employee; 
+        vm.EmployeeFilter; 
         vm.Employees = [];
         vm.Companies = [];
         vm.JobTitles = [];
         vm.Departments = [];
 
-        vm.SearchEmployee;
-        vm.SearchJob = vm.JobTitle = $filter('filter')(vm.JobTitles, { JobTitleId: vm.JobTitleId })[0];
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
         vm.InitialiseDropdown = InitialiseDropdown;
         
         vm.Delete = Delete;
+
+        vm.SearchEmployee;
+
+        vm.Rfilter = Rfilter;
+
+        function Rfilter() {
+            EmployeeService.FilteredRead(vm.EmployeeFilter)
+                .then(function (response) {
+                    vm.Employees = response.data;
+                        ReadCompanies();
+                        ReadJobTitles();
+                })
+                .catch(function (data, status) {
+                    new PNotify({
+                        title: status,
+                        text: data,
+                        type: 'error',
+                        hide: true,
+                        addclass: "stack-bottomright"
+                    });
+
+                });
+        } 
 
         function GoToUpdatePage(employeeId) {
             $window.location.href = '../Employee/Update/' + employeeId;
