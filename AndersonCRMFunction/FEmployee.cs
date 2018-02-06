@@ -82,7 +82,7 @@ namespace AndersonCRMFunction
         public List<Employee> Read(EmployeeFilter employeeFilter)
         {
             Expression<Func<EEmployee, bool>> predicate =
-                a => (a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name)) || a.LastName.Contains(employeeFilter.Name)
+                a => (a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name)) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name)
                 || employeeFilter.Name == null;
 
             //Expression<Func<EEmployee, bool>> predicate =
