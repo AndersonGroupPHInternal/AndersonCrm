@@ -5,56 +5,8 @@
 }
 
 <div class="form-group">
-    <label for="DateHired">DateHired</label>
-    <input type="date" class="form-control" id="DateHired" name="DateHired" placeholder="DateHired" value="@Model.DateHired.ToString("yyyy-MM-dd")">
-</div>
-<div class="form-group">
-    <label for="DateStarted">DateStarted</label>
-    <input type="date" class="form-control" id="DateStarted" name="DateStarted" placeholder="DateStarted" value="@Model.DateStarted.ToString("yyyy-MM-dd")">
-</div>
-<div class="form-group">
-    <label for="DateEnded">DateEnded</label>
-    <input type="date" class="form-control" id="DateEnded" name="DateEnded" placeholder="DateEnded" value="@(Model.DateEnded?.ToString("yyyy-MM-dd") ?? null)">
-</div>
-
-<div class="form-group" ng-controller="CompanyController as model" ng-init="model.InitialiseDropdown(@Model.CompanyId)">
-    <label>Company</label>
-    <ui-select ng-model="model.Company">
-        <ui-select-match placeholder="Select Company...">
-            <span ng-bind="$select.selected.Name"></span>
-        </ui-select-match>
-        <ui-select-choices repeat="company in (model.Companies | filter: $select.search) track by $index">
-            <span ng-bind="company.Name"></span>
-        </ui-select-choices>
-    </ui-select>
-    <input type="hidden" class="form-control" name="CompanyId" value="{{model.Company.CompanyId}}">
-</div>
-
-<div class="form-group" ng-controller="JobTitleController as model" ng-init="model.InitialiseDropdown(@Model.JobTitleId)">
-    <label>JobTitle</label>
-    <ui-select ng-model="model.JobTitle">
-        <ui-select-match placeholder="Select JobTitle...">
-            <span ng-bind="$select.selected.Name"></span>
-        </ui-select-match>
-        <ui-select-choices repeat="jobTitle in (model.JobTitles | filter: $select.search) track by $index">
-            <span ng-bind="jobTitle.Name"></span>
-        </ui-select-choices>
-    </ui-select>
-    <input type="hidden" class="form-control" name="JobTitleId" value="{{model.JobTitle.JobTitleId}}">
-</div>
-<div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.ManagerEmployeeId)">
-    <label>Manager</label>
-    <ui-select ng-model="model.Employee">
-        <ui-select-match allow-clear="true" placeholder="Select Manager...">
-            <span ng-bind="$select.selected.FirstName + ' ' + $select.selected.MiddleName + ' ' + $select.selected.LastName"></span>
-        </ui-select-match>
-        <ui-select-choices repeat="employee in (model.Employees | filter: $select.search) track by $index">
-            <span ng-bind="employee.FirstName"></span>
-            <span ng-bind="employee.MiddleName"></span>
-            <span ng-bind="employee.LastName"></span>
-        </ui-select-choices>
-    </ui-select>
-    <input type="hidden" class="form-control" name="ManagerEmployeeId" value="{{model.Employee.EmployeeId}}">
+    <label for="EmployeeNumber">EmployeeNumber</label>
+    <input type="text" class="form-control" id="EmployeeNumber" name="EmployeeNumber" placeholder="EmployeeNumber" value="@Model.EmployeeNumber">
 </div>
 
 <div class="form-group">
@@ -72,6 +24,100 @@
 <div class="form-group">
     <label for="MiddleName">MiddleName</label>
     <input type="text" class="form-control" id="MiddleName" name="MiddleName" placeholder="MiddleName" value="@Model.MiddleName">
+</div>
+
+<div class="form-group">
+    <label for="Pin">Pin</label>
+    <input type="password" class="form-control" id="Pin " name="Pin" maxlength="4" placeholder="Pin Number" value="@Model.Pin">
+</div>
+
+<div class="form-group" ng-controller="CompanyController as model" ng-init="model.InitialiseDropdown(@Model.CompanyId)">
+    <label>Company</label>
+    <ui-select ng-model="model.Company">
+        <ui-select-match placeholder="Select Company...">
+            <span ng-bind="$select.selected.Name"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="company in (model.Companies | filter: $select.search) track by $index">
+            <span ng-bind="company.Name"></span>
+        </ui-select-choices>
+    </ui-select>
+    <input type="hidden" class="form-control" name="CompanyId" value="{{model.Company.CompanyId}}">
+</div>
+
+<div class="form-group" ng-controller="DepartmentController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
+    <label>Department</label>
+    <ui-select multiple ng-model="model.EmployeeDepartments">
+        <ui-select-match placeholder="Select Department...">
+            <span ng-bind="$select.selected.Name"></span>
+            {{$item.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="department in (model.Departments | filter: $select.search) track by $index">
+            <span ng-bind="department.Name"></span>
+        </ui-select-choices>
+    </ui-select>
+    <input ng-repeat="employeeDepartment in model.EmployeeDepartments track by $index" type="hidden" class="form-control" name="EmployeeDepartments[{{$index}}].DepartmentId" ng-value="employeeDepartment.DepartmentId">
+</div>
+
+<div class="form-group" ng-controller="TeamController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
+    <label>Team</label>
+    <ui-select multiple ng-model="model.EmployeeTeams">
+        <ui-select-match placeholder="Select Team...">
+            <span ng-bind="$select.selected.Name"></span>
+            {{$item.Name}}
+        </ui-select-match>
+        <ui-select-choices repeat="team in (model.Teams | filter: $select.search) track by $index">
+            <span ng-bind="team.Name"></span>
+        </ui-select-choices>
+    </ui-select>
+    <input ng-repeat="employeeTeam in model.EmployeeTeams track by $index" type="hidden" class="form-control" name="EmployeeTeams[{{$index}}].TeamId" ng-value="employeeTeam.TeamId">
+</div>
+
+<div class="form-group" ng-controller="JobTitleController as model" ng-init="model.InitialiseDropdown(@Model.JobTitleId)">
+    <label>JobTitle</label>
+    <ui-select ng-model="model.JobTitle">
+        <ui-select-match  placeholder="Select JobTitle...">
+            <span ng-bind="$select.selected.Name"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="jobTitle in (model.JobTitles | filter: $select.search) track by $index">
+            <span ng-bind="jobTitle.Name"></span>
+        </ui-select-choices>
+    </ui-select>
+    <input type="hidden" class="form-control" name="JobTitleId" value="{{model.JobTitle.JobTitleId}}">
+</div>
+
+<div class="form-group" ng-controller="EmployeeController as model" ng-init="model.InitialiseDropdown(@Model.EmployeeId)">
+    <label>Manager</label>
+    <ui-select ng-model="model.Employee">
+        <ui-select-match allow-clear="true" placeholder="Select Manager...">
+            <span ng-bind="$select.selected.FirstName + ' ' + $select.selected.MiddleName + ' ' + $select.selected.LastName"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="employee in (model.Employees | filter: $select.search) track by $index">
+            <span ng-bind="employee.FirstName"></span>
+            <span ng-bind="employee.MiddleName"></span>
+            <span ng-bind="employee.LastName"></span>
+        </ui-select-choices>
+    </ui-select>
+    <input type="hidden" class="form-control" name="Manager" value="{{model.Employee.EmployeeId}}">
+</div>
+
+<div class="form-group">
+    <label for="DateHired">DateHired</label>
+    <input type="date" class="form-control" id="DateHired" name="DateHired" placeholder="DateHired" value="@Model.DateHired.ToString("yyyy-MM-dd")">
+</div>
+
+<div class="form-group">
+    <label for="DateStarted">DateStarted</label>
+    <input type="date" class="form-control" id="DateStarted" name="DateStarted" placeholder="DateStarted" value="@Model.DateStarted.ToString("yyyy-MM-dd")">
+</div>
+
+<div class="form-group">
+    <label for="DateEnded">DateEnded</label>
+    <input type="date" class="form-control" id="DateEnded" name="DateEnded" placeholder="DateEnded" value="@(Model.DateEnded?.ToString("yyyy-MM-dd") ?? "")">
+</div>
+
+<div class="form-group">
+    <label for="Image">Image</label>
+    <input type="file" accept="image/jpeg" file-model="choice.NewChoiceImages.Attachment" id="EmployeeImage" name="EmployeeImage" class="form-control" />
 </div>
 
 <div class="form-group">

@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AndersonCRMEntity
 {
-    [Table("PeripheralType")]
-    public class EPeripheralType : EBase
+    [Table("AssetType")]
+    public class EAssetType : EBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PeripheralTypeId { get; set; }
+        public int AssetTypeId { get; set; }
 
         [StringLength(6)]
         public string Color { get; set; }
@@ -18,7 +18,7 @@ namespace AndersonCRMEntity
         [StringLength(250)]
         public string Name { get; set; }
 
-        public virtual ICollection<EPeripheral> Peripherals { get; set; }
+        public virtual ICollection<EAsset> Assets { get; set; }
 
     }
 }

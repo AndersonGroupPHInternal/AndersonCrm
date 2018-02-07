@@ -39,6 +39,12 @@ namespace AndersonCRMWeb.Controllers
         {
             return Json(_iFTeam.Read());
         }
+
+        [HttpPost]
+        public JsonResult ReadSelectedTeam(int id)
+        {
+            return Json(_iFTeam.Read(id, "TeamId"));
+        }
         #endregion
 
         #region Update

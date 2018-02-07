@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="AssetController as model" ng-init="model.Initialise()">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="../Asset/Create" class="btn btn-default">Create</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-hover table-sm table-bordered ">
+                <thead>
+                    <tr class="thead-inverse">
+                        <th>AssetId</th>
+                        <th>Employee</th>
+                        <th>AssetType</th>
+
+                        <th>AssetTag</th>
+                        <th>Description</th>
+                        <th>Name</th>
+                        <th>SerialNumber</th>
+                        <th>CreatedBy</th>
+                        <th>UpdatedBy</th>
+
+                        <th>CreateDate</th>
+                        <th>UpdateDate</th>
+                       
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickableRow" ng-repeat="asset in model.Assets" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(asset.AssetId)">
+
+                        <td><span ng-bind="asset.AssetId"></span></td>
+
+                        <td>
+                            <span ng-bind="asset.Employee.FirstName"></span>
+                            <span ng-bind="asset.Employee.MiddleName"></span>
+                            <span ng-bind="asset.Employee.LastName"></span>
+                        </td>
+
+                        <td><span ng-bind="asset.AssetType.Name"></span></td>
+                        <td><span ng-bind="asset.AssetTag"></span></td>
+                        <td><span ng-bind="asset.Description"></span></td>
+                        <td><span ng-bind="asset.Name"></span></td>
+                        
+                        <td><span ng-bind="asset.SerialNumber"></span></td>
+                        <td><span ng-bind="asset.CreatedBy"></span></td>
+                        <td><span ng-bind="asset.UpdatedBy"></span></td>
+
+                        <td><span ng-bind="asset.CreatedDate | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-bind="asset.UpdatedDate | date:'yyyy-MM-dd'"></span></td>
+
+
+                        <td ng-click="$event.originalEvent.dropdown = true">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="model.GoToUpdatePage(asset.AssetId)">Edit</a></li>
+                                    <li><a href="#" ng-click="model.Delete(asset.AssetId)">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

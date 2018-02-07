@@ -1,11 +1,12 @@
 ﻿using AndersonCRMContext;
 using BaseData;
 
+
 namespace AndersonCRMData
 {
-    public class DEmployee : DBase, IDEmployee
+    public class DAsset : DBase, IDAsset
     {
-        public DEmployee() :base(new Context())
+        public DAsset() : base(new Context())
         {
         }
     }

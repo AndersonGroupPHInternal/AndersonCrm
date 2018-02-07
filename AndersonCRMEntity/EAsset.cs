@@ -6,16 +6,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AndersonCRMEntity
 {
-    [Table("Peripheral")]
-    public class EPeripheral : EBase
+    [Table("Asset")]
+    public class EAsset : EBase
     {
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
+       
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PeripheralId { get; set; }
-        [ForeignKey("PeripheralType")]
-        public int PeripheralTypeId { get; set; }
+        public int AssetId { get; set; }
+        [ForeignKey("AssetType")]
+        public int AssetTypeId { get; set; }
+
 
         [StringLength(50)]
         public string AssetTag { get; set; }
@@ -28,8 +30,23 @@ namespace AndersonCRMEntity
         public string SerialNumber { get; set; }
 
         public virtual EEmployee Employee { get; set; }
-        public virtual EPeripheralType PeripheralType { get; set; }
+        public virtual EAssetType AssetType { get; set; }
 
-        public virtual ICollection<EPeripheralHistory> PeripheralHistories { get; set; }
+        public virtual ICollection<EAssetHistory> AssetHistories { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

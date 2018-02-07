@@ -1,5 +1,5 @@
 ﻿@using AndersonCRMModel;
-@model PeripheralType
+@model AssetType
 
 @{
     ViewBag.Title = "Create";
@@ -9,9 +9,9 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <form action="~/PeripheralType/Create" method="post">
+        <form action="~/AssetType/Create" method="post">
             @{
-                Html.RenderPartial("_PeripheralType", Model);
+                Html.RenderPartial("_AssetType", Model);
             }
         </form>
     </div>

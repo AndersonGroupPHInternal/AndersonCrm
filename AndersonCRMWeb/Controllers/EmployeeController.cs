@@ -1,15 +1,20 @@
 ﻿using AndersonCRMModel;
 using AndersonCRMFunction;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace AndersonCRMWeb.Controllers
 {
     public class EmployeeController : BaseController
     {
         private IFEmployee _iFEmployee;
-        public EmployeeController(IFEmployee iFEmployee)
+        private IFEmployeeTeam _iFEmployeeTeam;
+        private IFEmployeeDepartment _iFEmployeeDepartment;
+        public EmployeeController(IFEmployee iFEmployee, IFEmployeeTeam iFEmployeeTeam, IFEmployeeDepartment iFEmployeeDepartment)
         {
             _iFEmployee = iFEmployee;
+            _iFEmployeeTeam = iFEmployeeTeam;
+            _iFEmployeeDepartment = iFEmployeeDepartment;
         }
 
         #region Create
@@ -39,6 +44,12 @@ namespace AndersonCRMWeb.Controllers
         {
             return Json(_iFEmployee.Read());
         }
+
+        [HttpPost]
+        public JsonResult FilteredRead(EmployeeFilter employeeFilter)
+        {
+            return Json(_iFEmployee.Read(employeeFilter));
+        }
         #endregion
 
         #region Update
@@ -51,6 +62,8 @@ namespace AndersonCRMWeb.Controllers
         [HttpPost]
         public ActionResult Update(Employee employee)
         {
+            _iFEmployeeTeam.Create(UserId, employee.EmployeeId, employee.EmployeeTeams.ToList());
+            _iFEmployeeDepartment.Create(UserId, employee.EmployeeId, employee.EmployeeDepartments.ToList());
             var createdEmployee = _iFEmployee.Update(UserId, employee);
             return RedirectToAction("Index");
         }

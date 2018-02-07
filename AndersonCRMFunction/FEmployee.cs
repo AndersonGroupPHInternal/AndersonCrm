@@ -4,6 +4,7 @@ using AndersonCRMEntity;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Linq.Expressions;
 
 namespace AndersonCRMFunction
 {
@@ -18,7 +19,7 @@ namespace AndersonCRMFunction
 
         #region CREATE
         public Employee Create(int createdBy, Employee employee)
-        {
+        {           
             EEmployee eEmployee = EEmployee(employee);
             eEmployee.CreatedDate = DateTime.Now;
             eEmployee.CreatedBy = createdBy;
@@ -34,9 +35,29 @@ namespace AndersonCRMFunction
             return Employee(eEmployee);
         }
 
+        public Employee Read(string employeeNumber)
+        {
+            EEmployee eEmployee = _iDEmployee.Read<EEmployee>(a => a.EmployeeNumber == employeeNumber);
+
+            if (eEmployee == null)
+                return new Employee();
+
+            return Employee(eEmployee);
+        }
+
+        public Employee Read(string  employeeNumber , string pin)
+        {
+            EEmployee eEmployee = _iDEmployee.Read<EEmployee>(a => a.EmployeeNumber == employeeNumber && a.Pin == pin);
+
+            if (eEmployee == null)
+                return new Employee();
+
+            return Employee(eEmployee);
+        }
+
         public List<Employee> Read()
         {
-            List<EEmployee> eEmployees = _iDEmployee.List<EEmployee>(a => true);
+            List<EEmployee> eEmployees = _iDEmployee.List<EEmployee>(a => !a.DateEnded.HasValue);
             return Employees(eEmployees);
         }
 
@@ -52,9 +73,23 @@ namespace AndersonCRMFunction
             return Employees(eEmployees);
         }
 
-        public List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy)
+        public List<Employee> ReadAssetHistory(int assetId, string sortBy)
         {
-            List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.PeripheralHistories.Any(b => b.PeripheralId == peripheralId), sortBy);
+            List<EEmployee> eEmployees = _iDEmployee.Read<EEmployee>(a => a.AssetHistories.Any(b => b.AssetId == assetId), sortBy);
+            return Employees(eEmployees);
+        }
+
+        public List<Employee> Read(EmployeeFilter employeeFilter)
+        {
+            Expression<Func<EEmployee, bool>> predicate =
+                a => (a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name)) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name)
+                || employeeFilter.Name == null;
+
+            //Expression<Func<EEmployee, bool>> predicate =
+            //   a => (a.DateEnded >= employeeFilter.DateFrom)
+            //   || (a.DateEnded < employeeFilter.DateTo);
+
+            List<EEmployee> eEmployees = _iDEmployee.List(predicate);
             return Employees(eEmployees);
         }
 
@@ -88,6 +123,7 @@ namespace AndersonCRMFunction
                 DateEnded = a.DateEnded,
                 UpdatedDate = a.UpdatedDate,
 
+                EmployeeNumber = a.EmployeeNumber,
                 CompanyId = a.CompanyId,
                 CreatedBy = a.CreatedBy,
                 EmployeeId = a.EmployeeId,
@@ -98,7 +134,8 @@ namespace AndersonCRMFunction
                 Email = a.Email,
                 FirstName = a.FirstName,
                 LastName = a.LastName,
-                MiddleName = a.MiddleName
+                MiddleName = a.MiddleName,
+                Pin = a.Pin
             }).ToList();
         }
 
@@ -112,6 +149,7 @@ namespace AndersonCRMFunction
                 DateEnded = employee.DateEnded,
                 UpdatedDate = employee.UpdatedDate,
 
+                EmployeeNumber = employee.EmployeeNumber,
                 CompanyId = employee.CompanyId,
                 CreatedBy = employee.CreatedBy,
                 EmployeeId = employee.EmployeeId,
@@ -122,7 +160,8 @@ namespace AndersonCRMFunction
                 Email = employee.Email,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
-                MiddleName = employee.MiddleName
+                MiddleName = employee.MiddleName,
+                Pin = employee.Pin
             };
         }
 
@@ -136,6 +175,7 @@ namespace AndersonCRMFunction
                 DateEnded = eEmployee.DateEnded,
                 UpdatedDate = eEmployee.UpdatedDate,
 
+                EmployeeNumber = eEmployee.EmployeeNumber,
                 CompanyId = eEmployee.CompanyId,
                 CreatedBy = eEmployee.CreatedBy,
                 EmployeeId = eEmployee.EmployeeId,
@@ -146,9 +186,15 @@ namespace AndersonCRMFunction
                 Email = eEmployee.Email,
                 FirstName = eEmployee.FirstName,
                 LastName = eEmployee.LastName,
-                MiddleName = eEmployee.MiddleName
+                MiddleName = eEmployee.MiddleName,
+                Pin = eEmployee.Pin
             };
             return returnEmployee;
+        }
+
+        public List<Employee> ReadPeripheralHistory(int peripheralId, string sortBy)
+        {
+            throw new NotImplementedException();
         }
     }
 }

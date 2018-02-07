@@ -3,11 +3,11 @@
 
     angular
         .module('App')
-        .factory('PeripheralTypeService', PeripheralTypeService);
+        .factory('AssetTypeService', AssetTypeService);
 
-    PeripheralTypeService.$inject = ['$http'];
+    AssetTypeService.$inject = ['$http'];
 
-    function PeripheralTypeService($http) {
+    function AssetTypeService($http) {
         return {
             Read: Read,
             Delete: Delete
@@ -16,15 +16,15 @@
         function Read() {
             return $http({
                 method: 'POST',
-                url: '/PeripheralType/Read',
+                url: '/AssetType/Read',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
 
-        function Delete(peripheralTypeId) {
+        function Delete(assetTypeId) {
             return $http({
                 method: 'DELETE',
-                url: '/PeripheralType/Delete/' + peripheralTypeId,
+                url: '/AssetType/Delete/' + assetTypeId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

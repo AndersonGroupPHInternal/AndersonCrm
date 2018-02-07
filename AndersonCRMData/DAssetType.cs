@@ -1,12 +1,11 @@
 ﻿using AndersonCRMContext;
 using BaseData;
 
-
 namespace AndersonCRMData
 {
-    public class DPeripheral : DBase, IDPeripheral
+    public class DAssetType : DBase, IDAssetType
     {
-        public DPeripheral() : base(new Context())
+        public DAssetType() : base(new Context())
         {
         }
     }

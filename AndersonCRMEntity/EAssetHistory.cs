@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AndersonCRMEntity
 {
-    [Table("PeripheralHistory")]
-    public class EPeripheralHistory : EBase
+    [Table("AssetHistory")]
+    public class EAssetHistory : EBase
     {
         public DateTime DateAssigned { get; set; }
 
@@ -14,11 +14,12 @@ namespace AndersonCRMEntity
         public int EmployeeId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PeripheralHistoryId { get; set; }
-        [ForeignKey("Peripheral")]
-        public int PeripheralId { get; set; }
+        public int AssetHistoryId { get; set; }
+        [ForeignKey("Asset")]
+        public int AssetId { get; set; }
 
         public virtual EEmployee Employee { get; set; }
-        public virtual EPeripheral Peripheral { get; set; }
+        public virtual EAsset Asset { get; set; }
+
     }
 }

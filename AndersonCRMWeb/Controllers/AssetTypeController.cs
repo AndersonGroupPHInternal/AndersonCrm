@@ -4,25 +4,25 @@ using System.Web.Mvc;
 
 namespace AndersonCRMWeb.Controllers
 {
-    public class PeripheralTypeController : BaseController
+    public class AssetTypeController : BaseController
     {
-        private IFPeripheralType _iFPeripheralType;
-        public PeripheralTypeController(IFPeripheralType iFPeripheralType)
+        private IFAssetType _iFAssetType;
+        public AssetTypeController(IFAssetType iFAssetType)
         {
-            _iFPeripheralType = iFPeripheralType;
+            _iFAssetType = iFAssetType;
         }
 
         #region Create
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new PeripheralType());
+            return View(new AssetType());
         }
 
         [HttpPost]
-        public ActionResult Create(PeripheralType peripheralType)
+        public ActionResult Create(AssetType assetType)
         {
-            var createdPeripheralType = _iFPeripheralType.Create(UserId, peripheralType);
+            var createdAssetType = _iFAssetType.Create(UserId, assetType);
             return RedirectToAction("Index");
         }
         #endregion
@@ -37,7 +37,7 @@ namespace AndersonCRMWeb.Controllers
         [HttpPost]
         public JsonResult Read()
         {
-            return Json(_iFPeripheralType.Read());
+            return Json(_iFAssetType.Read());
         }
         #endregion
 
@@ -45,13 +45,13 @@ namespace AndersonCRMWeb.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            return View(_iFPeripheralType.Read(id));
+            return View(_iFAssetType.Read(id));
         }
 
         [HttpPost]
-        public ActionResult Update(PeripheralType peripheralType)
+        public ActionResult Update(AssetType assetType)
         {
-            var createdPeripheralType = _iFPeripheralType.Update(UserId, peripheralType);
+            var createdAssetType = _iFAssetType.Update(UserId, assetType);
             return RedirectToAction("Index");
         }
         #endregion
@@ -60,7 +60,7 @@ namespace AndersonCRMWeb.Controllers
         [HttpDelete]
         public JsonResult Delete(int id)
         {
-            _iFPeripheralType.Delete(id);
+            _iFAssetType.Delete(id);
             return Json(string.Empty);
         }
         #endregion

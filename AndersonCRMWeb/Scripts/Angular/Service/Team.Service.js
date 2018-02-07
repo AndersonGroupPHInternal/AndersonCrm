@@ -10,6 +10,7 @@
     function TeamService($http) {
         return {
             Read: Read,
+            ReadSelectedTeam: ReadSelectedTeam,
             Delete: Delete
         }
 
@@ -17,6 +18,14 @@
             return $http({
                 method: 'POST',
                 url: '/Team/Read',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+        }
+
+        function ReadSelectedTeam(employeeId) {
+            return $http({
+                method: 'POST',
+                url: '/Team/ReadSelectedTeam/' + employeeId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }

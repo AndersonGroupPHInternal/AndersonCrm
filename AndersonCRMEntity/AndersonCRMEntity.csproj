@@ -44,12 +44,12 @@
   <ItemGroup>
     <Compile Include="EEmployeeDepartment.cs" />
     <Compile Include="EDepartment.cs" />
-    <Compile Include="EPeripheralType.cs" />
+    <Compile Include="EAssetType.cs" />
     <Compile Include="EEmployeeTeam.cs" />
     <Compile Include="ETeam.cs" />
-    <Compile Include="EPeripheralHistory.cs" />
+    <Compile Include="EAssetHistory.cs" />
     <Compile Include="EJobTitle.cs" />
-    <Compile Include="EPeripheral.cs" />
+    <Compile Include="EAsset.cs" />
     <Compile Include="EEmployee.cs" />
     <Compile Include="ECompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -27,8 +27,11 @@
         } 
 
         function Initialise() {
+            // vm.CompanyId = companyId;
             Read();
+           
         }
+        
 
         function InitialiseDropdown(companyId) {
             vm.CompanyId = companyId;
@@ -58,7 +61,10 @@
             vm.Company = $filter('filter')(vm.Companies, { CompanyId: vm.CompanyId })[0];
         }
 
+
         function Delete(companyId) {
+            var conf = window.confirm("Are you sure you want to delete?");
+            if (conf == true) {
             CompanyService.Delete(companyId)
                 .then(function (response) {
                     Read();
@@ -71,7 +77,9 @@
                         hide: true,
                         addclass: "stack-bottomright"
                     });
-                });
+                    });
+            }
+            else { return; false }
         }
 
     }

@@ -106,9 +106,9 @@ namespace AndersonCRMContext
             };            
             context.JobTitles.AddRange(jobTitles);
 
-            List<EPeripheralType> peripheralTypes = new List<EPeripheralType>()
+            List<EAssetType> assetTypes = new List<EAssetType>()
             {
-                new EPeripheralType
+                new EAssetType
                 {
                     CreatedDate = DateTime.Now,
 
@@ -116,7 +116,7 @@ namespace AndersonCRMContext
 
                     Name = "Webcam"
                 },
-                new EPeripheralType
+                new EAssetType
                 {
                     CreatedDate = DateTime.Now,
 
@@ -125,7 +125,7 @@ namespace AndersonCRMContext
                     Name = "Desktop Computer"
                 }
             };
-            context.PeripheralTypes.AddRange(peripheralTypes);
+            context.AssetTypes.AddRange(assetTypes);
 
             context.SaveChanges();
 
@@ -152,18 +152,19 @@ namespace AndersonCRMContext
                 });
                 context.SaveChanges();
 
-                var peripheralType = context.PeripheralTypes.FirstOrDefault(a => a.Name == "Desktop Computer");
+                var assetType = context.AssetTypes.FirstOrDefault(a => a.Name == "Desktop Computer");
 
-                if (employee != null && peripheralType != null)
+                if (employee != null && assetType != null)
                 {
-                    var peripheral = context.Peripherals.Add(
-                    new EPeripheral
+                    var asset = context.Assets.Add(
+                    new EAsset
                     {
                         CreatedDate = DateTime.Now,
 
                         CreatedBy = 0,
+
                         EmployeeId = employee.EmployeeId,
-                        PeripheralTypeId = peripheralType.PeripheralTypeId,
+                        AssetTypeId = assetType.AssetTypeId,
 
                         AssetTag = "AGPDSK00134",
                         Description = "Work Computer",
@@ -172,17 +173,17 @@ namespace AndersonCRMContext
                     });
                     context.SaveChanges();
 
-                    if (peripheral != null)
+                    if (asset != null)
                     {
-                        context.PeripheralHistories.Add(
-                            new EPeripheralHistory
+                        context.AssetHistories.Add(
+                            new EAssetHistory
                             {
                                 CreatedDate = DateTime.Now,
                                 DateAssigned = new DateTime(2016, 04, 22),
 
                                 CreatedBy = 0,
                                 EmployeeId = employee.EmployeeId,
-                                PeripheralId = peripheral.PeripheralId
+                                AssetId = asset.AssetId
                             });
                         context.SaveChanges();
                     }

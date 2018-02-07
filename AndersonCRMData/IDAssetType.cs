@@ -2,7 +2,7 @@
 
 namespace AndersonCRMData
 {
-    public interface IDPeripheralType : IDBase
+    public interface IDAssetType : IDBase
     {
     }
 }

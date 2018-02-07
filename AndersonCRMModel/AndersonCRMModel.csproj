@@ -39,6 +39,7 @@
       <HintPath>..\..\DLL\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,15 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Department.cs" />
+    <Compile Include="EmployeeFilter.cs" />
     <Compile Include="EmployeeDepartment.cs" />
     <Compile Include="EmployeeTeam.cs" />
     <Compile Include="Team.cs" />
-    <Compile Include="PeripheralType.cs" />
+    <Compile Include="AssetType.cs" />
     <Compile Include="JobTitle.cs" />
-    <Compile Include="PeripheralHistory.cs" />
+    <Compile Include="AssetHistory.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="Peripheral.cs" />
+    <Compile Include="Asset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

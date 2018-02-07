@@ -17,14 +17,14 @@ namespace AndersonCRMFunction
         }
 
         #region CREATE
-        public void Create(int createdBy, int employeeId, List<Department> departments)
+        public void Create(int createdBy, int employeeId, List<EmployeeDepartment> employeeDepartments)
         {
             Delete(employeeId);
-            var eEmployeeDepartments = EEmployeeDepartments(createdBy, employeeId, departments);
+            var eEmployeeDepartments = EEmployeeDepartments(createdBy, employeeId, employeeDepartments);
             _iDEmployeeDepartment.Create(eEmployeeDepartments);
         }
         #endregion
-        
+
         #region READ
         #endregion
 
@@ -39,7 +39,7 @@ namespace AndersonCRMFunction
         #endregion
 
         #region OTHER FUNCTION
-        private List<EEmployeeDepartment> EEmployeeDepartments(int createdBy, int employeeId, List<Department> employeeDepartments)
+        private List<EEmployeeDepartment> EEmployeeDepartments(int createdBy, int employeeId, List<EmployeeDepartment> employeeDepartments)
         {
             return employeeDepartments.Select(a => new EEmployeeDepartment
             {

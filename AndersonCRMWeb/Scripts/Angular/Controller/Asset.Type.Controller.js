@@ -3,44 +3,46 @@
 
     angular
         .module('App')
-        .controller('JobTitleController', JobTitleController);
+        .controller('AssetTypeController', AssetTypeController);
 
-    JobTitleController.$inject = ['$filter', '$window', 'JobTitleService'];
+    AssetTypeController.$inject = ['$filter','$window', 'AssetTypeService'];
 
-    function JobTitleController($filter, $window, JobTitleService) {
+    function AssetTypeController($filter, $window, AssetTypeService) {
         var vm = this;
 
-        vm.JobTitleId;
+        vm.AssetTypes = [];
 
-        vm.JobTitle;
+        vm.AssetTypeId;
 
-        vm.JobTitles = [];
+        vm.AssetType;
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
         vm.InitialiseDropdown = InitialiseDropdown;
 
+
         vm.Delete = Delete;
         
-        function GoToUpdatePage(jobTitleId) {
-            $window.location.href = '../JobTitle/Update/' + jobTitleId;
+        function GoToUpdatePage(assetTypeId) {
+            $window.location.href = '../AssetType/Update/' + assetTypeId;
         } 
 
         function Initialise() {
             Read();
         }
-
-        function InitialiseDropdown(jobTitleId) {
-            vm.JobTitleId = jobTitleId;
+        function InitialiseDropdown(assetTypeId) {
+            vm.AssetTypeId = assetTypeId;
             Read();
-        } 
+        }
 
         function Read() {
-            JobTitleService.Read()
+            AssetTypeService.Read()
                 .then(function (response) {
-                    vm.JobTitles = response.data;
-                    if (vm.JobTitleId)
-                        UpdateJobTitle();
+                    vm.AssetTypes = response.data;
+                    if (vm.AssetTypeId)
+                    {
+                        UpdateAssetTypes();
+                    }
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -54,14 +56,14 @@
                 });
         }
 
-        function UpdateJobTitle() {
-            vm.JobTitle = $filter('filter')(vm.JobTitles, { JobTitleId: vm.JobTitleId })[0];
+        function UpdateAssetTypes() {
+            vm.AssetType = $filter('filter')(vm.AssetTypes, { AssetTypeId: vm.AssetTypeId })[0];
         }
 
-        function Delete(jobTitleId) {
+        function Delete(assetTypeId) {
             var conf = window.confirm("Are you sure you want to delete?");
             if (conf == true) {
-            JobTitleService.Delete(jobTitleId)
+            AssetTypeService.Delete(assetTypeId)
                 .then(function (response) {
                     Read();
                 })

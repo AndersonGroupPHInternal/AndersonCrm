@@ -3,10 +3,15 @@
     ViewBag.Title = "Index";
 }
 
+
 <div ng-controller="EmployeeController as model" ng-init="model.Initialise()">
     <div class="row">
         <div class="col-sm-4">
             <a href="../Employee/Create" class="btn btn-default">Create</a>
+        </div>
+        <div class="col-sm-4 form-group-sm pull-right" style="text-align:right">
+            <input type="text" placeholder="Name Of Employee...." ng-model="model.EmployeeFilter.Name" ng-change="model.Rfilter()">
+            <label>Search</label>
         </div>
     </div>
     <div class="row">
@@ -14,39 +19,44 @@
             <table class="table table-hover table-sm table-bordered ">
                 <thead>
                     <tr class="thead-inverse">
-                        <th>DateHired</th>
-                        <th>DateStarted</th>
-                        <th>DateEnded</th>
-
-                        <th>CompanyId</th>
-                        <th>EmployeeId</th>
-                        <th>JobTitleId</th>
-                        <th>ManagerEmployeeId</th>
-
+                        <th>EmployeeNumber</th>
                         <th>Email</th>
                         <th>FirstName</th>
                         <th>LastName</th>
                         <th>MiddleName</th>
+
+                        <th>CompanyName</th>
+                        <th>JobTitleName</th>
+                        <th>Manager</th>
+
+                        <th>DateHired</th>
+                        <th>DateStarted</th>
+                        <th>DateEnded</th>
 
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="clickableRow" ng-repeat="employee in model.Employees" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(employee.EmployeeId)">
-                        <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
-                        <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
-                        <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
 
-                        <td><span ng-bind="employee.CompanyId"></span></td>
-                        <td><span ng-bind="employee.EmployeeId"></span></td>
-                        <td><span ng-bind="employee.JobTitleId"></span></td>
-                        <td><span ng-bind="employee.ManagerEmployeeId"></span></td>
-
+                        <td><span ng-bind="employee.EmployeeNumber"></span></td>
                         <td><span ng-bind="employee.Email"></span></td>
                         <td><span ng-bind="employee.FirstName"></span></td>
                         <td><span ng-bind="employee.LastName"></span></td>
                         <td><span ng-bind="employee.MiddleName"></span></td>
+                        <td><span ng-bind="employee.Company.Name"></span></td>
+                        <td><span ng-bind="employee.JobTitle.Name"></span></td>
 
+                        <td>
+                            <span ng-bind="employee.FirstName"></span>
+                            <span ng-bind="employee.MiddleName"></span>
+                            <span ng-bind="employee.LastName"></span>
+                        </td>
+
+
+                        <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
+                        <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
                         <td ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">

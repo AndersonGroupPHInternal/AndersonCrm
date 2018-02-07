@@ -4,25 +4,25 @@ using System.Web.Mvc;
 
 namespace AndersonCRMWeb.Controllers
 {
-    public class DepartmentController : BaseController
+    public class AssetController : BaseController
     {
-        private IFDepartment _iFDepartment;
-        public DepartmentController(IFDepartment iFDepartment)
+        private IFAsset _iFAsset;
+        public AssetController(IFAsset iFAsset)
         {
-            _iFDepartment = iFDepartment;
+            _iFAsset = iFAsset;
         }
 
         #region Create
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new Department());
+            return View(new Asset());
         }
 
         [HttpPost]
-        public ActionResult Create(Department department)
+        public ActionResult Create(Asset asset)
         {
-            var createdDepartment = _iFDepartment.Create(UserId, department);
+            var createdAsset = _iFAsset.Create(UserId, asset);
             return RedirectToAction("Index");
         }
         #endregion
@@ -37,27 +37,21 @@ namespace AndersonCRMWeb.Controllers
         [HttpPost]
         public JsonResult Read()
         {
-            return Json(_iFDepartment.Read());
+            return Json(_iFAsset.Read());
         }
         #endregion
-
-        [HttpPost]
-        public JsonResult ReadSelectedDepartment(int id)
-        {
-            return Json(_iFDepartment.Read(id, "DepartmentId"));
-        }
 
         #region Update
         [HttpGet]
         public ActionResult Update(int id)
         {
-            return View(_iFDepartment.Read(id));
+            return View(_iFAsset.Read(id));
         }
 
         [HttpPost]
-        public ActionResult Update(Department department)
+        public ActionResult Update(Asset asset)
         {
-            var createdDepartment = _iFDepartment.Update(UserId, department);
+            var createdAsset = _iFAsset.Update(UserId, asset);
             return RedirectToAction("Index");
         }
         #endregion
@@ -66,7 +60,7 @@ namespace AndersonCRMWeb.Controllers
         [HttpDelete]
         public JsonResult Delete(int id)
         {
-            _iFDepartment.Delete(id);
+            _iFAsset.Delete(id);
             return Json(string.Empty);
         }
         #endregion

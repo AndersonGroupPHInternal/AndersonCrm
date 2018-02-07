@@ -10,6 +10,7 @@
     function DepartmentService($http) {
         return {
             Read: Read,
+            ReadSelectedDepartment: ReadSelectedDepartment,
             Delete: Delete
         }
 
@@ -17,6 +18,14 @@
             return $http({
                 method: 'POST',
                 url: '/Department/Read',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+        }
+
+        function ReadSelectedDepartment(employeeId) {
+            return $http({
+                method: 'POST',
+                url: '/Department/ReadSelectedDepartment/' + employeeId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
