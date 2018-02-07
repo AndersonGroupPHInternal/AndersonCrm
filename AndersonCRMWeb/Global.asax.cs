@@ -5,6 +5,7 @@ using System.Web.Routing;
 using System.Web.Http;
 using AndersonCRMWeb.App_Start;
 using System.Web.Optimization;
+using BaseWeb.Helper;
 
 namespace AndersonCRMWeb
 {
@@ -17,6 +18,7 @@ namespace AndersonCRMWeb
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GlobalFilters.Filters.Add(new JsonHandlerAttribute());
         }
     }
 }

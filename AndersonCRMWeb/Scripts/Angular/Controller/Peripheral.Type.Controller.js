@@ -3,44 +3,32 @@
 
     angular
         .module('App')
-        .controller('CompanyController', CompanyController);
+        .controller('PeripheralTypeController', PeripheralTypeController);
 
-    CompanyController.$inject = ['$filter', '$window', 'CompanyService'];
+    PeripheralTypeController.$inject = ['$window', 'PeripheralTypeService'];
 
-    function CompanyController($filter, $window, CompanyService) {
+    function PeripheralTypeController($window, PeripheralTypeService) {
         var vm = this;
 
-        vm.CompanyId;
-
-        vm.Company;
-
-        vm.Companies = [];
+        vm.PeripheralTypes = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
-        vm.InitialiseDropdown = InitialiseDropdown;
 
         vm.Delete = Delete;
         
-        function GoToUpdatePage(companyId) {
-            $window.location.href = '../Company/Update/' + companyId;
+        function GoToUpdatePage(peripheralTypeId) {
+            $window.location.href = '../PeripheralType/Update/' + peripheralTypeId;
         } 
 
         function Initialise() {
             Read();
         }
 
-        function InitialiseDropdown(companyId) {
-            vm.CompanyId = companyId;
-            Read();
-        } 
-
         function Read() {
-            CompanyService.Read()
+            PeripheralTypeService.Read()
                 .then(function (response) {
-                    vm.Companies = response.data;
-                    if (vm.CompanyId)
-                        UpdateCompany();
+                    vm.PeripheralTypes = response.data;
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -54,12 +42,8 @@
                 });
         }
 
-        function UpdateCompany() {
-            vm.Company = $filter('filter')(vm.Companies, { CompanyId: vm.CompanyId })[0];
-        }
-
-        function Delete(companyId) {
-            CompanyService.Delete(companyId)
+        function Delete(peripheralTypeId) {
+            PeripheralTypeService.Delete(peripheralTypeId)
                 .then(function (response) {
                     Read();
                 })

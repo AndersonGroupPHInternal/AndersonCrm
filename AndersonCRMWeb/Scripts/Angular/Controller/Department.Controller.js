@@ -9,8 +9,6 @@
 
     function DepartmentController($window, DepartmentService) {
         var vm = this;
-
-        vm.Employees = [];
         vm.Departments = [];
 
         vm.GoToUpdatePage = GoToUpdatePage;
@@ -24,23 +22,6 @@
 
         function Initialise() {
             Read();
-        }
-
-        function ReadEmployees() {
-            EmployeeService.Read()
-                .then(function (response) {
-                    vm.Employees = response.data;
-                })
-                .catch(function (data, status) {
-                    new PNotify({
-                        title: status,
-                        text: data,
-                        type: 'error',
-                        hide: true,
-                        addclass: "stack-bottomright"
-                    });
-
-                });
         }
 
         function Read() {

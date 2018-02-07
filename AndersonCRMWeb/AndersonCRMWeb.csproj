@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="BaseData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="BaseWeb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
@@ -952,18 +953,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Angular\app.module.js" />
-    <Content Include="Scripts\Angular\app.module.min.js">
-      <DependentUpon>app.module.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\Angular\Controller\Team.Controller.js" />
-    <Content Include="Scripts\Angular\Controller\PeripheralType.Controller.js" />
+    <Content Include="Scripts\Angular\Controller\Peripheral.Type.Controller.js" />
     <Content Include="Scripts\Angular\Controller\JobTitle.Controller.js" />
     <Content Include="Scripts\Angular\Controller\Company.Controller.js" />
-    <Content Include="Scripts\Angular\Controller\DepartmentController.js" />
-    <Content Include="Scripts\Angular\Controller\EmployeeController.js" />
-    <Content Include="Scripts\Angular\Controller\PeripheralHistoryController.js" />
-    <Content Include="Scripts\Angular\Controller\PeripheralController.js" />
-    <Content Include="Scripts\Angular\Controller\PositionController.js" />
+    <Content Include="Scripts\Angular\Controller\Department.Controller.js" />
+    <Content Include="Scripts\Angular\Controller\Employee.Controller.js" />
     <Content Include="Scripts\Angular\Service\Team.Service.js" />
     <Content Include="Scripts\Angular\Service\PeripheralType.Service.js" />
     <Content Include="Scripts\Angular\Service\JobTitle.Service.js" />
@@ -971,9 +966,6 @@
     <None Include="bundleconfig.json" />
     <Content Include="Scripts\Angular\Service\DepartmentService.js" />
     <Content Include="Scripts\Angular\Service\EmployeeService.js" />
-    <Content Include="Scripts\Angular\Service\PeripheralHistoryService.js" />
-    <Content Include="Scripts\Angular\Service\PeripheralService.js" />
-    <Content Include="Scripts\Angular\Service\PositionService.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1007,7 +999,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
-    <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Peripheral\Index.cshtml" />
     <Content Include="Views\Position\Index.cshtml" />
     <Content Include="Views\Shared\_PartialCSS.cshtml" />
@@ -1015,13 +1006,10 @@
     <Content Include="Views\Company\Create.cshtml" />
     <Content Include="Views\Company\Update.cshtml" />
     <Content Include="Views\Position\add.cshtml" />
-    <Content Include="Views\Employee\Add.cshtml" />
     <Content Include="Views\Peripheral\Add.cshtml" />
     <Content Include="Views\Position\Edit.cshtml" />
-    <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Peripheral\Edit.cshtml" />
     <Content Include="Views\Company\_Company.cshtml" />
-    <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Position\Details.cshtml" />
     <Content Include="Views\Peripheral\Details.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -1042,6 +1030,11 @@
     <Content Include="Views\Team\Create.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\Update.cshtml" />
+    <Content Include="Views\Employee\_Employee.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Update.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
