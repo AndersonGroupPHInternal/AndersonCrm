@@ -10,6 +10,7 @@ namespace AndersonCRMFunction
         #endregion
 
         #region READ
+        List<EmployeeDepartment> Read(List<int> departmentIds);
         #endregion
 
         #region UPDATE

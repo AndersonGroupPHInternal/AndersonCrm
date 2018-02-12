@@ -26,6 +26,11 @@ namespace AndersonCRMFunction
         #endregion
 
         #region READ
+        public List<EmployeeDepartment> Read(List<int> departmentIds)
+        {
+            List<EEmployeeDepartment> eEmployeeDepartments = _iDEmployeeDepartment.List<EEmployeeDepartment>(a => departmentIds.Contains(a.DepartmentId));
+            return EmployeeDepartment(eEmployeeDepartments);
+        }
         #endregion
 
         #region UPDATE
@@ -50,6 +55,19 @@ namespace AndersonCRMFunction
                 EmployeeId = employeeId
             }).ToList();
         }
+
+        private List<EmployeeDepartment> EmployeeDepartment(List<EEmployeeDepartment> eEmployeeDepartments)
+        {
+            return eEmployeeDepartments.Select(a => new EmployeeDepartment
+            {
+                CreatedDate = a.CreatedDate,
+
+                CreatedBy = a.CreatedBy,
+                DepartmentId = a.DepartmentId,
+                EmployeeId = a.EmployeeId
+            }).ToList();
+        }
+
         #endregion
     }
 }
