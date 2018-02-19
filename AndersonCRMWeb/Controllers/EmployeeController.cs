@@ -2,6 +2,7 @@
 using AndersonCRMFunction;
 using System.Web.Mvc;
 using System.Linq;
+using System;
 
 namespace AndersonCRMWeb.Controllers
 {
@@ -48,7 +49,14 @@ namespace AndersonCRMWeb.Controllers
         [HttpPost]
         public JsonResult FilteredRead(EmployeeFilter employeeFilter)
         {
-            return Json(_iFEmployee.Read(employeeFilter));
+            try
+            {
+                return Json(_iFEmployee.Read(employeeFilter));
+            }
+            catch (Exception exception)
+            {
+                return Json(exception);
+            }
         }
         #endregion
 
