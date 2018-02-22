@@ -9,11 +9,16 @@
         <div class="col-sm-4">
             <a href="../Employee/Create" class="btn btn-default">Create</a>
         </div>
-        <div class="col-sm-4 form-group-sm pull-right" style="text-align:right">
-            <input type="text" placeholder="Name Of Employee...." ng-model="model.EmployeeFilter.Name" ng-change="model.Rfilter()">
-            <label>Search</label>
+        <div class="col-sm-4" style="text-align:center">
+            <input type="checkbox" ng-model="model.EmployeeFilter.isResigned" ng-change="model.Rfilter()" />
+    <label>Employee Resigned</label>
         </div>
+    <div class="btn btn-default pull-right" style="text-align:right">
+        <input type="text" placeholder="Name Of Employee...." ng-model="model.EmployeeFilter.Name" ng-change="model.Rfilter()">
+        <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        <label>Search</label>
     </div>
+</div>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-hover table-sm table-bordered ">
@@ -26,7 +31,7 @@
                         <th>MiddleName</th>
 
                         <th>CompanyName</th>
-                        <th>JobTitleName</th>
+                        <th>JobTitle</th>
                         <th>Manager</th>
 
                         <th>DateHired</th>
