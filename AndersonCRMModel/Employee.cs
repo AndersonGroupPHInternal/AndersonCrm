@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 
 namespace AndersonCRMModel
 {
@@ -19,13 +20,29 @@ namespace AndersonCRMModel
         public int ManagerEmployeeId { get; set; }
 
         public string EmployeeNumber { get; set; }
+        public string EmployeeImage
+        {
+            get
+            {
+                if (File.Exists(ConfigurationManager.AppSettings["filepath"] + EmployeeId.ToString() + ".jpg"))
+                    return ConfigurationManager.AppSettings["filepath"] + EmployeeId.ToString() + ".jpg";
+                return string.Empty;
+            }
+        }
+        public string EmployeeImageBase64
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(EmployeeImage))
+                    return Convert.ToBase64String(File.ReadAllBytes(EmployeeImage));
+                return string.Empty;
+            }
+        }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public string Pin { get; set; }
-        public string EmployeeImage => System.Configuration.ConfigurationManager.AppSettings["filepath"] + EmployeeId.ToString()+".jpg";
-
 
         public virtual Department Department { get; set; }
         public virtual Company Company { get; set; }
