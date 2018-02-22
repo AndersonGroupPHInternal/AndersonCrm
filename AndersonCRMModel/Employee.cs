@@ -26,7 +26,15 @@ namespace AndersonCRMModel
             {
                 if (File.Exists(ConfigurationManager.AppSettings["filepath"] + EmployeeId.ToString() + ".jpg"))
                     return ConfigurationManager.AppSettings["filepath"] + EmployeeId.ToString() + ".jpg";
-
+                return string.Empty;
+            }
+        }
+        public string EmployeeImageBase64
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(EmployeeImage))
+                    return Convert.ToBase64String(File.ReadAllBytes(EmployeeImage));
                 return string.Empty;
             }
         }
