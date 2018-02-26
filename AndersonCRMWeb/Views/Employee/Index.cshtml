@@ -24,21 +24,22 @@
             <table class="table table-hover table-sm table-bordered ">
                 <thead>
                     <tr class="thead-inverse">
+
                         <th>EmployeeNumber</th>
                         <th>Email</th>
-                        <th>FirstName</th>
                         <th>LastName</th>
+                        <th>FirstName</th>
                         <th>MiddleName</th>
 
-                        <th>CompanyName</th>
-                        <th>JobTitle</th>
-                        <th>Manager</th>
+                        <th>Company Name</th>
+                        <th>JobTitleName</th>
 
+                        <th>Manager</th>
                         <th>DateHired</th>
                         <th>DateStarted</th>
                         <th>DateEnded</th>
-
                         <th>Actions</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -46,8 +47,8 @@
 
                         <td><span ng-bind="employee.EmployeeNumber"></span></td>
                         <td><span ng-bind="employee.Email"></span></td>
-                        <td><span ng-bind="employee.FirstName"></span></td>
                         <td><span ng-bind="employee.LastName"></span></td>
+                        <td><span ng-bind="employee.FirstName"></span></td>
                         <td><span ng-bind="employee.MiddleName"></span></td>
                         <td><span ng-bind="employee.Company.Name"></span></td>
                         <td><span ng-bind="employee.JobTitle.Name"></span></td>
