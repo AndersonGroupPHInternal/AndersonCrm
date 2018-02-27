@@ -23,8 +23,7 @@ namespace AndersonCRMFunction
             EAsset eAsset = EAsset(asset);
             eAsset.CreatedDate = DateTime.Now;
             eAsset.CreatedBy = createdBy;
-            eAsset.AssetTypeId = 1;
-            eAsset.EmployeeId = 1;
+            
             
             eAsset = _iDAsset.Create(eAsset);
 
