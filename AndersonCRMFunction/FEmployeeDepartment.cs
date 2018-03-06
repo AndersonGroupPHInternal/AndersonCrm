@@ -55,8 +55,19 @@ namespace AndersonCRMFunction
                 DepartmentId = a.DepartmentId,
                 EmployeeId = employeeId
             }).ToList();
-
         }
+        private List<EmployeeDepartment> EmployeeDepartment(List<EEmployeeDepartment> eEmployeeDepartments)
+        {
+            return eEmployeeDepartments.Select(a => new EmployeeDepartment
+            {
+                CreatedDate = a.CreatedDate,
+
+                CreatedBy = a.CreatedBy,
+                DepartmentId = a.DepartmentId,
+                EmployeeId = a.EmployeeId
+            }).ToList();
+        }
+
         #endregion
     }
 }
