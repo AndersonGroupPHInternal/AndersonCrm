@@ -55,7 +55,6 @@ namespace AndersonCRMFunction
                 DepartmentId = a.DepartmentId,
                 EmployeeId = employeeId
             }).ToList();
-
         }
         private List<EmployeeDepartment> EmployeeDepartment(List<EEmployeeDepartment> eEmployeeDepartments)
         {
