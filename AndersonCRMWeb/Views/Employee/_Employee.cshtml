@@ -6,29 +6,29 @@
 
 <div class="form-group">
     <label for="EmployeeNumber">EmployeeNumber</label>
-    <input type="text" class="form-control" id="EmployeeNumber" name="EmployeeNumber" placeholder="EmployeeNumber" value="@Model.EmployeeNumber">
+    <input type="text" class="form-control" id="EmployeeNumber" name="EmployeeNumber" placeholder="EmployeeNumber" value="@Model.EmployeeNumber" required>
 </div>
 
 <div class="form-group">
     <label for="Email">Email</label>
-    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value="@Model.Email">
+    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value="@Model.Email" required>
 </div>
 <div class="form-group">
     <label for="FirstName">FirstName</label>
-    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="FirstName" value="@Model.FirstName">
+    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="FirstName" value="@Model.FirstName" required>
 </div>
 <div class="form-group">
     <label for="LastName">LastName</label>
-    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="LastName" value="@Model.LastName">
+    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="LastName" value="@Model.LastName" required>
 </div>
 <div class="form-group">
     <label for="MiddleName">MiddleName</label>
-    <input type="text" class="form-control" id="MiddleName" name="MiddleName" placeholder="MiddleName" value="@Model.MiddleName">
+    <input type="text" class="form-control" id="MiddleName" name="MiddleName" placeholder="MiddleName" value="@Model.MiddleName" required>
 </div>
 
 <div class="form-group">
     <label for="Pin">Pin</label>
-    <input type="password" class="form-control" id="Pin " name="Pin" maxlength="4" placeholder="Pin Number" value="@Model.Pin">
+    <input type="password" class="form-control" id="Pin " name="Pin" maxlength="4" placeholder="Pin Number" value="@Model.Pin"  required>
 </div>
 
 <div class="form-group" ng-controller="CompanyController as model" ng-init="model.InitialiseDropdown(@Model.CompanyId)">
@@ -102,17 +102,17 @@
 
 <div class="form-group">
     <label for="DateHired">DateHired</label>
-    <input type="date" class="form-control" id="DateHired" name="DateHired" placeholder="DateHired" value="@Model.DateHired.ToString("yyyy-MM-dd")">
+    <input type="date" class="form-control" id="DateHired" name="DateHired" min= "2010-01-01" placeholder="DateHired" value="@Model.DateHired.ToString("yyyy-MM-dd")">
 </div>
 
 <div class="form-group">
     <label for="DateStarted">DateStarted</label>
-    <input type="date" class="form-control" id="DateStarted" name="DateStarted" placeholder="DateStarted" value="@Model.DateStarted.ToString("yyyy-MM-dd")">
+    <input type="date" class="form-control" id="DateStarted" name="DateStarted"  min= "2010-01-01" placeholder="DateStarted" value="@Model.DateStarted.ToString("yyyy-MM-dd")">
 </div>
 
 <div class="form-group">
     <label for="DateEnded">DateEnded</label>
-    <input type="date" class="form-control" id="DateEnded" name="DateEnded" placeholder="DateEnded" value="@(Model.DateEnded?.ToString("yyyy-MM-dd") ?? "")">
+    <input type="date" class="form-control" id="DateEnded" name="DateEnded" min= "2010-01-01" placeholder="DateEnded" value="@(Model.DateEnded?.ToString("yyyy-MM-dd") ?? "")">
 </div>
 
 <div class="form-group">
