@@ -79,14 +79,25 @@ namespace AndersonCRMFunction
             return Employees(eEmployees);
         }
 
+        //public List<Employee> Read(EmployeeFilter employeeFilter)
+        //{
+        //    Expression<Func<EEmployee, bool>> predicate =
+        //        a => ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name)) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name)
+        //        || employeeFilter.Name == null) && (employeeFilter.isResigned || !a.DateEnded.HasValue);
+
+        //    List<EEmployee> eEmployees = _iDEmployee.List(predicate);
+           
+        //    return Employees(eEmployees);
+        //}
         public List<Employee> Read(EmployeeFilter employeeFilter)
         {
             Expression<Func<EEmployee, bool>> predicate =
-                a => ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name)) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name)
-                || employeeFilter.Name == null) && (employeeFilter.isResigned || !a.DateEnded.HasValue);
+            a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
+              || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
+              && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
+              || (employeeFilter.Name == null));
 
             List<EEmployee> eEmployees = _iDEmployee.List(predicate);
-           
             return Employees(eEmployees);
         }
 
