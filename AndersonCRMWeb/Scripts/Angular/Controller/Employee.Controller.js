@@ -30,7 +30,12 @@
         vm.Rfilter = Rfilter;
 
         function Rfilter() {
-            EmployeeService.FilteredRead(vm.EmployeeFilter)
+            var employeeFilter = angular.copy(vm.EmployeeFilter)
+            if (employeeFilter.DateHiredFrom !== undefined) {
+                employeeFilter.DateHiredFrom = moment(employeeFilter.DateHiredFrom).format('YYYY-MM-DD');
+                employeeFilter.DateHiredTo = moment(employeeFilter.DateHiredFrom).add(1, 'months').format('YYYY-MM-DD');
+            }
+            EmployeeService.FilteredRead(employeeFilter)
                 .then(function (response) {
                     vm.Employees = response.data;
                         ReadCompanies();
@@ -139,7 +144,7 @@
 
         function Delete(employeeId) {
             var conf = window.confirm("Are you sure you want to delete?");
-            if (conf == true) {
+            if (conf === true) {
                 EmployeeService.Delete(employeeId)
                     .then(function (response) {
                         Read();
@@ -154,7 +159,6 @@
                         });
                     });
             }
-            else { return; false}
         }
 
     }
