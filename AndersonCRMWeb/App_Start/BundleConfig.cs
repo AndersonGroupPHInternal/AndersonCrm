@@ -11,7 +11,7 @@ namespace AndersonCRMWeb.App_Start
                 .IncludeDirectory("~/Scripts/Angular/Controller", "*.js", true)
                 .IncludeDirectory("~/Scripts/Angular/Service", "*.js", true));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
