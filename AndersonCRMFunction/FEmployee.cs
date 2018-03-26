@@ -91,13 +91,40 @@ namespace AndersonCRMFunction
         //}
         public List<Employee> Read(EmployeeFilter employeeFilter)
         {
-            Expression<Func<EEmployee, bool>> predicate =
-            a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
+            Expression<Func<EEmployee, bool>> predicate = null;
+
+            if (employeeFilter.Status == "Actived")
+            {
+                DateTime dt = DateTime.Now.Date;
+                predicate = a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
+              || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
+              && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
+              || (employeeFilter.Name == null))
+              && (a.DateEnded == null || !(a.DateEnded <= dt) );
+            }
+            else if (employeeFilter.Status == "Resigned")
+            {
+                DateTime dt = DateTime.Now.Date;
+                predicate = a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
+              || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
+              && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
+              || (employeeFilter.Name == null))
+              && (a.DateEnded.HasValue && a.DateEnded <= dt);
+            }
+            else
+            {
+                DateTime dt = DateTime.Now.Date;
+                predicate = a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
               || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
               && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
               || (employeeFilter.Name == null));
+            }
 
             List<EEmployee> eEmployees = _iDEmployee.List(predicate);
+
+        
+
+
             return Employees(eEmployees);
         }
 

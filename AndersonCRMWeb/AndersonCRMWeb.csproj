@@ -1005,7 +1005,7 @@
     <Content Include="bower.json" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Employee\Home\Index.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Asset\Update.cshtml" />
     <Content Include="Views\Position\Index.cshtml" />
@@ -1020,7 +1020,7 @@
     <Content Include="Views\Company\_Company.cshtml" />
     <Content Include="Views\Position\Details.cshtml" />
     <Content Include="Views\Asset\Create.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Employee\Home\About.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
     <Content Include="Views\Department\_Department.cshtml" />
     <Content Include="Views\Department\Create.cshtml" />

@@ -12,22 +12,29 @@
             <a href="../Employee/Create" class="btn btn-default">Create</a>
         </div>
 
+
         <div class="col-sm-2" style="text-align:center">
-            <input type="checkbox" ng-model="model.EmployeeFilter.isResigned" ng-change="model.Rfilter()" />
-            <label>Employee Actived </label>
+            <label>
+                <input type="radio" name="employeeFilter" value="Actived" ng-model="model.EmployeeFilter.Status" ng-change="model.Rfilter()"/>
+                 Employee Actived
+            </label>
         </div> @* end of div Checkbox Employee Resigned *@
 
 
 
         <div class="col-sm-2" style="text-align:center">
-            <input type="checkbox" ng-model="model.EmployeeFilter.isResigned" ng-change="model.Rfilter()" />
-            <label>Employee Resigned</label>
+            <label>
+                <input type="radio" name="employeeFilter" value="Resigned" ng-model="model.EmployeeFilter.Status" ng-change="model.Rfilter()" />
+                 Employee Resigned
+            </label>
         </div>
 
 
         <div class="col-sm-2" style="text-align:center">
-            <input type="checkbox" ng-model="model.EmployeeFilter.isResigned" ng-change="model.Rfilter()" />
-            <label>Actived and Resigned </label>
+            <label>
+                <input type="radio" name="employeeFilter" value="ActivedResigned" ng-model="model.EmployeeFilter.Status" ng-change="model.Rfilter()" />
+                 Actived and Resigned
+            </label>
         </div>
 
 
