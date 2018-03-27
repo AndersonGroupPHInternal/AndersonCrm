@@ -19,6 +19,7 @@
         vm.Initialise = Initialise;
         vm.InitialiseDropdown = InitialiseDropdown;
 
+
         vm.Delete = Delete;
 
         function GoToUpdatePage(departmentId) {
@@ -53,11 +54,13 @@
         }
 
         function ReadSelectedDepartment() {
+            if (!vm.EmployeeId)
+                return;
             DepartmentService.ReadSelectedDepartment(vm.EmployeeId)
                 .then(function (response) {
                     var employeeDepartments = response.data;
                     angular.forEach(employeeDepartments, function (employeeDepartment) {
-                        var employeeDepartment = $filter('filter')(vm.Departments, { DepartmentId: employeeDepartment.DepartmentId })[0];
+                      //  var employeeDepartment = $filter('filter')(vm.Departments, { DepartmentId: employeeDepartment.DepartmentId })[0];
                         vm.EmployeeDepartments.push(employeeDepartment);
                     });
                 })
@@ -75,7 +78,7 @@
 
         function Delete(departmentId) {
             var conf = window.confirm("Are you sure you want to delete?");
-            if (conf == true) {
+            if (conf === true) {
             DepartmentService.Delete(departmentId)
                 .then(function (response) {
                     Read();
@@ -90,7 +93,7 @@
                     });
                     });
             }
-            else { return; false }
+            else {; false }
         }
 
     }

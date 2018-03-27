@@ -57,7 +57,7 @@
     <Reference Include="BaseData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="BaseModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="BaseWeb">
-      <HintPath>..\..\DLL\Release\Base\BaseWeb.dll</HintPath>
+      <HintPath>..\..\DLL2\Release\Base\BaseWeb.dll</HintPath>
     </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
@@ -953,6 +953,7 @@
     <Content Include="Content\Images\anderson.jpg" />
     <Content Include="Content\Images\front.png" />
     <Content Include="Content\Images\intranet.png" />
+    <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\lp.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Site.css" />
@@ -1004,7 +1005,7 @@
     <Content Include="bower.json" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Employee\Home\Index.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Asset\Update.cshtml" />
     <Content Include="Views\Position\Index.cshtml" />
@@ -1019,7 +1020,7 @@
     <Content Include="Views\Company\_Company.cshtml" />
     <Content Include="Views\Position\Details.cshtml" />
     <Content Include="Views\Asset\Create.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Employee\Home\About.cshtml" />
     <Content Include="Views\Shared\_AuditColumns.cshtml" />
     <Content Include="Views\Department\_Department.cshtml" />
     <Content Include="Views\Department\Create.cshtml" />
@@ -1042,6 +1043,8 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Update.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

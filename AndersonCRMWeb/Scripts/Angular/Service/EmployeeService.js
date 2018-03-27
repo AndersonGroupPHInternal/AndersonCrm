@@ -22,7 +22,7 @@
             });
         }
 
-        function FilteredRead(employeeFilter) {
+        function FilteredRead(employeeFilter) { 
             return $http({
                 method: 'POST',
                 url: '/Employee/FilteredRead',
