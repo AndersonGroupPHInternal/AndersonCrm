@@ -108,6 +108,7 @@ namespace AndersonCRMFunction
                 predicate = a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
               || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
               && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
+
               || (employeeFilter.Name == null))
               && (a.DateEnded.HasValue && a.DateEnded <= dt);
             }
