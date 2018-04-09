@@ -79,6 +79,7 @@ namespace AndersonCRMWeb.Controllers
 
         #region Delete
         [HttpDelete]
+
         public JsonResult Delete(int id)
         {
             _iFEmployee.Delete(id);
