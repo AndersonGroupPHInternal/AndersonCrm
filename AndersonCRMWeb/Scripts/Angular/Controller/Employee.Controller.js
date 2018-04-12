@@ -76,6 +76,7 @@
                     else {
                         ReadCompanies();
                         ReadJobTitles();
+                        UpdateManager();
                     }
                 })
                 .catch(function (data, status) {
@@ -139,6 +140,12 @@
         function UpdateJobTitles() {
             angular.forEach(vm.Employees, function (employee) {
                 employee.JobTitle = $filter('filter')(vm.JobTitles, { JobTitleId: employee.JobTitleId })[0];
+            });
+        }
+
+        function UpdateManager() {
+            angular.forEach(vm.Employees, function (employee) {
+                employee.Manager = $filter('filter')(vm.Employees, { EmployeeId: employee.ManagerEmployeeId })[0];
             });
         }
 
