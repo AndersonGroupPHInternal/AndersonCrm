@@ -6,6 +6,7 @@
 
 <div ng-controller="EmployeeController as model" ng-init="model.Initialise()">
 
+
     <div class="row">
 
         <div class="col-sm-2">
@@ -86,9 +87,9 @@
                             <td><span ng-bind="employee.JobTitle.Name"></span></td>
 
                             <td>
-                                <span ng-bind="employee.FirstName"></span>
-                                <span ng-bind="employee.MiddleName"></span>
-                                <span ng-bind="employee.LastName"></span>
+                                <span ng-bind="employee.Manager.FirstName"></span>
+                                <span ng-bind="employee.Manager.MiddleName"></span>
+                                <span ng-bind="employee.Manager.LastName"></span>
                             </td>
 
 
@@ -97,7 +98,8 @@
                             <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
                             <td ng-click="$event.originalEvent.dropdown = true">
                                 <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-togg
+                                            le="dropdown">
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
