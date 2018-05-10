@@ -47,7 +47,7 @@ namespace AndersonCRMWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult FilteredRead(EmployeeFilter employeeFilter)
+        public JsonResult ReadFiltered(EmployeeFilter employeeFilter)
         {
             try
             {
