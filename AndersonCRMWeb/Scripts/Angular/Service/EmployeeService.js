@@ -10,7 +10,7 @@
     function EmployeeService($http) {
         return {
             Read: Read,
-            FilteredRead: FilteredRead, 
+            ReadFiltered: ReadFiltered, 
             Delete: Delete
         }
 
@@ -22,10 +22,10 @@
             });
         }
 
-        function FilteredRead(employeeFilter) { 
+        function ReadFiltered(employeeFilter) { 
             return $http({
                 method: 'POST',
-                url: '/Employee/FilteredRead',
+                url: '/Employee/ReadFiltered',
                 data: $.param(employeeFilter),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
