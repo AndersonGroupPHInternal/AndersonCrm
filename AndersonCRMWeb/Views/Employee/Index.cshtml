@@ -6,6 +6,7 @@
 
 <div ng-controller="EmployeeController as model" ng-init="model.Initialise()">
 
+
     <div class="row">
 
         <div class="col-sm-2">
@@ -15,7 +16,7 @@
 
         <div class="col-sm-2" style="text-align:center">
             <label>
-                <input type="radio" name="employeeFilter" value="Actived" ng-model="model.EmployeeFilter.Status" ng-change="model.Rfilter()"/>
+                <input type="checkbox" name="employeeFilter" value="Actived" ng-model="model.EmployeeFilter.IsActive" ng-change="model.ReadFiltered()"/>
                  Employee Actived
             </label>
         </div> @* end of div Checkbox Employee Resigned *@
@@ -24,24 +25,14 @@
 
         <div class="col-sm-2" style="text-align:center">
             <label>
-                <input type="radio" name="employeeFilter" value="Resigned" ng-model="model.EmployeeFilter.Status" ng-change="model.Rfilter()" />
+                <input type="checkbox" name="employeeFilter" value="Resigned" ng-model="model.EmployeeFilter.IsResigned" ng-change="model.ReadFiltered()" />
                  Employee Resigned
             </label>
         </div>
 
-
-        <div class="col-sm-2" style="text-align:center">
-            <label>
-                <input type="radio" name="employeeFilter" value="ActivedResigned" ng-model="model.EmployeeFilter.Status" ng-change="model.Rfilter()" />
-                 Actived and Resigned
-            </label>
-        </div>
-
-
-
         <div class="btn btn-default pull-right" style="text-align:right">
-            <input type="text" placeholder="Name Of Employee...." ng-model="model.EmployeeFilter.Name" ng-change="model.Rfilter()">
-            <input type="month" ng-model="model.EmployeeFilter.DateHiredFrom" ng-change="model.Rfilter()"><br />
+            <input type="text" placeholder="Name Of Employee...." ng-model="model.EmployeeFilter.Name" ng-change="model.ReadFiltered()">
+            @*<input type="month" ng-model="model.EmployeeFilter.DateHiredFrom" ng-change="model.Rfilter()"><br />*@
             <button id="searchLogo" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
             <label>Search</label>
         </div>
@@ -86,19 +77,19 @@
                             <td><span ng-bind="employee.JobTitle.Name"></span></td>
 
                             <td>
-                                <span ng-bind="employee.FirstName"></span>
-                                <span ng-bind="employee.MiddleName"></span>
-                                <span ng-bind="employee.LastName"></span>
+                                <span ng-bind="employee.Manager.FirstName"></span>
+                                <span ng-bind="employee.Manager.MiddleName"></span>
+                                <span ng-bind="employee.Manager.LastName"></span>
                             </td>
 
 
                             <td><span ng-bind="employee.DateHired | date:'yyyy-MM-dd'"></span></td>
                             <td><span ng-bind="employee.DateStarted | date:'yyyy-MM-dd'"></span></td>
                             <td><span ng-bind="employee.DateEnded | date:'yyyy-MM-dd'"></span></td>
-                            <td ng-click="$event.originalEvent.dropdown = true">
+                            <td ng-click="$event.originalEvent.dropdown = true"  >
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <span class="caret"></span>
+                                        <div class="caret"></div>
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a href="#" ng-click="model.GoToUpdatePage(employee.EmployeeId)">Edit</a></li>

@@ -20,11 +20,15 @@ namespace AndersonCRMFunction
         #region CREATE
         public Employee Create(int createdBy, Employee employee)
         {           
-            EEmployee eEmployee = EEmployee(employee);
-            eEmployee.CreatedDate = DateTime.Now;
-            eEmployee.CreatedBy = createdBy;
-            eEmployee = _iDEmployee.Create(eEmployee);
-            return (Employee(eEmployee));
+            if(_iDEmployee.Count<EEmployee>(a => a.EmployeeNumber == employee.EmployeeNumber) == 0)
+            {
+                EEmployee eEmployee = EEmployee(employee);
+                eEmployee.CreatedDate = DateTime.Now;
+                eEmployee.CreatedBy = createdBy;
+                eEmployee = _iDEmployee.Create(eEmployee);
+                return (Employee(eEmployee));
+            }
+            return employee;
         }
         #endregion
 
@@ -93,39 +97,18 @@ namespace AndersonCRMFunction
         {
             Expression<Func<EEmployee, bool>> predicate = null;
 
-            if (employeeFilter.Status == "Actived")
-            {
-                DateTime dt = DateTime.Now.Date;
-                predicate = a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
-              || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
-              && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
-              || (employeeFilter.Name == null))
-              && (a.DateEnded == null || !(a.DateEnded <= dt) );
-            }
-            else if (employeeFilter.Status == "Resigned")
-            {
-                DateTime dt = DateTime.Now.Date;
-                predicate = a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
-              || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
-              && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
+                DateTime today = DateTime.Today;
+                predicate = a =>
+                    //ToDo: Logic on per month filter should be done here
+                    //(((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
+                    //              || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue)) &&
+                 ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains
+                    (employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
+                    || (employeeFilter.Name == null))
 
-              || (employeeFilter.Name == null))
-              && (a.DateEnded.HasValue && a.DateEnded <= dt);
-            }
-            else
-            {
-                DateTime dt = DateTime.Now.Date;
-                predicate = a => (((a.DateHired >= employeeFilter.DateHiredFrom) && (a.DateHired < employeeFilter.DateHiredTo))
-              || (!employeeFilter.DateHiredFrom.HasValue || !employeeFilter.DateHiredTo.HasValue))
-              && ((a.FirstName.Contains(employeeFilter.Name) || a.MiddleName.Contains(employeeFilter.Name) || a.LastName.Contains(employeeFilter.Name) || a.JobTitle.Name.Contains(employeeFilter.Name))
-              || (employeeFilter.Name == null));
-            }
+                 && (((!a.DateEnded.HasValue || a.DateEnded >= today) && employeeFilter.isActive ) || (a.DateEnded < today && employeeFilter.isResigned));
 
             List<EEmployee> eEmployees = _iDEmployee.List(predicate);
-
-        
-
-
             return Employees(eEmployees);
         }
 
