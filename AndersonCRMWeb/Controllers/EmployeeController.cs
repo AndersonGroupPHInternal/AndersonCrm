@@ -70,8 +70,8 @@ namespace AndersonCRMWeb.Controllers
         [HttpPost]
         public ActionResult Update(Employee employee)
         {
-            _iFEmployeeTeam.Create(UserId, employee.EmployeeId, employee.EmployeeTeams.ToList());
-            _iFEmployeeDepartment.Create(UserId, employee.EmployeeId, employee.EmployeeDepartments.ToList());
+            _iFEmployeeTeam.Create(UserId, employee.EmployeeId, employee.EmployeeTeams);
+            _iFEmployeeDepartment.Create(UserId, employee.EmployeeId, employee.EmployeeDepartments);
             var createdEmployee = _iFEmployee.Update(UserId, employee);
             return RedirectToAction("Index");
         }
