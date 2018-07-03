@@ -49,9 +49,9 @@ namespace AndersonCRMModel
         public virtual JobTitle JobTitle { get; set; }
         public virtual Team Team { get; set; }
 
-        public virtual ICollection<EmployeeDepartment> EmployeeDepartments { get; set; }
-        public virtual ICollection<EmployeeTeam> EmployeeTeams { get; set; }
-        public virtual ICollection<Asset> Assets { get; set; }
-        public virtual ICollection<AssetHistory> AssetHistories { get; set; }
+        public virtual List<EmployeeDepartment> EmployeeDepartments { get; set; }
+        public virtual List<EmployeeTeam> EmployeeTeams { get; set; }
+        public virtual List<Asset> Assets { get; set; }
+        public virtual List<AssetHistory> AssetHistories { get; set; }
     }
 }

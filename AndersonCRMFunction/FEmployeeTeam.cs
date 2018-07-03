@@ -20,6 +20,8 @@ namespace AndersonCRMFunction
         public void Create(int createdBy, int employeeId, List<EmployeeTeam> employeeTeams)
         {
             Delete(employeeId);
+            if (!employeeTeams?.Any() ?? true)
+                return;
             var eEmployeeTeams = EEmployeeTeams(createdBy, employeeId, employeeTeams);
             _iDEmployeeTeam.Create(eEmployeeTeams);
         }
